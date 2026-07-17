@@ -170,8 +170,8 @@ export const CALGARY_LOCATION = {
   altPhone: "+1 (403) 555-0191",
   email: "service@calgaryautorepair.ca",
   hours: [
-    { days: "Monday - Friday", times: "7:30 AM - 5:30 PM" },
-    { days: "Saturday", times: "8:00 AM - 1:00 PM" },
-    { days: "Sunday & Holidays", times: "Closed" }
+    { days: "Monday - Friday", times: "9:00 AM - 6:00 PM" },
+    { days: "Saturday", times: "10:00 AM - 5:00 PM" },
+    { days: "Sunday", times: "Closed" }
   ]
 };

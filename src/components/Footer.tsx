@@ -17,7 +17,7 @@ export default function Footer({ onSectionScroll }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 border-b border-zinc-900 pb-12 mb-12">
           
           {/* Brand Intro Column */}
-          <div className="md:col-span-5 space-y-4">
+          <div className="md:col-span-4 space-y-4">
             <div 
               id="footer-logo"
               className="flex items-center space-x-2 cursor-pointer"
@@ -41,9 +41,9 @@ export default function Footer({ onSectionScroll }: FooterProps) {
           </div>
 
           {/* Quick Jump Column */}
-          <div className="md:col-span-3 space-y-4">
+          <div className="md:col-span-2 space-y-4">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              Quick Navigation
+              Navigation
             </h4>
             <ul className="space-y-2 text-xs">
               {[
@@ -67,24 +67,39 @@ export default function Footer({ onSectionScroll }: FooterProps) {
             </ul>
           </div>
 
-          {/* Regulatory & Trade Badges Column */}
-          <div className="md:col-span-4 space-y-4">
+          {/* Business Hours Column */}
+          <div className="md:col-span-3 space-y-4">
             <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-              Accreditations & Licensing
+              Business Hours
+            </h4>
+            <ul className="space-y-3 text-xs">
+              {CALGARY_LOCATION.hours.map((h, idx) => (
+                <li key={idx} className="flex justify-between border-b border-zinc-900/60 pb-1.5 last:border-0 last:pb-0">
+                  <span className="text-zinc-500">{h.days}</span>
+                  <span className="text-zinc-300 font-mono text-right">{h.times}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Regulatory & Trade Badges Column */}
+          <div className="md:col-span-3 space-y-4">
+            <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+              Accreditations
             </h4>
             
-            <div className="space-y-3.5">
-              <div className="flex items-start space-x-2 bg-zinc-900/60 p-3 rounded-lg border border-zinc-800/80">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
-                <span className="text-[11px] font-sans leading-relaxed text-zinc-400">
-                  <strong>AMVIC Licensed:</strong> Fully registered under the Alberta Motor Vehicle Industry Council. Consumers protected under strict Alberta regulatory consumer laws.
+            <div className="space-y-3">
+              <div className="flex items-start space-x-2 bg-zinc-900/40 p-2.5 rounded-lg border border-zinc-850">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                <span className="text-[10px] font-sans leading-relaxed text-zinc-400">
+                  <strong>AMVIC Licensed:</strong> Consumer protection under strict Alberta motor vehicle industry regulations.
                 </span>
               </div>
 
-              <div className="flex items-start space-x-2 bg-zinc-900/60 p-3 rounded-lg border border-zinc-800/80">
-                <Award className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
-                <span className="text-[11px] font-sans leading-relaxed text-zinc-400">
-                  <strong>Red Seal Standard:</strong> Interprovincial Journeymen seals guarantee that only authorized Canadian tradesmen supervise mechanical repairs.
+              <div className="flex items-start space-x-2 bg-zinc-900/40 p-2.5 rounded-lg border border-zinc-850">
+                <Award className="w-3.5 h-3.5 text-red-500 mt-0.5 flex-shrink-0" />
+                <span className="text-[10px] font-sans leading-relaxed text-zinc-400">
+                  <strong>Red Seal Standard:</strong> Supervised by certified interprovincial Canadian Journeymen.
                 </span>
               </div>
             </div>
