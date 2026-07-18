@@ -5,7 +5,7 @@ import precisionBrakesImg from "../assets/images/precision_brakes_1784406030021.
 import palAutoRepairImg from "../assets/images/pal_auto_repair_1784319256438.jpg";
 import steeringSuspensionImg from "../assets/images/steering_suspension_1784319752770.jpg";
 import climateControlImg from "../assets/images/climate_control_1784321200000_1784320351752.jpg";
-import engineTransmissionRepairImg from "../assets/images/engine_transmission_repair_1784320688537.jpg";
+import engineTransmissionRepairImg from "../assets/images/engine_transmission_repair_new_1784407131721.jpg";
 
 // Royalty-free stock images for the professional auto repair context
 const FALLBACK_IMAGES: Record<string, string> = {
