@@ -317,9 +317,9 @@ export default function BlueprintGallery() {
                   }
                   description={
                     activeItem.blueprintType === "ecu" ? "Autotech specialist utilizing advanced OBD2 diagnostic systems to analyze live fuel trims and misfires." :
-                    activeItem.blueprintType === "brake" ? "Our certified technician inspecting safety-critical brake calipers, calipers, and moisture levels." :
+                    activeItem.blueprintType === "brake" ? "Our certified technician inspecting safety-critical brake calipers, rotors, and fluid levels." :
                     activeItem.blueprintType === "alignment" ? "High-spec vehicle parked on the precision hydraulic alignment bays inside our garage." :
-                    "Nationwide accredited crew conducting multi-point engine heating and block heater testing for severe winter readiness."
+                    "Certified technical crew conducting multi-point engine testing for vehicle health and reliability."
                   }
                   aspectRatio="aspect-[16/9]"
                   className="w-full h-48 object-cover"

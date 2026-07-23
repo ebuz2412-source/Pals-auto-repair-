@@ -327,7 +327,7 @@ export default function QuoteWizard({ initialService = "" }: QuoteWizardProps) {
                   <div className="flex items-center space-x-3 bg-zinc-950 border border-amber-500/30 p-4 rounded-lg mt-4 text-amber-300">
                     <ShieldAlert className="w-5 h-5 flex-shrink-0" />
                     <p className="text-xs font-mono">
-                      SPECIALTY DETECTED: European vehicles require dealer-grade synthetic engine fluids, specific diagnostic code scanning, and custom ECU resetting tolerances. Our Red Seal team is fully certified for European models.
+                      SPECIALTY DETECTED: European vehicles require dealer-grade synthetic engine fluids, specific diagnostic code scanning, and custom ECU resetting tolerances. Our technical team is fully certified for European models.
                     </p>
                   </div>
                 )}
@@ -441,7 +441,7 @@ export default function QuoteWizard({ initialService = "" }: QuoteWizardProps) {
                     <input
                       id="quote-phone-input"
                       type="tel"
-                      placeholder="(403) 555-0100"
+                      placeholder="+263 78 283 1734"
                       value={customerPhone}
                       onChange={(e) => setCustomerPhone(e.target.value)}
                       className={`w-full bg-zinc-950 border ${errors.customerPhone ? "border-red-500" : "border-zinc-800"} rounded p-3 text-white font-sans focus:outline-none focus:border-red-500 text-sm`}
@@ -557,7 +557,7 @@ export default function QuoteWizard({ initialService = "" }: QuoteWizardProps) {
                         <span>Included</span>
                       </div>
                       <div className="flex justify-between text-zinc-400 text-[11px]">
-                        <span>RED SEAL LABOUR CHARGE (EST.)</span>
+                        <span>CERTIFIED LABOUR CHARGE (EST.)</span>
                         <span>Included</span>
                       </div>
                       <div className="flex justify-between items-center text-sm font-bold border-t border-zinc-800 pt-4 mt-2">
@@ -570,9 +570,9 @@ export default function QuoteWizard({ initialService = "" }: QuoteWizardProps) {
 
                 <div className="bg-zinc-900 p-4 rounded-lg border border-zinc-800 text-zinc-400 text-xs space-y-2 leading-relaxed">
                   <p className="font-semibold text-zinc-300">📌 Next Steps & Warranty Protection:</p>
-                  <p>1. Our Red Seal Service Advisor will contact you within **30 minutes** (during regular business hours) at **{activeQuote.customerPhone}** to confirm diagnostic bay availability for **{activeQuote.preferredDate}**.</p>
-                  <p>2. Drop your vehicle at **1234 9th Ave SE, Calgary** on your selected date. Feel free to use our secure 24-hour lockbox key drop.</p>
-                  <p>3. **Peace of Mind Warranty:** All parts & labor are backed by our signature Calgary-wide 24-month/40,000 km warranty.</p>
+                  <p>1. Our Service Advisor will contact you within **30 minutes** (during regular business hours) at **{activeQuote.customerPhone}** to confirm diagnostic bay availability for **{activeQuote.preferredDate}**.</p>
+                  <p>2. Drop your vehicle at our workshop in **Zimbabwe** on your selected date. Feel free to use our secure 24-hour drop box.</p>
+                  <p>3. **Peace of Mind Warranty:** All parts & labor are backed by our signature 24-month/40,000 km warranty.</p>
                 </div>
 
                 <div className="flex justify-center pt-4">

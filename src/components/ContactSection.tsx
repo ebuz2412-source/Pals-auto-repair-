@@ -20,7 +20,7 @@ export default function ContactSection() {
             Schedule a Drop-Off or Visit Our Shop
           </h2>
           <p className="text-sm text-zinc-400 font-sans leading-relaxed">
-            Have an urgent repair or warning light? Give us a call or visit our professional diagnostic center in Central Calgary. No appointment required for rapid safety bulb or battery replacements.
+            Have an urgent repair or warning light? Give us a call or visit our professional diagnostic center in Zimbabwe. Open 24 hours for all your automotive needs.
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export default function ContactSection() {
             <div className="overflow-hidden rounded-2xl border border-zinc-800 shadow-md bg-zinc-900">
               <MediaLoader
                 src="/input_file_5.png"
-                alt="Pal Auto Repairs Professional Shop Front Exterior"
+                alt="Frosty's Vehicle Repair Shop Professional Shop Front Exterior"
                 sectionName="Contact Section: Shop Front"
                 expectedFile="input_file_5.png"
                 description="Our diagnostic center front facade, featuring visible bay doors and customer intake reception."
@@ -56,7 +56,7 @@ export default function ContactSection() {
                   <p className="text-xs font-sans text-zinc-400 mt-1">{CALGARY_LOCATION.neighborhood}</p>
                   <a
                     id="directions-link"
-                    href="https://maps.google.com/?q=1234+9th+Ave+SE,+Calgary,+AB+T2G+0T1"
+                    href="https://maps.google.com/?q=Zimbabwe"
                     target="_blank"
                     referrerPolicy="no-referrer"
                     rel="noopener noreferrer"
@@ -142,15 +142,15 @@ export default function ContactSection() {
                 Google Maps Navigation
               </span>
               <span className="text-[10px] font-mono text-zinc-500">
-                LAT: 51.0396° N | LON: -114.0354° W
+                ZIMBABWE | OPEN 24/7
               </span>
             </div>
 
-            {/* Real Interactive Map Iframe - points to 1234 9th Ave SE Calgary */}
+            {/* Real Interactive Map Iframe - points to Zimbabwe */}
             <div className="flex-grow w-full rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950">
               <iframe
                 id="google-maps-iframe"
-                title="Pal Auto Repairs Google Map Location"
+                title="Frosty's Vehicle Repair Shop Google Map Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2508.8266497140885!2d-114.0354148!3d51.0396001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717aa343277717%3A0xc3fa5990f1ea09b7!2s1234%209%20Ave%20SE%2C%20Calgary%2C%20AB%20T2G%200T1!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
                 width="100%"
                 height="100%"

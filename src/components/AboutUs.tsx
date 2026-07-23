@@ -16,10 +16,10 @@ export default function AboutUs() {
                 Our Story & Standards
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold font-sans tracking-tight text-zinc-950 leading-tight">
-                Engineering Trust in Pal Auto Repairs Since 2001
+                Engineering Trust in Frosty's Vehicle Repair Shop
               </h2>
               <p className="text-sm sm:text-base text-zinc-600 font-sans leading-relaxed">
-                Founded as a single-bay shop in East Calgary, our garage was born out of a simple observation: Calgary vehicle owners deserved dealership-level expertise without the bloated dealership prices, pushy sales tactics, and lack of transparency.
+                Founded as an independent garage, our shop was born out of a simple observation: vehicle owners in Zimbabwe deserved dealership-level expertise without the bloated dealership prices, pushy sales tactics, and lack of transparency.
               </p>
               <p className="text-sm sm:text-base text-zinc-600 font-sans leading-relaxed">
                 Today, our state-of-the-art facility features 6 fully active repair bays outfitted with computerized 3D laser alignment consoles, direct-link OBD2 scanner channels, and specialty fluid flushing lines. We remain fully independent, family-owned, and operated.
@@ -57,7 +57,7 @@ export default function AboutUs() {
                   <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                   <div>
                     <span className="block font-bold text-sm text-zinc-950 font-sans">Community & Road Safety</span>
-                    <span className="text-xs text-zinc-500 font-sans">We are active Albertans, dedicated to preparing cars for severe winters and safe mountain travel.</span>
+                    <span className="text-xs text-zinc-500 font-sans">We are dedicated to preparing cars for long road trips, harsh terrains, and safe everyday driving in Zimbabwe.</span>
                   </div>
                 </div>
               </div>
@@ -70,10 +70,10 @@ export default function AboutUs() {
             <div className="w-full max-w-md overflow-hidden rounded-2xl border border-zinc-200 shadow-xl bg-zinc-50">
               <MediaLoader
                 src="/input_file_3.png"
-                alt="Pal Auto Repairs Professional Workshop Bay"
+                alt="Frosty's Vehicle Repair Shop Professional Workshop Bay"
                 sectionName="About Us: Our Repair Bays"
                 expectedFile="input_file_3.png"
-                description="Our climate-controlled Calgary auto repair workshop, fully equipped with heavy-duty diagnostic hydraulic lifts."
+                description="Our fully equipped auto repair workshop in Zimbabwe, featuring heavy-duty diagnostic hydraulic lifts."
                 aspectRatio="aspect-[4/3]"
                 className="w-full h-full object-cover"
               />
@@ -122,8 +122,8 @@ export default function AboutUs() {
                 </div>
 
                 <div className="pt-4 border-t border-zinc-800 text-center text-[10px] font-mono text-zinc-500 leading-normal">
-                  <p>Registered AMA Approved Repair Center #CGY-9201A</p>
-                  <p className="mt-1">Alberta Licensed Inspection Facility</p>
+                  <p>Registered Auto Repair Center in Zimbabwe</p>
+                  <p className="mt-1">Licensed Mechanic & Inspection Facility</p>
                 </div>
               </div>
             </div>

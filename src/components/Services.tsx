@@ -34,7 +34,7 @@ export default function Services({ onQuoteClickWithService }: ServicesProps) {
             Professional Independent Automotive Services
           </h2>
           <p className="text-base sm:text-lg text-zinc-600 font-sans leading-relaxed">
-            Calgary's trusted alternative to expensive dealership service bays. We service all makes and models using high-grade tools and parts, with zero compromise on quality or safety.
+            Your trusted alternative to expensive dealership service bays in Zimbabwe. We service all makes and models using high-grade tools and parts, with zero compromise on quality or safety.
           </p>
         </div>
 

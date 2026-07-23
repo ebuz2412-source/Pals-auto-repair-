@@ -24,19 +24,19 @@ export default function Footer({ onSectionScroll }: FooterProps) {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white font-mono font-bold text-base tracking-wider">
-                P
+                F
               </div>
               <div>
                 <span className="block text-base font-bold font-sans tracking-tight text-white leading-none">
-                  PAL AUTO
+                  FROSTY'S
                 </span>
                 <span className="block text-[10px] font-semibold font-mono tracking-widest text-red-500 uppercase leading-none mt-1">
-                  REPAIRS
+                  VEHICLE REPAIR
                 </span>
               </div>
             </div>
             <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed max-w-sm">
-              An independent, locally owned Red Seal vehicle service facility in Calgary, Alberta. Engineered to keep your ride safe, reliable, and winter-ready with dealership-grade scanning diagnostics and transparent digital reports.
+              An independent, locally owned vehicle service facility in Zimbabwe. Open 24 hours to keep your ride safe and reliable with dealership-grade scanning diagnostics and transparent digital reports.
             </p>
           </div>
 
@@ -92,14 +92,14 @@ export default function Footer({ onSectionScroll }: FooterProps) {
               <div className="flex items-start space-x-2 bg-zinc-900/40 p-2.5 rounded-lg border border-zinc-850">
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mt-0.5 flex-shrink-0" />
                 <span className="text-[10px] font-sans leading-relaxed text-zinc-400">
-                  <strong>AMVIC Licensed:</strong> Consumer protection under strict Alberta motor vehicle industry regulations.
+                  <strong>Licensed Facility:</strong> Operating under strict automotive service regulations in Zimbabwe.
                 </span>
               </div>
 
               <div className="flex items-start space-x-2 bg-zinc-900/40 p-2.5 rounded-lg border border-zinc-850">
                 <Award className="w-3.5 h-3.5 text-red-500 mt-0.5 flex-shrink-0" />
                 <span className="text-[10px] font-sans leading-relaxed text-zinc-400">
-                  <strong>Red Seal Standard:</strong> Supervised by certified interprovincial Canadian Journeymen.
+                  <strong>Certified Mechanics:</strong> Supervised by experienced master mechanics and technicians.
                 </span>
               </div>
             </div>
@@ -110,14 +110,12 @@ export default function Footer({ onSectionScroll }: FooterProps) {
         {/* Bottom fine prints */}
         <div className="flex flex-col sm:flex-row justify-between items-center text-[10px] font-mono text-zinc-600 gap-4">
           <p className="text-center sm:text-left">
-            © {currentYear} Pal Auto Repairs. All Rights Reserved. Private Independent Shop.
+            © {currentYear} Frosty's Vehicle Repair Shop. All Rights Reserved. Private Independent Shop.
           </p>
           <div className="flex space-x-4">
-            <span className="text-zinc-600">AMVIC Registration: #7281A-CGY</span>
+            <span className="text-zinc-600">Location: Zimbabwe</span>
             <span>•</span>
-            <span className="text-zinc-600">AMA Certified Partner</span>
-            <span>•</span>
-            <span className="text-zinc-600">Designed for Calgary, AB</span>
+            <span className="text-zinc-600">Open 24 Hours</span>
           </div>
         </div>
 

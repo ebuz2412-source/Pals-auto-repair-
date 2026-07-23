@@ -21,10 +21,10 @@ export default function Testimonials() {
             Customer Satisfaction
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold font-sans tracking-tight text-white">
-            What Calgary Drivers Say About Us
+            What Our Customers Say About Us
           </h2>
           <p className="text-sm text-zinc-400 font-sans leading-relaxed">
-            Real feedback from local vehicle owners who have experienced our transparent diagnostic inspection workflow and Red Seal craftsmanship.
+            Real feedback from local vehicle owners who have experienced our transparent diagnostic inspection workflow and certified craftsmanship.
           </p>
         </div>
 
@@ -116,11 +116,11 @@ export default function Testimonials() {
           </div>
           <div>
             <div className="text-3xl sm:text-4xl font-extrabold text-white">20,000+</div>
-            <div className="text-xs text-zinc-500 uppercase tracking-widest mt-2">Satisfied Albertans</div>
+            <div className="text-xs text-zinc-500 uppercase tracking-widest mt-2">Satisfied Clients</div>
           </div>
           <div>
             <div className="text-3xl sm:text-4xl font-extrabold text-white">100%</div>
-            <div className="text-xs text-zinc-500 uppercase tracking-widest mt-2">Red Seal Certified staff</div>
+            <div className="text-xs text-zinc-500 uppercase tracking-widest mt-2">Certified Technical Staff</div>
           </div>
         </div>
 

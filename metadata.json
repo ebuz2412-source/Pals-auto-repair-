@@ -1,6 +1,6 @@
 {
-  "name": "Pal Auto Repairs",
-  "description": "A premium, modern, and professional website for an independent auto repair shop in Calgary, Canada, featuring services, why choose us, dynamic quote system, and interactive map.",
+  "name": "Frosty's Vehicle Repair Shop",
+  "description": "A premium, modern, and professional website for Frosty's Vehicle Repair Shop in Zimbabwe, open 24 hours for auto repair and mechanic services.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

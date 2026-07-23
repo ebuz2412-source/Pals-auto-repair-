@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MediaPlaceholder from "./MediaPlaceholder";
 import computerDiagnosticsImg from "../assets/images/computer_diagnostics_1784272640453.jpg";
+import scheduledMaintenanceImg from "../assets/images/scheduled_maintenance_audi_1784829153442.jpg";
 import precisionBrakesImg from "../assets/images/precision_brakes_1784406030021.jpg";
 import palAutoRepairImg from "../assets/images/pal_auto_repair_1784319256438.jpg";
 import steeringSuspensionImg from "../assets/images/steering_suspension_new_1784408445483.jpg";
@@ -10,7 +11,7 @@ import engineTransmissionRepairImg from "../assets/images/engine_transmission_re
 // Royalty-free stock images for the professional auto repair context
 const FALLBACK_IMAGES: Record<string, string> = {
   "input_file_0.png": computerDiagnosticsImg, // user uploaded engine computer diagnostics
-  "input_file_1.png": palAutoRepairImg, // real photo of PAL Auto Repair with mechanics
+  "input_file_1.png": scheduledMaintenanceImg, // user uploaded red Audi engine bay photo for Scheduled Maintenance
   "input_file_2.png": precisionBrakesImg, // user's uploaded red Acura on the lift
   "input_file_3.png": steeringSuspensionImg, // user's uploaded steering & suspension system image
   "input_file_4.png": engineTransmissionRepairImg, // user's uploaded engine & transmission repair image

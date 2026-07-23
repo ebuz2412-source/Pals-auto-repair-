@@ -6,14 +6,14 @@ export default function WhyChooseUs() {
     {
       id: "f1",
       icon: Award,
-      title: "Licensed Red Seal Technicians",
-      description: "Our mechanics hold Canada's highest professional standard. We possess continuous factory diagnostic training on European, Japanese, and Domestic drivetrains."
+      title: "Licensed Professional Technicians",
+      description: "Our mechanics hold high professional standards. We possess continuous diagnostic training on European, Japanese, and Domestic drivetrains."
     },
     {
       id: "f2",
       icon: ShieldCheck,
       title: "24-Month / 40,000 km Warranty",
-      description: "Every replacement part and hour of labor is backed by our nationwide worry-free warranty. We stand by the long-term durability of our work."
+      description: "Every replacement part and hour of labor is backed by our worry-free warranty. We stand by the long-term durability of our work."
     },
     {
       id: "f3",
@@ -24,20 +24,20 @@ export default function WhyChooseUs() {
     {
       id: "f4",
       icon: Snowflake,
-      title: "Calgary Winter Performance Specialists",
-      description: "From coolant freezing point testing and heavy-duty battery CCA checks to block heater services and snow tyre setups, we keep you safe during deep -30°C winters."
+      title: "Vehicle Climate & Maintenance Specialists",
+      description: "From coolant temperature testing and heavy-duty battery checks to climate control services and tyre setups, we keep your vehicle running smoothly."
     },
     {
       id: "f5",
       icon: Battery,
       title: "Dealership Technology, Half the Cost",
-      description: "We utilize the identical OBD2 software scanning consoles and physical testing platforms as elite dealerships, without charging dealer markup premiums."
+      description: "We utilize OEM-spec OBD2 software scanning consoles and physical testing platforms identical to elite dealerships, without charging dealer markup premiums."
     },
     {
       id: "f6",
       icon: Milestone,
       title: "Proudly Local & Independent",
-      description: "We are an active part of the Calgary community. We operate on honesty, transparency, and building lifelong relationships with families in Alberta."
+      description: "We are an active part of the Zimbabwe community. We operate on honesty, transparency, and building lifelong relationships with vehicle owners."
     }
   ];
 
@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
               Trust & Quality Assurance
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold font-sans tracking-tight text-zinc-950">
-              Calgary's Most Reliable Dealership Alternative
+              Zimbabwe's Most Reliable Dealership Alternative
             </h2>
             <p className="text-sm sm:text-base text-zinc-600 font-sans leading-relaxed">
               We understand that vehicle maintenance can be stressful. That's why we've re-engineered our business around complete transparency, technical excellence, and quick turnaround times.
@@ -61,8 +61,8 @@ export default function WhyChooseUs() {
           <div className="flex-shrink-0 bg-zinc-900 text-white rounded-xl p-5 border border-zinc-800 shadow-md flex items-center space-x-4 max-w-sm">
             <span className="text-4xl font-extrabold font-mono text-red-500">4.9★</span>
             <div className="text-xs font-sans">
-              <span className="block font-bold">AMA APPROVED SERVICE</span>
-              <span className="text-zinc-400">Top-rated diagnostic and repair standards in Southern Alberta.</span>
+              <span className="block font-bold">CERTIFIED SERVICE</span>
+              <span className="text-zinc-400">Top-rated diagnostic and repair standards in Zimbabwe.</span>
             </div>
           </div>
         </div>
@@ -91,14 +91,14 @@ export default function WhyChooseUs() {
               </div>
               <div className="pt-6 mt-4 border-t border-zinc-100 text-right">
                 <span className="text-[10px] font-mono font-bold text-red-500 uppercase tracking-widest">
-                  Red Seal Certified
+                  Certified Technician
                 </span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Calgary Winter Focus Banner */}
+        {/* Vehicle Health Banner */}
         <div className="mt-16 bg-zinc-900 rounded-2xl p-8 text-white border border-zinc-800 shadow-xl relative overflow-hidden">
           {/* Radial glow background */}
           <div className="absolute -top-1/2 -left-1/4 w-[350px] h-[350px] bg-red-900/20 rounded-full filter blur-[80px] pointer-events-none"></div>
@@ -107,22 +107,22 @@ export default function WhyChooseUs() {
             <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center space-x-2 bg-red-900/40 border border-red-500/30 px-3 py-1 rounded-full">
                 <Snowflake className="w-4 h-4 text-red-400 animate-spin" style={{ animationDuration: '6s' }} />
-                <span className="text-xs font-mono text-red-300 font-semibold uppercase tracking-wider">Alberta Weather Advisory</span>
+                <span className="text-xs font-mono text-red-300 font-semibold uppercase tracking-wider">Vehicle Care Advisory</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold font-sans tracking-tight">
-                Is your vehicle winter-proof?
+                Is your vehicle road-ready?
               </h3>
               <p className="text-sm text-zinc-300 font-sans leading-relaxed">
-                Calgary's extreme drop from positive summer heat to -40°C winter snaps severely degrades battery voltage, stiffens heater control valves, and thickens engine fluids. Don't get stranded in an Alberta blizzard. Speak to our mechanics about our customized Calgary Winter Prepping Service package today.
+                Temperature changes, dust, and heavy road wear can degrade battery voltage, wear down suspension, and impact engine fluid health. Don't get stranded on the road. Speak to our mechanics about a customized Vehicle Inspection package today.
               </p>
             </div>
             <div className="lg:col-span-4 flex justify-start lg:justify-end">
               <a
                 id="winter-cta-phone"
-                href="tel:+14035550190"
+                href="tel:+263782831734"
                 className="inline-flex items-center space-x-3 bg-red-600 hover:bg-red-700 text-white font-bold font-sans text-sm px-6 py-4 rounded-lg shadow-lg shadow-red-950/40 transition-colors duration-200"
               >
-                <span>Call for Winter Checkup</span>
+                <span>Call for Vehicle Checkup</span>
               </a>
             </div>
           </div>

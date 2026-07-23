@@ -1,5 +1,5 @@
 /**
- * Shared Type Definitions for Pal Auto Repairs
+ * Shared Type Definitions for Frosty's Vehicle Repair Shop
  */
 
 export interface Service {

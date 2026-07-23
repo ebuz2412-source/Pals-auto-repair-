@@ -53,7 +53,7 @@ export default function Navbar({ onBookClick, onSectionScroll }: NavbarProps) {
             </span>
             <span className="flex items-center">
               <Clock className="w-3.5 h-3.5 text-zinc-400 mr-1.5" />
-              Mon-Fri 7:30 AM - 5:30 PM | Sat 8 AM - 1 PM
+              Open 24 Hours | 7 Days a Week
             </span>
           </div>
           <div className="flex items-center space-x-4">
@@ -74,14 +74,14 @@ export default function Navbar({ onBookClick, onSectionScroll }: NavbarProps) {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <div className="w-10 h-10 bg-red-600 rounded flex items-center justify-center text-white font-mono font-bold text-lg tracking-wider transform group-hover:rotate-12 transition-transform duration-300 shadow-md shadow-red-900/30">
-              P
+              F
             </div>
             <div>
               <span className="block text-lg font-bold font-sans tracking-tight text-white leading-none">
-                PAL AUTO
+                FROSTY'S
               </span>
               <span className="block text-xs font-semibold font-mono tracking-widest text-red-500 uppercase leading-none mt-1">
-                REPAIRS
+                VEHICLE REPAIR
               </span>
             </div>
           </div>

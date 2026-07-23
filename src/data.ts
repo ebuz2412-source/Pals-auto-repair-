@@ -19,8 +19,8 @@ export const SERVICES: Service[] = [
   {
     id: "brakes",
     title: "Precision Brake & Safety Systems",
-    shortDescription: "Complete brake pad, rotor, caliper, and hydraulic fluid services optimized for Alberta's demanding driving conditions.",
-    longDescription: "Brakes are your vehicle's single most critical safety system, especially when stopping on Calgary's icy winter roads or descending steep mountain passes. We use premium high-friction pads and rust-resistant rotors engineered to withstand extreme temperature fluctuations and prevent brake fade.",
+    shortDescription: "Complete brake pad, rotor, caliper, and hydraulic fluid services optimized for demanding driving conditions.",
+    longDescription: "Brakes are your vehicle's single most critical safety system, especially when stopping on steep roads or unpredictable driving conditions. We use premium high-friction pads and rust-resistant rotors engineered to withstand extreme temperature fluctuations and prevent brake fade.",
     basePrice: 199,
     timeEstimate: "1.5 - 2 Hours",
     features: [
@@ -35,7 +35,7 @@ export const SERVICES: Service[] = [
     id: "maintenance",
     title: "Scheduled Maintenance & Fluid Care",
     shortDescription: "Warranty-approved multi-point inspections, synthetic oil services, and preventative fluid flushes.",
-    longDescription: "Keep your factory or aftermarket warranty 100% valid with our OEM-scheduled maintenance programs. We provide 30k/60k/90k services, premium full-synthetic oil changes, transmission flushes, and cooling system flushes tailored specifically to Calgary's severe climate driving schedule.",
+    longDescription: "Keep your factory or aftermarket warranty 100% valid with our OEM-scheduled maintenance programs. We provide 30k/60k/90k services, premium full-synthetic oil changes, transmission flushes, and cooling system flushes tailored specifically to heavy driving schedules.",
     basePrice: 89,
     timeEstimate: "45 Mins - 1 Hour",
     features: [
@@ -50,7 +50,7 @@ export const SERVICES: Service[] = [
     id: "suspension",
     title: "Steering, Suspension & Alignment",
     shortDescription: "Pothole-ready strut, shock, ball joint, tie rod, and precision 3D wheel alignment services.",
-    longDescription: "Calgary's spring pothole season and gravel roads take a severe toll on steering and suspension. If your car pulls, rides rough, or makes clunking noises over bumps, our certified technicians can restore your vehicle's original handling precision, tyre life, and highway stability.",
+    longDescription: "Rough road conditions and potholes take a severe toll on steering and suspension. If your car pulls, rides rough, or makes clunking noises over bumps, our certified technicians can restore your vehicle's original handling precision, tyre life, and highway stability.",
     basePrice: 149,
     timeEstimate: "1 - 2 Hours",
     features: [
@@ -64,15 +64,15 @@ export const SERVICES: Service[] = [
   {
     id: "climate",
     title: "Heating, A/C & Climate Control",
-    shortDescription: "Stay warm in a -30°C blizzard and cool during hot Alberta summers with climate system services.",
-    longDescription: "A fully functional cabin climate system is both a comfort and safety requirement. We specialize in winter block heater installations, high-output heater core flushes for freezing Alberta winters, and environmentally safe R134a/R1234yf air conditioning recharges for hot summer days.",
+    shortDescription: "Stay cool during hot days and comfortable year-round with complete climate system services.",
+    longDescription: "A fully functional cabin climate system is both a comfort and safety requirement. We specialize in high-output heater core flushes, A/C leak testing, and environmentally safe R134a/R1234yf air conditioning recharges for hot days.",
     basePrice: 119,
     timeEstimate: "1 - 1.5 Hours",
     features: [
       "Heater core back-flush for maximum heat output",
       "A/C refrigerant recovery, vacuum leak test & recharge",
       "Cabin air filter inspection & replacement",
-      "Block heater testing & coolant frost plug installation"
+      "Cooling system testing & leak inspection"
     ],
     iconName: "Thermometer"
   },
@@ -80,7 +80,7 @@ export const SERVICES: Service[] = [
     id: "drivetrain",
     title: "Precision Engine & Transmission Repair",
     shortDescription: "From timing belt replacements and oil leak seals to complete engine and drivetrain repairs.",
-    longDescription: "Our senior technicians are Red Seal certified and have decades of combined experience in complex engine and transmission repairs. Whether you have an active oil leak, a worn timing belt, a slipping clutch, or require major drivetrain rebuilds, we deliver dealer-grade craftsmanship at independent prices.",
+    longDescription: "Our senior mechanics have decades of combined experience in complex engine and transmission repairs. Whether you have an active oil leak, a worn timing belt, a slipping clutch, or require major drivetrain rebuilds, we deliver dealer-grade craftsmanship at independent prices.",
     basePrice: 249,
     timeEstimate: "Varies by Vehicle",
     features: [
@@ -99,7 +99,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Sarah Jenkins",
     vehicle: "2019 Toyota RAV4 AWD",
     rating: 5,
-    text: "Saved my heating system right before a -30°C Calgary cold snap! Other places wanted to replace the entire heater core, but these guys did a specialized back-flush that solved the issue for a fraction of the cost. Super honest and transparent team.",
+    text: "Saved my climate system right before a long journey! Other places wanted to replace the entire assembly, but these guys did a specialized back-flush that solved the issue for a fraction of the cost. Super honest and transparent team.",
     date: "Jan 12, 2026",
     tag: "Heating & Climate"
   },
@@ -108,7 +108,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "David Miller",
     vehicle: "2018 Ford F-150 SuperCrew",
     rating: 5,
-    text: "Excellent brake and suspension service before a heavy towing trip through the Rocky Mountains. They walked me through the digital inspection report, showing me pictures of my pad wear on my phone. Unbelievable professionalism, highly recommend!",
+    text: "Excellent brake and suspension service before a heavy towing trip. They walked me through the digital inspection report, showing me pictures of my pad wear on my phone. Unbelievable professionalism, highly recommend!",
     date: "Feb 28, 2026",
     tag: "Brakes & Safety"
   },
@@ -156,22 +156,20 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g4",
-    title: "Calgary Winter Readiness Scan",
+    title: "Vehicle Readiness Scan",
     category: "Preventative Maintenance",
-    description: "Comprehensive cold-weather telemetry analyzing engine block heater output, antifreeze concentration, and battery cell health.",
+    description: "Comprehensive telemetry analyzing engine cooling performance, fluid health, and battery cell state.",
     blueprintType: "winter"
   }
 ];
 
 export const CALGARY_LOCATION = {
-  address: "1234 9th Ave SE, Calgary, AB T2G 0T1",
-  neighborhood: "Inglewood / East Calgary Auto District",
-  phone: "+1 (403) 555-0190",
-  altPhone: "+1 (403) 555-0191",
-  email: "service@calgaryautorepair.ca",
+  address: "Zimbabwe",
+  neighborhood: "Auto Repair & Mechanics District",
+  phone: "+263 78 283 1734",
+  altPhone: "+263 78 283 1734",
+  email: "info@frostysvehiclerepair.com",
   hours: [
-    { days: "Monday - Friday", times: "9:00 AM - 6:00 PM" },
-    { days: "Saturday", times: "10:00 AM - 5:00 PM" },
-    { days: "Sunday", times: "Closed" }
+    { days: "Monday - Sunday", times: "Open 24 Hours (24/7)" }
   ]
 };

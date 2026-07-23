@@ -250,13 +250,13 @@ export default function Hero({ onQuoteClick, onServicesClick }: HeroProps) {
           {/* Heading */}
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-sans tracking-tight text-white leading-tight">
-              Calgary's Premier <br />
+              Zimbabwe's Premier <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-500 to-red-600">
-                Pal Auto Repairs
+                Frosty's Vehicle Repair Shop
               </span>
             </h1>
             <p className="text-lg text-zinc-300 max-w-xl font-sans font-normal leading-relaxed">
-              Decades of combined dealer-level expertise, Red Seal certified mechanics, and cutting-edge 3D diagnostic technology. Engineered to keep your vehicle safe on cold Alberta winter roads and heavy mountain commutes.
+              Decades of combined dealer-level expertise, certified mechanics, and cutting-edge 3D diagnostic technology. Engineered to keep your vehicle safe, reliable, and performing at its best.
             </p>
           </div>
 
@@ -318,7 +318,7 @@ export default function Hero({ onQuoteClick, onServicesClick }: HeroProps) {
 
           {/* Location / Availability notice */}
           <p className="text-xs text-zinc-500 font-mono">
-            * Located at <span className="text-zinc-300">{CALGARY_LOCATION.address}</span>. Free vehicle pick-up & delivery available in select Calgary quadrants.
+            * Located in <span className="text-zinc-300">{CALGARY_LOCATION.address}</span>. Open 24 hours for all auto repair & mechanic needs.
           </p>
         </div>
 
@@ -390,7 +390,7 @@ export default function Hero({ onQuoteClick, onServicesClick }: HeroProps) {
               <div className="grid grid-cols-2 gap-4 text-center font-mono pt-2">
                 <div className="bg-zinc-950 p-2.5 rounded border border-zinc-800">
                   <div className="text-lg font-bold text-white">45,000+</div>
-                  <div className="text-[10px] text-zinc-400 uppercase tracking-widest mt-1">Calgary Rides Serviced</div>
+                  <div className="text-[10px] text-zinc-400 uppercase tracking-widest mt-1">Vehicles Serviced</div>
                 </div>
                 <div className="bg-zinc-950 p-2.5 rounded border border-zinc-800">
                   <div className="text-lg font-bold text-red-500">25+ Years</div>
