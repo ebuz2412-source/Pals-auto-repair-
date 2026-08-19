@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
 import MediaPlaceholder from "./MediaPlaceholder";
-import computerDiagnosticsImg from "../assets/images/computer_diagnostics_1784272640453.jpg";
-import scheduledMaintenanceImg from "../assets/images/scheduled_maintenance_audi_1784829153442.jpg";
-import precisionBrakesImg from "../assets/images/precision_brakes_1784406030021.jpg";
-import palAutoRepairImg from "../assets/images/pal_auto_repair_1784319256438.jpg";
-import steeringSuspensionImg from "../assets/images/steering_suspension_new_1784408445483.jpg";
-import climateControlImg from "../assets/images/climate_control_1784321200000_1784320351752.jpg";
-import engineTransmissionRepairImg from "../assets/images/engine_transmission_repair_new_1784407131721.jpg";
+import heroForkliftImg from "../assets/images/hero_forklift_tunnex_1787165325067.jpg";
+import electricForkliftImg from "../assets/images/electric_forklift_1787165336816.jpg";
+import dieselForkliftImg from "../assets/images/diesel_forklift_1787165348263.jpg";
+import lpgGasForkliftImg from "../assets/images/lpg_gas_forklift_1787165359127.jpg";
+import warehouseReachTruckImg from "../assets/images/warehouse_reach_truck_1787165373779.jpg";
+import heavydutyForkliftImg from "../assets/images/heavyduty_forklift_1787165386207.jpg";
+import tunnexYardImg from "../assets/images/tunnex_forklift_yard_1787165397537.jpg";
 
-// Royalty-free stock images for the professional auto repair context
-const FALLBACK_IMAGES: Record<string, string> = {
-  "input_file_0.png": computerDiagnosticsImg, // user uploaded engine computer diagnostics
-  "input_file_1.png": scheduledMaintenanceImg, // user uploaded red Audi engine bay photo for Scheduled Maintenance
-  "input_file_2.png": precisionBrakesImg, // user's uploaded red Acura on the lift
-  "input_file_3.png": steeringSuspensionImg, // user's uploaded steering & suspension system image
-  "input_file_4.png": engineTransmissionRepairImg, // user's uploaded engine & transmission repair image
-  "input_file_5.png": climateControlImg, // user's uploaded Heating, A/C & Climate Control image
+// Verified professional forklift dealer equipment assets
+export const FORKLIFT_IMAGES: Record<string, string> = {
+  hero: heroForkliftImg,
+  electric: electricForkliftImg,
+  diesel: dieselForkliftImg,
+  lpg: lpgGasForkliftImg,
+  warehouse: warehouseReachTruckImg,
+  heavyduty: heavydutyForkliftImg,
+  yard: tunnexYardImg,
+  "input_file_0.png": electricForkliftImg,
+  "input_file_1.png": dieselForkliftImg,
+  "input_file_2.png": lpgGasForkliftImg,
+  "input_file_3.png": warehouseReachTruckImg,
+  "input_file_4.png": heavydutyForkliftImg,
+  "input_file_5.png": tunnexYardImg,
 };
 
-const DEFAULT_FALLBACK = "https://images.unsplash.com/photo-1617886322168-72b886573c3c?auto=format&fit=crop&q=80&w=1200";
+const DEFAULT_FALLBACK = heroForkliftImg;
 
 interface MediaLoaderProps {
   src: string;
@@ -84,14 +91,14 @@ function getCandidateUrls(src: string, expectedFile: string, fallbackUrl?: strin
     }
   }
 
-  // 3. Try the fallback/imported assets if the upload isn't found
+  // 3. Try the forklift imported assets
   const cleanFile = expectedFile ? expectedFile.trim() : "";
-  if (cleanFile && FALLBACK_IMAGES[cleanFile]) {
-    list.push(FALLBACK_IMAGES[cleanFile]);
+  if (cleanFile && FORKLIFT_IMAGES[cleanFile]) {
+    list.push(FORKLIFT_IMAGES[cleanFile]);
   }
   const cleanSrc = src ? src.replace(/^\//, "").trim() : "";
-  if (cleanSrc && FALLBACK_IMAGES[cleanSrc]) {
-    list.push(FALLBACK_IMAGES[cleanSrc]);
+  if (cleanSrc && FORKLIFT_IMAGES[cleanSrc]) {
+    list.push(FORKLIFT_IMAGES[cleanSrc]);
   }
 
   // 4. Custom fallback URL override

@@ -1,49 +1,69 @@
 /**
- * Shared Type Definitions for Frosty's Vehicle Repair Shop
+ * Shared Type Definitions for Tunnex Mega Investment (Forklift Dealer)
  */
 
-export interface Service {
-  id: string;
-  title: string;
-  shortDescription: string;
-  longDescription: string;
-  basePrice: number;
-  timeEstimate: string;
-  features: string[];
-  iconName: string;
+export type ForkliftCategory = "all" | "electric" | "diesel" | "lpg" | "warehouse" | "heavyduty";
+
+export interface ForkliftSpec {
+  loadCapacity: string;
+  liftHeight: string;
+  fuelType: string;
+  engineMotor: string;
+  tireType: string;
+  turningRadius: string;
+  operatingWeight: string;
 }
 
-export interface Testimonial {
+export interface ForkliftItem {
   id: string;
   name: string;
-  vehicle: string;
-  rating: number;
-  text: string;
-  date: string;
-  tag: string; // e.g. "Brake Service", "Winter Prep"
+  category: ForkliftCategory;
+  categoryLabel: string;
+  tagline: string;
+  shortDescription: string;
+  longDescription: string;
+  pricingDisplay: string; // "Contact for Price"
+  imageKey: string;
+  condition: "Brand New / Imported" | "Certified Inspected" | "Heavy Duty Spec";
+  specs: ForkliftSpec;
+  features: string[];
+  recommendedApplications: string[];
+  isAvailable: boolean;
 }
 
-export interface GalleryItem {
+export interface ForkliftInquiryRequest {
+  id: string;
+  companyName: string;
+  contactPerson: string;
+  contactPhone: string;
+  contactEmail: string;
+  locationInNigeria: string;
+  forkliftType: string;
+  tonnageRequirement: string;
+  liftHeight: string;
+  operatingEnvironment: string;
+  tirePreference: string;
+  specialNotes: string;
+  status: string;
+  createdAt: string;
+}
+
+export interface SpecificationGuideItem {
   id: string;
   title: string;
   category: string;
   description: string;
-  blueprintType: "ecu" | "brake" | "alignment" | "winter";
+  techHighlight: string;
+  iconName: string;
 }
 
-export interface QuoteRequest {
+export interface TestimonialItem {
   id: string;
-  year: string;
-  make: string;
-  model: string;
-  mileage: string;
-  serviceType: string;
-  description: string;
-  customerName: string;
-  customerEmail: string;
-  customerPhone: string;
-  preferredDate: string;
-  status: "pending" | "confirmed";
-  quoteAmountRange: string;
-  createdAt: string;
+  name: string;
+  role: string;
+  company: string;
+  category: string;
+  text: string;
+  rating: number;
+  equipment: string;
 }

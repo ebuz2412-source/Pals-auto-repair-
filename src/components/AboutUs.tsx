@@ -1,130 +1,127 @@
 import React from "react";
-import { Shield, Award, Users, CheckCircle } from "lucide-react";
-import MediaLoader from "./MediaLoader";
+import { Truck, MapPin, Building2, MessageSquare, CheckCircle2, ArrowRight } from "lucide-react";
+import { TUNNEX_BUSINESS_INFO, getWhatsAppUrl } from "../data";
+import tunnexYardImg from "../assets/images/tunnex_forklift_yard_1787165397537.jpg";
 
 export default function AboutUs() {
   return (
-    <section id="about" className="py-24 bg-white text-zinc-900 border-b border-zinc-200">
+    <section id="about" className="py-20 bg-zinc-950 text-white border-b border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Story & Narrative */}
-          <div className="lg:col-span-7 space-y-8 text-left">
-            <div className="space-y-4">
-              <span className="text-xs font-mono font-bold text-red-600 uppercase tracking-widest bg-red-50 border border-red-100 px-3 py-1 rounded-full">
-                Our Story & Standards
+          {/* Left Column: Authentic Facts About Tunnex Mega Investment */}
+          <div className="lg:col-span-7 space-y-6 text-left">
+            <div className="space-y-3">
+              <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3.5 py-1 rounded-full">
+                About Tunnex Mega Investment
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold font-sans tracking-tight text-zinc-950 leading-tight">
-                Engineering Trust in Frosty's Vehicle Repair Shop
+              <h2 className="text-3xl sm:text-4xl font-black font-sans tracking-tight text-white leading-tight">
+                Your Trusted Forklift Dealer in Lagos, Nigeria
               </h2>
-              <p className="text-sm sm:text-base text-zinc-600 font-sans leading-relaxed">
-                Founded as an independent garage, our shop was born out of a simple observation: vehicle owners in Zimbabwe deserved dealership-level expertise without the bloated dealership prices, pushy sales tactics, and lack of transparency.
+              <p className="text-base text-zinc-300 font-sans leading-relaxed">
+                <strong>Tunnex Mega Investment</strong> is a commercial forklift dealership located in Lagos, Nigeria. We deal in forklifts and provide dedicated material handling solutions for companies across manufacturing, warehousing, distribution, logistics, and industrial sectors.
               </p>
-              <p className="text-sm sm:text-base text-zinc-600 font-sans leading-relaxed">
-                Today, our state-of-the-art facility features 6 fully active repair bays outfitted with computerized 3D laser alignment consoles, direct-link OBD2 scanner channels, and specialty fluid flushing lines. We remain fully independent, family-owned, and operated.
+              <p className="text-sm text-zinc-400 font-sans leading-relaxed">
+                Our business is committed to supplying businesses with reliable forklifts tailored to their operational requirements—whether you need quiet, emission-free electric forklifts for indoor shelving or heavy-duty diesel workhorses for outdoor logistics yards.
               </p>
             </div>
 
-            {/* Core Values Bullets */}
-            <div className="space-y-4 pt-2">
-              <h4 className="text-xs font-mono font-bold text-red-500 uppercase tracking-wider">
-                The Pillars of our Service:
+            {/* Core Business Focus Points */}
+            <div className="space-y-3 pt-2">
+              <h4 className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider">
+                What We Do:
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="bg-zinc-900/80 border border-zinc-800 p-3.5 rounded-xl flex items-start space-x-3">
+                  <Truck className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="block font-bold text-sm text-zinc-950 font-sans">No Authorized Surprise Costs</span>
-                    <span className="text-xs text-zinc-500 font-sans">We write explicit, binding digital estimates before any work begins. Period.</span>
+                    <span className="block font-bold text-xs text-white uppercase tracking-wide">Forklift Sales</span>
+                    <span className="text-xs text-zinc-400">Supplying electric, diesel, LPG, and heavy-duty forklifts.</span>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+
+                <div className="bg-zinc-900/80 border border-zinc-800 p-3.5 rounded-xl flex items-start space-x-3">
+                  <Building2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="block font-bold text-sm text-zinc-950 font-sans">Red Seal Certified Crews Only</span>
-                    <span className="text-xs text-zinc-500 font-sans">Every wrench turned and diagnostic code read is supervised by fully licensed journeymen.</span>
+                    <span className="block font-bold text-xs text-white uppercase tracking-wide">Business Solutions</span>
+                    <span className="text-xs text-zinc-400">Matching load capacity and mast height to your facility layout.</span>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+
+                <div className="bg-zinc-900/80 border border-zinc-800 p-3.5 rounded-xl flex items-start space-x-3">
+                  <MapPin className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="block font-bold text-sm text-zinc-950 font-sans">High-Grade Specialty Parts</span>
-                    <span className="text-xs text-zinc-500 font-sans">We strictly source premium ceramic pad composites, OEM-spec filters, and synthetic fluids.</span>
+                    <span className="block font-bold text-xs text-white uppercase tracking-wide">Lagos Dealership Yard</span>
+                    <span className="text-xs text-zinc-400">Conveniently located in Ijegun, Lagos for physical inspections.</span>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+
+                <div className="bg-zinc-900/80 border border-zinc-800 p-3.5 rounded-xl flex items-start space-x-3">
+                  <MessageSquare className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <span className="block font-bold text-sm text-zinc-950 font-sans">Community & Road Safety</span>
-                    <span className="text-xs text-zinc-500 font-sans">We are dedicated to preparing cars for long road trips, harsh terrains, and safe everyday driving in Zimbabwe.</span>
+                    <span className="block font-bold text-xs text-white uppercase tracking-wide">Direct Inquiries</span>
+                    <span className="text-xs text-zinc-400">Transparent communication, prompt quotes, and WhatsApp support.</span>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Address callout */}
+            <div className="pt-2">
+              <a
+                href={getWhatsAppUrl("Hello Tunnex Mega Investment, I would like to schedule a visit to inspect your available forklifts.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-5 py-3 rounded-xl shadow-lg transition-colors"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Inquire About Visiting Our Yard</span>
+              </a>
+            </div>
           </div>
 
-          {/* Right Column: Interactive Mechanical Visual Frame + Real Shop Photo */}
-          <div className="lg:col-span-5 relative w-full flex flex-col items-center space-y-6">
-            {/* Real Shop Photo Visual Media */}
-            <div className="w-full max-w-md overflow-hidden rounded-2xl border border-zinc-200 shadow-xl bg-zinc-50">
-              <MediaLoader
-                src="/input_file_3.png"
-                alt="Frosty's Vehicle Repair Shop Professional Workshop Bay"
-                sectionName="About Us: Our Repair Bays"
-                expectedFile="input_file_3.png"
-                description="Our fully equipped auto repair workshop in Zimbabwe, featuring heavy-duty diagnostic hydraulic lifts."
-                aspectRatio="aspect-[4/3]"
-                className="w-full h-full object-cover"
-              />
+          {/* Right Column: Dealership Facility Photo & Address Card */}
+          <div className="lg:col-span-5 relative w-full flex flex-col items-center space-y-5">
+            <div className="w-full overflow-hidden rounded-2xl border border-zinc-800 shadow-2xl bg-zinc-900 group">
+              <div className="aspect-[16/9] w-full overflow-hidden relative">
+                <img
+                  src={tunnexYardImg}
+                  alt="Tunnex Mega Investment Forklift Dealership Yard"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent"></div>
+                <div className="absolute bottom-3 left-4 right-4">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold block">
+                    Equipment Yard
+                  </span>
+                  <span className="text-sm font-bold text-white">
+                    Tunnex Mega Investment
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <div className="w-full max-w-md bg-zinc-950 text-white rounded-2xl p-6 sm:p-8 shadow-2xl relative border border-zinc-800">
-              {/* Corner Grid */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:20px_20px] opacity-5 rounded-2xl"></div>
-
-              <div className="relative z-10 space-y-6">
-                <div className="border-b border-zinc-800 pb-4 flex justify-between items-center">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-red-500">Shop Diagnostics Frame</span>
-                  <span className="text-[9px] font-mono text-zinc-500">EST_VER_3.0</span>
+            {/* Verified Location Box */}
+            <div className="w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-5 space-y-3 shadow-xl">
+              <div className="flex items-start space-x-3">
+                <div className="p-2.5 bg-amber-500/10 text-amber-400 rounded-lg border border-amber-500/20 flex-shrink-0">
+                  <MapPin className="w-5 h-5" />
                 </div>
-
-                <div className="space-y-4">
-                  <div className="bg-zinc-900 border border-zinc-800 p-4 rounded-xl flex items-center space-x-4">
-                    <div className="p-3 bg-red-950/50 text-red-500 rounded border border-red-500/20">
-                      <Users className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <span className="block text-xl font-extrabold font-mono text-white leading-none">25+ Years</span>
-                      <span className="text-xs font-mono text-zinc-400 mt-1 block">Combined Service Experience</span>
-                    </div>
-                  </div>
-
-                  <div className="bg-zinc-900 border border-zinc-800 p-4 rounded-xl flex items-center space-x-4">
-                    <div className="p-3 bg-red-950/50 text-red-500 rounded border border-red-500/20">
-                      <Award className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <span className="block text-xl font-extrabold font-mono text-white leading-none">Red Seal Journeymen</span>
-                      <span className="text-xs font-mono text-zinc-400 mt-1 block">Nationwide Accredited Technicians</span>
-                    </div>
-                  </div>
-
-                  <div className="bg-zinc-900 border border-zinc-800 p-4 rounded-xl flex items-center space-x-4">
-                    <div className="p-3 bg-red-950/50 text-red-500 rounded border border-red-500/20">
-                      <Shield className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <span className="block text-xl font-extrabold font-mono text-white leading-none">24-Month / 40K km</span>
-                      <span className="text-xs font-mono text-zinc-400 mt-1 block">Parts & Labour Repair Warranty</span>
-                    </div>
-                  </div>
+                <div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-zinc-400 block font-semibold">
+                    Dealership Address
+                  </span>
+                  <p className="text-sm font-bold text-white mt-0.5 leading-snug">
+                    {TUNNEX_BUSINESS_INFO.address}
+                  </p>
                 </div>
+              </div>
 
-                <div className="pt-4 border-t border-zinc-800 text-center text-[10px] font-mono text-zinc-500 leading-normal">
-                  <p>Registered Auto Repair Center in Zimbabwe</p>
-                  <p className="mt-1">Licensed Mechanic & Inspection Facility</p>
-                </div>
+              <div className="pt-3 border-t border-zinc-800 flex justify-between items-center text-xs">
+                <span className="text-zinc-400">Postal Code: {TUNNEX_BUSINESS_INFO.postalCode}</span>
+                <span className="text-amber-400 font-bold font-mono">Lagos, Nigeria</span>
               </div>
             </div>
           </div>

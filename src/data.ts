@@ -1,175 +1,324 @@
-import { Service, Testimonial, GalleryItem } from "./types";
+import { ForkliftItem, SpecificationGuideItem, TestimonialItem } from "./types";
 
-export const SERVICES: Service[] = [
+export const TUNNEX_BUSINESS_INFO = {
+  name: "Tunnex Mega Investment",
+  shortName: "Tunnex Forklifts",
+  tagline: "Quality Forklifts for Your Business",
+  subheading: "We sell forklifts and provide forklift solutions for businesses across Lagos and nationwide.",
+  businessType: "Forklift Dealer / Forklift Sales",
+  address: "288 Papa Major Bus Stop, Ikotun-Ijegun Road, Ijegun, Lagos, Nigeria, 100213",
+  addressShort: "288 Papa Major Bus Stop, Ikotun-Ijegun Rd, Ijegun, Lagos",
+  stateCountry: "Lagos, Nigeria",
+  postalCode: "100213",
+  hours: [
+    { days: "Monday - Friday", times: "8:00 AM - 6:00 PM" },
+    { days: "Saturday", times: "9:00 AM - 4:00 PM" },
+    { days: "Sunday", times: "By Appointment / WhatsApp" }
+  ],
+  googleMapsUrl: "https://maps.google.com/?q=288+Papa+Major+Bus+Stop,+Ikotun-Ijegun+Road,+Ijegun,+Lagos,+Nigeria",
+  defaultWhatsAppMessage: "Hello Tunnex Mega Investment, I'm interested in your forklifts. I'd like to know what is currently available.",
+  inquiryNotice: "Sample inventory listings shown below. Contact us directly to confirm current stock availability and receive a formal quotation."
+};
+
+export function getWhatsAppUrl(customMessage?: string): string {
+  const text = customMessage || TUNNEX_BUSINESS_INFO.defaultWhatsAppMessage;
+  return `https://wa.me/?text=${encodeURIComponent(text)}`;
+}
+
+export function getForkliftWhatsAppUrl(forkliftName: string, specsSummary?: string): string {
+  const message = `Hello Tunnex Mega Investment, I'm inquiring about the ${forkliftName}${specsSummary ? ` (${specsSummary})` : ""}. Could you please share the current price, availability, and inspection details?`;
+  return `https://wa.me/?text=${encodeURIComponent(message)}`;
+}
+
+export const FORKLIFT_CATEGORIES = [
+  { id: "all", label: "All Forklifts" },
+  { id: "electric", label: "Electric Forklifts" },
+  { id: "diesel", label: "Diesel Forklifts" },
+  { id: "lpg", label: "LPG / Gas Forklifts" },
+  { id: "warehouse", label: "Warehouse Forklifts" },
+  { id: "heavyduty", label: "Heavy-Duty Forklifts" }
+] as const;
+
+export const FORKLIFT_INVENTORY: ForkliftItem[] = [
   {
-    id: "diagnostics",
-    title: "Red Seal Computer Diagnostics",
-    shortDescription: "Advanced dealer-grade scanner technology to pinpoint electrical, engine, and dashboard warning lights accurately.",
-    longDescription: "Our team uses OEM-level diagnostic software and scanners to interface with your vehicle's Engine Control Unit (ECU) and secondary control modules. We diagnose check engine lights, ABS faults, airbag warnings, and complex electrical gremlins, saving you time and costly guess-and-test repair parts.",
-    basePrice: 129,
-    timeEstimate: "1 - 1.5 Hours",
+    id: "electric-25t",
+    name: "2.5 Ton Electric Counterbalance Forklift",
+    category: "electric",
+    categoryLabel: "Electric Forklift",
+    tagline: "Zero Emissions & Low Noise for Indoor Warehouses",
+    shortDescription: "Ideal for indoor warehouses, food processing, and pharmaceuticals requiring clean, emission-free operation and tight maneuverability.",
+    longDescription: "This 2.5-ton electric counterbalance forklift is designed for quiet, smooth indoor material handling. Equipped with high-efficiency AC traction motors, regenerative braking, and ergonomic operator controls, it delivers reliable multi-shift productivity without exhaust fumes.",
+    pricingDisplay: "Contact for Price",
+    imageKey: "electric",
+    condition: "Certified Inspected",
+    specs: {
+      loadCapacity: "2,500 kg (2.5 Ton)",
+      liftHeight: "3,000 mm - 4,500 mm (Duplex / Triplex Mast)",
+      fuelType: "Electric (48V / 80V High Capacity Battery)",
+      engineMotor: "High-Torque Dual AC Drive Motors",
+      tireType: "Solid Non-Marking Industrial Tires",
+      turningRadius: "2,050 mm",
+      operatingWeight: "Approx. 4,100 kg"
+    },
     features: [
-      "OEM-level full vehicle module scan",
-      "Sensor real-time data analysis",
-      "Comprehensive digital inspection report",
-      "Clear explanation before any parts are replaced"
+      "Zero exhaust emissions for clean indoor compliance",
+      "Ergonomic full-suspension seat with safety interlock",
+      "Digital LED display with battery state-of-charge indicator",
+      "Integrated side shifter for precise pallet positioning",
+      "Heavy-duty overhead guard cage for operator safety"
     ],
-    iconName: "Cpu"
+    recommendedApplications: [
+      "Indoor Logistics Warehouses",
+      "FMCG & Food Storage Facilities",
+      "Pharmaceutical Distribution",
+      "Manufacturing & Packaging Lines"
+    ],
+    isAvailable: true
   },
   {
-    id: "brakes",
-    title: "Precision Brake & Safety Systems",
-    shortDescription: "Complete brake pad, rotor, caliper, and hydraulic fluid services optimized for demanding driving conditions.",
-    longDescription: "Brakes are your vehicle's single most critical safety system, especially when stopping on steep roads or unpredictable driving conditions. We use premium high-friction pads and rust-resistant rotors engineered to withstand extreme temperature fluctuations and prevent brake fade.",
-    basePrice: 199,
-    timeEstimate: "1.5 - 2 Hours",
+    id: "diesel-35t",
+    name: "3.5 Ton Rugged Diesel Industrial Forklift",
+    category: "diesel",
+    categoryLabel: "Diesel Forklift",
+    tagline: "High Torque & Power for Heavy Outdoor Yard Work",
+    shortDescription: "Built for tough outdoor yard operations, construction supply, logistics hubs, and heavy industrial pallet handling.",
+    longDescription: "Engineered for robust power and continuous outdoor duties, this 3.5-ton diesel forklift delivers superior torque and lifting speed. Built with a reinforced steel chassis, heavy-duty hydraulic cooling, and deep-tread pneumatic tires for rough paved or unpaved grounds.",
+    pricingDisplay: "Contact for Price",
+    imageKey: "diesel",
+    condition: "Heavy Duty Spec",
+    specs: {
+      loadCapacity: "3,500 kg (3.5 Ton)",
+      liftHeight: "3,000 mm - 4,800 mm High-Visibility Mast",
+      fuelType: "Industrial Diesel",
+      engineMotor: "4-Cylinder Heavy-Duty Industrial Diesel Engine",
+      tireType: "Heavy-Duty Pneumatic / Lug-Tread Tires",
+      turningRadius: "2,420 mm",
+      operatingWeight: "Approx. 4,850 kg"
+    },
     features: [
-      "Premium low-dust ceramic brake pads",
-      "Precision rotor run-out verification",
-      "Brake fluid moisture & copper level testing",
-      "Complete caliper lubrication and slide pin service"
+      "High-power diesel engine with exceptional gradeability",
+      "Wide-view mast offering unobstructed operator visibility",
+      "Dual front headlights and rear safety beacon light",
+      "Heavy-duty hydraulic oil cooling radiator for hot ambient climates",
+      "Full steel overhead protection cage and safety seatbelt"
     ],
-    iconName: "ShieldCheck"
+    recommendedApplications: [
+      "Open Logistics Yards & Freight Hubs",
+      "Building Material & Hardware Depots",
+      "Factory Yards & Heavy Fabrication",
+      "Container Freight Stations & Loading Docks"
+    ],
+    isAvailable: true
   },
   {
-    id: "maintenance",
-    title: "Scheduled Maintenance & Fluid Care",
-    shortDescription: "Warranty-approved multi-point inspections, synthetic oil services, and preventative fluid flushes.",
-    longDescription: "Keep your factory or aftermarket warranty 100% valid with our OEM-scheduled maintenance programs. We provide 30k/60k/90k services, premium full-synthetic oil changes, transmission flushes, and cooling system flushes tailored specifically to heavy driving schedules.",
-    basePrice: 89,
-    timeEstimate: "45 Mins - 1 Hour",
+    id: "lpg-30t",
+    name: "3.0 Ton Dual-Fuel LPG / Gasoline Forklift",
+    category: "lpg",
+    categoryLabel: "LPG / Gas Forklift",
+    tagline: "Versatile Indoor & Outdoor Performance with Quick Refueling",
+    shortDescription: "Flexible dual-fuel capability providing low emissions for indoor use and quick cylinder swaps for uninterrupted productivity.",
+    longDescription: "The 3.0-ton LPG/Gasoline forklift bridges the gap between indoor cleanliness and outdoor power. Featuring low particulate emissions compared to standard diesel and rapid propane tank swaps that eliminate lengthy battery charging downtimes.",
+    pricingDisplay: "Contact for Price",
+    imageKey: "lpg",
+    condition: "Certified Inspected",
+    specs: {
+      loadCapacity: "3,000 kg (3.0 Ton)",
+      liftHeight: "3,000 mm - 4,500 mm Triplex Mast",
+      fuelType: "LPG (Propane) / Dual-Fuel Gasoline",
+      engineMotor: "Industrial Low-Emission Gas Engine",
+      tireType: "Pneumatic or Solid Cushion Industrial Tires",
+      turningRadius: "2,280 mm",
+      operatingWeight: "Approx. 4,350 kg"
+    },
     features: [
-      "Warranty-approved premium synthetic oil & filter",
-      "Detailed 45-point mechanical inspection",
-      "Battery cold-cranking amps (CCA) load test",
-      "Fluid level checks & top-ups included"
+      "Quick-clamp rear LPG cylinder mounting bracket",
+      "Clean-burning fuel system with reduced carbon emissions",
+      "Smooth hydraulic controls with tilt and side-shift",
+      "Hydrostatic power steering for responsive handling",
+      "Low maintenance downtime with easy filter access"
     ],
-    iconName: "Wrench"
+    recommendedApplications: [
+      "Hybrid Indoor/Outdoor Warehouses",
+      "Distribution Centers & Cross-Docks",
+      "Retail Superstores & Hardware Marts",
+      "Food & Beverage Packaging Depots"
+    ],
+    isAvailable: true
   },
   {
-    id: "suspension",
-    title: "Steering, Suspension & Alignment",
-    shortDescription: "Pothole-ready strut, shock, ball joint, tie rod, and precision 3D wheel alignment services.",
-    longDescription: "Rough road conditions and potholes take a severe toll on steering and suspension. If your car pulls, rides rough, or makes clunking noises over bumps, our certified technicians can restore your vehicle's original handling precision, tyre life, and highway stability.",
-    basePrice: 149,
-    timeEstimate: "1 - 2 Hours",
+    id: "warehouse-reach-20t",
+    name: "2.0 Ton High-Reach Warehouse Reach Truck",
+    category: "warehouse",
+    categoryLabel: "Warehouse Forklift",
+    tagline: "Maximized Vertical Storage in Narrow Aisle Racking",
+    shortDescription: "Specialized for high-density warehouse racking systems with extended vertical lifting capability and compact turning.",
+    longDescription: "Designed specifically for vertical pallet optimization in modern warehouses, this 2.0-ton reach truck features a forward-extending mast assembly and compact chassis that operates seamlessly in narrow aisles up to high pallet storage tiers.",
+    pricingDisplay: "Contact for Price",
+    imageKey: "warehouse",
+    condition: "Brand New / Imported",
+    specs: {
+      loadCapacity: "2,000 kg (2.0 Ton)",
+      liftHeight: "4,500 mm - 7,500 mm Extended Triplex Mast",
+      fuelType: "Electric (High Capacity Industrial Battery)",
+      engineMotor: "AC Drive & Heavy Hydraulic Lift Pump",
+      tireType: "Polyurethane Drive & Load Wheels",
+      turningRadius: "1,750 mm (Narrow Aisle Capable)",
+      operatingWeight: "Approx. 3,600 kg"
+    },
     features: [
-      "3D computerized wheel alignment check",
-      "Heavy-duty shock and strut replacement",
-      "Premium tie rod, ball joint, and control arm services",
-      "Tire wear and air pressure balancing"
+      "Pantograph or moving mast mechanism for deep rack reach",
+      "Proportional hydraulic fingertip controls",
+      "Mast height safety cut-off and speed-limiting sensors",
+      "Camera & screen mast monitoring option for high tier lifts",
+      "360-degree electric steering for tight warehouse turns"
     ],
-    iconName: "Compass"
+    recommendedApplications: [
+      "High-Bay Pallet Racking Warehouses",
+      "Cold Storage & Freezers",
+      "Third-Party Logistics (3PL) Hubs",
+      "E-Commerce Fulfillment Centers"
+    ],
+    isAvailable: true
   },
   {
-    id: "climate",
-    title: "Heating, A/C & Climate Control",
-    shortDescription: "Stay cool during hot days and comfortable year-round with complete climate system services.",
-    longDescription: "A fully functional cabin climate system is both a comfort and safety requirement. We specialize in high-output heater core flushes, A/C leak testing, and environmentally safe R134a/R1234yf air conditioning recharges for hot days.",
-    basePrice: 119,
-    timeEstimate: "1 - 1.5 Hours",
+    id: "heavyduty-70t",
+    name: "7.0 Ton Heavy-Duty Industrial Forklift",
+    category: "heavyduty",
+    categoryLabel: "Heavy-Duty Forklift",
+    tagline: "Massive Load Capacity for Industrial Cargo & Machinery",
+    shortDescription: "Engineered for primary industries, steel handling, heavy machinery transport, and oversized industrial containers.",
+    longDescription: "When standard material handling equipment falls short, this 7.0-ton heavy-duty industrial forklift provides the robust lifting backbone needed for steel, precast concrete, timber bundles, and machinery skids in demanding industrial settings.",
+    pricingDisplay: "Contact for Price",
+    imageKey: "heavyduty",
+    condition: "Heavy Duty Spec",
+    specs: {
+      loadCapacity: "7,000 kg (7.0 Ton)",
+      liftHeight: "3,000 mm - 4,500 mm Reinforced Mast",
+      fuelType: "Heavy Industrial Turbo Diesel",
+      engineMotor: "High-Displacement 6-Cylinder Turbo Engine",
+      tireType: "Dual Front Heavy Pneumatic Drive Tires",
+      turningRadius: "3,350 mm",
+      operatingWeight: "Approx. 9,400 kg"
+    },
     features: [
-      "Heater core back-flush for maximum heat output",
-      "A/C refrigerant recovery, vacuum leak test & recharge",
-      "Cabin air filter inspection & replacement",
-      "Cooling system testing & leak inspection"
+      "Dual front drive wheels for superior ground stability",
+      "Reinforced heavy-gauge mast channels with heavy roller bearings",
+      "Hydraulic fork positioner & side-shifter for varying cargo sizes",
+      "Air-conditioned fully enclosed operator cabin option",
+      "Heavy cast counterweight engineered for maximum tipping safety"
     ],
-    iconName: "Thermometer"
-  },
-  {
-    id: "drivetrain",
-    title: "Precision Engine & Transmission Repair",
-    shortDescription: "From timing belt replacements and oil leak seals to complete engine and drivetrain repairs.",
-    longDescription: "Our senior mechanics have decades of combined experience in complex engine and transmission repairs. Whether you have an active oil leak, a worn timing belt, a slipping clutch, or require major drivetrain rebuilds, we deliver dealer-grade craftsmanship at independent prices.",
-    basePrice: 249,
-    timeEstimate: "Varies by Vehicle",
-    features: [
-      "Timing belt and chain precision replacement",
-      "Engine oil leak and valve cover gasket sealing",
-      "Transmission fluid and filter preventative service",
-      "Axle shaft, CV joint, and differential repairs"
+    recommendedApplications: [
+      "Steel Mills & Metal Stockholders",
+      "Precast Concrete & Construction Yards",
+      "Heavy Machinery & Generator Rigging",
+      "Port Logistics & Heavy Container Terminals"
     ],
-    iconName: "Settings"
+    isAvailable: true
   }
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
+export const WHY_CHOOSE_TUNNEX = [
   {
-    id: "t1",
-    name: "Sarah Jenkins",
-    vehicle: "2019 Toyota RAV4 AWD",
-    rating: 5,
-    text: "Saved my climate system right before a long journey! Other places wanted to replace the entire assembly, but these guys did a specialized back-flush that solved the issue for a fraction of the cost. Super honest and transparent team.",
-    date: "Jan 12, 2026",
-    tag: "Heating & Climate"
+    id: "b1",
+    title: "Quality Equipment",
+    description: "Every forklift we supply undergoes rigorous mechanical and hydraulic inspection to ensure dependable performance for your daily business operations."
   },
   {
-    id: "t2",
-    name: "David Miller",
-    vehicle: "2018 Ford F-150 SuperCrew",
-    rating: 5,
-    text: "Excellent brake and suspension service before a heavy towing trip. They walked me through the digital inspection report, showing me pictures of my pad wear on my phone. Unbelievable professionalism, highly recommend!",
-    date: "Feb 28, 2026",
-    tag: "Brakes & Safety"
+    id: "b2",
+    title: "Professional Service",
+    description: "Our knowledgeable team works with you to understand your load capacities, mast heights, and working environment to recommend the right forklift."
   },
   {
-    id: "t3",
-    name: "Marc-Antoine Cloutier",
-    vehicle: "2021 Subaru Outback",
-    rating: 5,
-    text: "Finding an independent mechanic you can trust with modern electrical and AWD systems is tough. Their diagnostics are spot on, and they use dealer-grade tools without the dealership markups. Great communication throughout the process.",
-    date: "Mar 15, 2026",
-    tag: "Diagnostics"
+    id: "b3",
+    title: "Business-Focused Solutions",
+    description: "We understand that material handling downtime impacts your bottom line. We provide equipment suited for warehouses, logistics yards, factories, and commercial depots."
   },
   {
-    id: "t4",
-    name: "Elena Rostova",
-    vehicle: "2017 Honda Civic Touring",
-    rating: 5,
-    text: "As someone who doesn't know much about cars, I always worry about being overcharged. They were so respectful, showed me exactly what needed immediate attention, and what could wait. Their 24-month warranty gives me great peace of mind.",
-    date: "Apr 03, 2026",
-    tag: "Scheduled Maintenance"
+    id: "b4",
+    title: "Convenient Lagos Location",
+    description: "Located at 288 Papa Major Bus Stop on Ikotun-Ijegun Road, Ijegun, Lagos, allowing easy access for physical inspections and swift customer support."
+  },
+  {
+    id: "b5",
+    title: "Easy Customer Inquiries",
+    description: "Transparent communication with direct phone, WhatsApp, and email channels so you can quickly get specifications, stock updates, and formal price quotes."
   }
 ];
 
-export const GALLERY_ITEMS: GalleryItem[] = [
+export const SPEC_GUIDES: SpecificationGuideItem[] = [
   {
     id: "g1",
-    title: "Digital ECU Diagnostics",
-    category: "Electrical & Computer",
-    description: "Real-time engine control unit telemetry showing fuel trims, cylinder performance, and active sensor diagnostics.",
-    blueprintType: "ecu"
+    title: "Load Capacity & Load Center",
+    category: "Equipment Selection Guide",
+    description: "Forklift ratings (e.g. 2.5T, 3.5T, 7.0T) are measured at a standard 500mm or 600mm load center. Always choose a capacity that exceeds your heaviest standard pallet.",
+    techHighlight: "Rated at 500mm standard load center",
+    iconName: "Scale"
   },
   {
     id: "g2",
-    title: "Brake Tolerance Blueprint",
-    category: "Safety & Braking Systems",
-    description: "Precision measurements of brake rotor thickness and run-out, confirming absolute compliance with safety standards.",
-    blueprintType: "brake"
+    title: "Mast Types & Clear Ceiling Height",
+    category: "Lifting Specifications",
+    description: "Duplex (2-stage) masts are cost-effective for standard heights, while Triplex (3-stage) masts offer full free lift for low doorway clearance and high vertical stacking.",
+    techHighlight: "Duplex & Triplex full-free-lift configurations",
+    iconName: "ArrowUpRight"
   },
   {
     id: "g3",
-    title: "3D Suspension Geometry",
-    category: "Steering & Alignment",
-    description: "Visual computer alignment measurements plotting caster, camber, and toe angles for perfect straight-line tracking.",
-    blueprintType: "alignment"
+    title: "Power Source: Electric vs Diesel vs LPG",
+    category: "Fuel & Powertrain",
+    description: "Electric units are emission-free for food and pharmaceutical warehouses. Diesel provides maximum outdoor torque and all-weather durability. LPG allows quick indoor/outdoor fuel changes.",
+    techHighlight: "Tailored to your specific site airflow & shift hours",
+    iconName: "Zap"
   },
   {
     id: "g4",
-    title: "Vehicle Readiness Scan",
-    category: "Preventative Maintenance",
-    description: "Comprehensive telemetry analyzing engine cooling performance, fluid health, and battery cell state.",
-    blueprintType: "winter"
+    title: "Tire Types: Solid vs Pneumatic",
+    category: "Ground Stability",
+    description: "Solid puncture-proof rubber tires are ideal for smooth warehouse floors and recycling yards with debris. Pneumatic air-filled tires provide cushioning over rough outdoor terrain.",
+    techHighlight: "Non-marking solid rubber or heavy pneumatic tread",
+    iconName: "CircleDot"
   }
 ];
 
-export const CALGARY_LOCATION = {
-  address: "Zimbabwe",
-  neighborhood: "Auto Repair & Mechanics District",
-  phone: "+263 78 283 1734",
-  altPhone: "+263 78 283 1734",
-  email: "info@frostysvehiclerepair.com",
-  hours: [
-    { days: "Monday - Sunday", times: "Open 24 Hours (24/7)" }
-  ]
-};
+export const TESTIMONIALS: TestimonialItem[] = [
+  {
+    id: "t1",
+    name: "Emeka Nwankwo",
+    role: "Warehouse Operations Manager",
+    company: "Lagos Logistics Hub",
+    category: "Warehousing",
+    text: "We acquired two 2.5-ton electric forklifts for our FMCG distribution warehouse in Lagos. The battery runtime and compact turning radius inside our narrow pallet aisles have significantly sped up dispatch.",
+    rating: 5,
+    equipment: "2.5 Ton Electric Counterbalance"
+  },
+  {
+    id: "t2",
+    name: "Alhaji Bello Garba",
+    role: "Plant Director",
+    company: "Manufacturing & Precast Ltd",
+    category: "Manufacturing",
+    text: "Tunnex Mega Investment provided clear technical advice when we were deciding between diesel and LPG. The 3.5-ton diesel unit we purchased handles heavy outdoor pallets with ease.",
+    rating: 5,
+    equipment: "3.5 Ton Rugged Diesel"
+  },
+  {
+    id: "t3",
+    name: "Oluwaseun Adeyemi",
+    role: "Supply Chain Lead",
+    company: "Industrial Cross-Dock Depot",
+    category: "Logistics",
+    text: "Direct communication via WhatsApp was extremely convenient. We visited their yard at Papa Major Bus Stop in Ijegun to inspect the machine before finalizing our order.",
+    rating: 5,
+    equipment: "3.0 Ton LPG / Gas Forklift"
+  },
+  {
+    id: "t4",
+    name: "Chief Anthony Okoro",
+    role: "Operations Supervisor",
+    company: "Steel & Machinery Fabrication",
+    category: "Heavy Industry",
+    text: "The 7.0-ton heavy duty forklift has been a reliable asset in our fabrication yard. Heavy lifting is steady and the mast visibility gives our operators great confidence.",
+    rating: 5,
+    equipment: "7.0 Ton Heavy-Duty Industrial"
+  }
+];
