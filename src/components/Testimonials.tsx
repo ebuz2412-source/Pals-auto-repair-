@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Star, MessageSquare, Quote, CheckCircle2, Building2 } from "lucide-react";
+import { Star, MessageSquare, Quote, CheckCircle2, Building2, HardHat } from "lucide-react";
 import { TESTIMONIALS, getWhatsAppUrl } from "../data";
 
 export default function Testimonials() {
   const [filter, setFilter] = useState("All");
 
-  const categories = ["All", "Warehousing", "Manufacturing", "Logistics", "Heavy Industry"];
+  const categories = ["All", "Construction & Infrastructure", "Heavy Earthmoving", "Warehousing & Logistics", "Industrial Manufacturing"];
 
   const filteredTestimonials = filter === "All"
     ? TESTIMONIALS
-    : TESTIMONIALS.filter((t) => t.category.toLowerCase().includes(filter.toLowerCase()));
+    : TESTIMONIALS.filter((t) => t.category.toLowerCase().includes(filter.toLowerCase().split(" ")[0]));
 
   return (
     <section id="testimonials" className="py-20 bg-zinc-900 text-white border-b border-zinc-800">
@@ -18,13 +18,13 @@ export default function Testimonials() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
-            Client Feedback & Experience
+            Client Feedback & Operations
           </span>
           <h2 className="text-3xl sm:text-4xl font-black font-sans tracking-tight text-white">
-            What Businesses Say About Tunnex Forklifts
+            Client Experience & Equipment Performance
           </h2>
           <p className="text-sm text-zinc-400 font-sans leading-relaxed">
-            Feedback from warehouse managers, factory operators, and logistics teams using equipment supplied by Tunnex Mega Investment.
+            Feedback from site engineers, project contractors, warehouse heads, and logistics managers using equipment from Pethona Integrated & Resources LTD.
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export default function Testimonials() {
           {categories.map((cat) => (
             <button
               key={cat}
-              id={`testimonial-filter-${cat.toLowerCase()}`}
+              id={`testimonial-filter-${cat.toLowerCase().replace(/\s+/g, '-')}`}
               onClick={() => setFilter(cat)}
               className={`px-4 py-2 rounded-xl text-xs font-bold font-sans transition-all duration-150 cursor-pointer ${
                 filter === cat
@@ -95,7 +95,7 @@ export default function Testimonials() {
                 <div className="text-right">
                   <span className="text-[10px] font-mono text-amber-400 font-bold flex items-center justify-end">
                     <CheckCircle2 className="w-3.5 h-3.5 mr-1" />
-                    Verified Equipment
+                    Supplied Unit
                   </span>
                   <span className="text-[10px] font-mono text-zinc-500 block mt-0.5">{item.equipment}</span>
                 </div>
@@ -107,16 +107,16 @@ export default function Testimonials() {
         {/* Consultation Callout */}
         <div className="mt-12 text-center">
           <p className="text-xs text-zinc-400 font-sans mb-3">
-            Want to discuss equipment suitability for your facility?
+            Need advice on machinery sizing or forklift configurations for your project?
           </p>
           <a
-            href={getWhatsAppUrl("Hello Tunnex Mega Investment, I would like to inquire about customer recommendations and forklift options.")}
+            href={getWhatsAppUrl("Hello Pethona Integrated & Resources LTD, I would like to inquire about machine options and client recommendations.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow transition-colors"
           >
             <MessageSquare className="w-4 h-4" />
-            <span>Connect with Tunnex Sales Team</span>
+            <span>Connect with Pethona Sales Team</span>
           </a>
         </div>
 

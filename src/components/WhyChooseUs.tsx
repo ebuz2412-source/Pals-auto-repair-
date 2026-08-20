@@ -1,12 +1,12 @@
 import React from "react";
-import { ShieldCheck, UserCheck, Briefcase, MapPin, MessageSquare, ArrowRight, CheckCircle2 } from "lucide-react";
-import { WHY_CHOOSE_TUNNEX, TUNNEX_BUSINESS_INFO, getWhatsAppUrl } from "../data";
+import { ShieldCheck, HardHat, Briefcase, MapPin, MessageSquare, CheckCircle2, Truck, Layers } from "lucide-react";
+import { WHY_CHOOSE_PETHONA, PETHONA_BUSINESS_INFO, getWhatsAppUrl } from "../data";
 
 const ICONS = [
+  HardHat,
   ShieldCheck,
-  UserCheck,
-  Briefcase,
   MapPin,
+  Briefcase,
   MessageSquare
 ];
 
@@ -16,16 +16,16 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl space-y-4">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-14 gap-6">
+          <div className="max-w-2xl space-y-3">
             <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
-              Why Partner with Tunnex
+              Why Choose Pethona
             </span>
             <h2 className="text-3xl sm:text-4xl font-black font-sans tracking-tight text-white">
-              Reliable Forklift Solutions for Business Operations
+              Dependable Machinery & Forklift Solutions
             </h2>
             <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
-              We specialize in forklift sales and supply, helping companies find equipment engineered to keep cargo moving efficiently with minimal downtime.
+              We supply reliable heavy earthmoving equipment and material handling forklifts, helping contractors, warehouses, and industrial operations in Lagos and nationwide maintain productivity.
             </p>
           </div>
           
@@ -34,15 +34,15 @@ export default function WhyChooseUs() {
               <MapPin className="w-6 h-6" />
             </div>
             <div className="text-xs font-sans">
-              <span className="block font-bold text-white uppercase text-xs">Lagos Dealership Yard</span>
-              <span className="text-zinc-400">288 Papa Major Bus Stop, Ikotun-Ijegun Road, Lagos.</span>
+              <span className="block font-bold text-white uppercase text-xs">Lagos Machinery Yard</span>
+              <span className="text-zinc-400">{PETHONA_BUSINESS_INFO.addressShort}</span>
             </div>
           </div>
         </div>
 
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {WHY_CHOOSE_TUNNEX.map((item, index) => {
+          {WHY_CHOOSE_PETHONA.map((item, index) => {
             const IconComponent = ICONS[index % ICONS.length];
             return (
               <div
@@ -67,7 +67,7 @@ export default function WhyChooseUs() {
 
                 <div className="pt-5 mt-4 border-t border-zinc-800/80 flex items-center justify-between text-zinc-500 text-xs">
                   <span className="font-mono text-[10px] uppercase tracking-wider text-amber-400 font-semibold">
-                    Tunnex Standard
+                    Pethona Quality
                   </span>
                   <CheckCircle2 className="w-4 h-4 text-amber-400" />
                 </div>
@@ -79,24 +79,24 @@ export default function WhyChooseUs() {
           <div className="bg-gradient-to-br from-amber-500/20 to-zinc-950 rounded-2xl border border-amber-500/40 p-6 shadow-md flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold">
-                Fast Consultation
+                Machinery Consultations
               </span>
               <h3 className="text-lg font-bold text-white font-sans">
-                Have an inquiry about available forklifts?
+                Need to verify current machine availability?
               </h3>
               <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-                Speak directly with our sales team via WhatsApp for instant stock confirmations, photos, and forklift specifications.
+                Connect with our equipment sales team via WhatsApp for fast stock confirmations, equipment photos, and formal quotations.
               </p>
             </div>
             <div className="pt-4 mt-2">
               <a
-                href={getWhatsAppUrl("Hello Tunnex Mega Investment, I'd like to consult on available forklifts for our business.")}
+                href={getWhatsAppUrl("Hello Pethona Integrated & Resources LTD, I'd like to consult on available heavy equipment and forklifts.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-3 px-4 rounded-xl shadow-lg transition-colors"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Contact on WhatsApp</span>
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>

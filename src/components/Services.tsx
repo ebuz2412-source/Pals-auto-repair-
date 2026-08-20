@@ -1,10 +1,10 @@
 import React from "react";
-import ForkliftInventory from "./ForkliftInventory";
+import EquipmentShowcase from "./EquipmentShowcase";
 
 interface ServicesProps {
-  onQuoteClickWithService?: (forkliftName: string) => void;
+  onQuoteClickWithService?: (serviceTitle: string) => void;
 }
 
 export default function Services({ onQuoteClickWithService }: ServicesProps) {
-  return <ForkliftInventory onInquireWithForklift={onQuoteClickWithService} />;
+  return <EquipmentShowcase onInquireWithEquipment={onQuoteClickWithService || (() => {})} />;
 }

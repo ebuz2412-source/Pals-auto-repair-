@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import ForkliftInventory from "./components/ForkliftInventory";
+import EquipmentShowcase from "./components/EquipmentShowcase";
 import WhyChooseUs from "./components/WhyChooseUs";
 import InquiryWizard from "./components/InquiryWizard";
 import AboutUs from "./components/AboutUs";
@@ -13,7 +13,7 @@ import { MessageSquare } from "lucide-react";
 import { getWhatsAppUrl } from "./data";
 
 export default function App() {
-  const [selectedForkliftForInquiry, setSelectedForkliftForInquiry] = useState("");
+  const [selectedEquipmentForInquiry, setSelectedEquipmentForInquiry] = useState("");
 
   const handleSectionScroll = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -29,9 +29,9 @@ export default function App() {
     }
   };
 
-  const handleInquireShortcut = (forkliftName: string) => {
-    setSelectedForkliftForInquiry(forkliftName);
-    handleSectionScroll("quote");
+  const handleInquireShortcut = (equipmentName: string) => {
+    setSelectedEquipmentForInquiry(equipmentName);
+    handleSectionScroll("inquiry");
   };
 
   return (
@@ -41,7 +41,7 @@ export default function App() {
     >
       {/* Floating Sticky Navigation Bar */}
       <Navbar
-        onInquiryClick={() => handleSectionScroll("quote")}
+        onInquiryClick={() => handleSectionScroll("inquiry")}
         onSectionScroll={handleSectionScroll}
       />
 
@@ -51,25 +51,25 @@ export default function App() {
         onContactClick={() => handleSectionScroll("contact")}
       />
 
-      {/* Available Forklift Inventory Showcase */}
-      <ForkliftInventory onInquireWithForklift={handleInquireShortcut} />
+      {/* Available Equipment & Forklift Inventory Showcase */}
+      <EquipmentShowcase onInquireWithEquipment={handleInquireShortcut} />
 
-      {/* Why Choose Tunnex Mega Investment */}
+      {/* Why Choose Pethona Integrated & Resources LTD */}
       <WhyChooseUs />
 
-      {/* Multi-step Interactive Price & Stock Inquiry Wizard */}
-      <InquiryWizard initialForklift={selectedForkliftForInquiry} />
+      {/* Multi-step Interactive Equipment Inquiry & Quote Wizard */}
+      <InquiryWizard initialEquipment={selectedEquipmentForInquiry} />
 
-      {/* About Tunnex Mega Investment */}
+      {/* About Pethona Integrated & Resources LTD */}
       <AboutUs />
 
-      {/* Forklift Selection & Specification Guide */}
+      {/* Equipment Selection & Specification Guide */}
       <SpecificationGuide />
 
       {/* Customer / Client Feedback */}
       <Testimonials />
 
-      {/* Contact card, business hours, and Lagos Google Map */}
+      {/* Contact card, business hours, and Idi Oro, Lagos Google Map */}
       <ContactSection />
 
       {/* Footer */}
@@ -78,11 +78,11 @@ export default function App() {
       {/* Persistent Floating WhatsApp Quick Button */}
       <a
         id="floating-whatsapp-btn"
-        href={getWhatsAppUrl("Hello Tunnex Mega Investment, I'd like to make an inquiry about available forklifts.")}
+        href={getWhatsAppUrl("Hello Pethona Integrated & Resources LTD, I would like to make an inquiry about available forklifts and heavy equipment.")}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 sm:px-4 sm:py-3 rounded-full shadow-2xl flex items-center space-x-2 border border-emerald-400/40 hover:scale-105 transition-all duration-200 group"
-        aria-label="Chat with Tunnex Mega Investment on WhatsApp"
+        aria-label="Chat with Pethona Integrated & Resources LTD on WhatsApp"
       >
         <MessageSquare className="w-5 h-5 group-hover:rotate-12 transition-transform" />
         <span className="hidden sm:inline text-xs font-bold font-sans">

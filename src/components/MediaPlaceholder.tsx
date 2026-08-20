@@ -1,6 +1,6 @@
 import React from "react";
-import { Image, FileVideo, Truck } from "lucide-react";
-import heroForkliftImg from "../assets/images/hero_forklift_tunnex_1787165325067.jpg";
+import { Image, FileVideo, HardHat, Truck } from "lucide-react";
+import heroMachineryImg from "../assets/images/pethona_hero_1787249582581.jpg";
 
 interface MediaPlaceholderProps {
   sectionName: string;
@@ -20,7 +20,7 @@ export default function MediaPlaceholder({
   return (
     <div className={`relative w-full ${aspectRatio} rounded-xl overflow-hidden shadow-lg border border-zinc-800 bg-zinc-950`}>
       <img
-        src={heroForkliftImg}
+        src={heroMachineryImg}
         alt={sectionName}
         referrerPolicy="no-referrer"
         className="w-full h-full object-cover opacity-60"
@@ -34,9 +34,9 @@ export default function MediaPlaceholder({
             {type === "video" ? (
               <FileVideo className="w-2.5 h-2.5 mr-1 text-amber-500" />
             ) : (
-              <Truck className="w-2.5 h-2.5 mr-1 text-amber-400" />
+              <HardHat className="w-2.5 h-2.5 mr-1 text-amber-400" />
             )}
-            <span>Forklift Equipment Visual</span>
+            <span>Equipment Visual</span>
           </div>
 
           {/* Section title */}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { MapPin, Menu, X, MessageSquare, PhoneCall, Truck, ShieldCheck } from "lucide-react";
-import { TUNNEX_BUSINESS_INFO, getWhatsAppUrl } from "../data";
+import { MapPin, Menu, X, MessageSquare, PhoneCall, Truck, HardHat } from "lucide-react";
+import { PETHONA_BUSINESS_INFO, getWhatsAppUrl } from "../data";
 
 interface NavbarProps {
   onInquiryClick: () => void;
@@ -20,12 +20,13 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
   }, []);
 
   const navItems = [
-    { label: "Forklift Inventory", target: "inventory" },
+    { label: "All Equipment", target: "inventory" },
+    { label: "Heavy Machinery", target: "heavy-machinery" },
+    { label: "Forklifts", target: "forklifts" },
     { label: "Why Choose Us", target: "why-choose-us" },
-    { label: "Specifications", target: "specs" },
-    { label: "About Tunnex", target: "about" },
-    { label: "Request Quote", target: "inquiry" },
-    { label: "Contact & Location", target: "contact" },
+    { label: "About Pethona", target: "about" },
+    { label: "Technical Specs", target: "specs" },
+    { label: "Contact & Yard", target: "contact" },
   ];
 
   const handleNavClick = (target: string) => {
@@ -42,17 +43,17 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
           : "bg-gradient-to-b from-zinc-950/90 via-zinc-950/70 to-transparent py-4"
       }`}
     >
-      {/* Top Quick Info bar - hidden on smaller screens */}
+      {/* Top Quick Info bar */}
       <div className="hidden lg:block border-b border-zinc-800/60 pb-2 mb-3 px-6 max-w-7xl mx-auto">
         <div className="flex justify-between items-center text-xs font-sans text-zinc-400">
           <div className="flex items-center space-x-6">
             <span className="flex items-center text-zinc-300">
               <MapPin className="w-3.5 h-3.5 text-amber-500 mr-1.5 flex-shrink-0" />
-              {TUNNEX_BUSINESS_INFO.addressShort}
+              {PETHONA_BUSINESS_INFO.addressShort}
             </span>
             <span className="flex items-center text-zinc-400">
-              <Truck className="w-3.5 h-3.5 text-amber-500 mr-1.5 flex-shrink-0" />
-              Forklift Dealer & Industrial Material Handling Solutions
+              <HardHat className="w-3.5 h-3.5 text-amber-500 mr-1.5 flex-shrink-0" />
+              Forklift & Heavy Equipment Dealer • Excavators, Bulldozers, Wheel Loaders, Forklifts
             </span>
           </div>
           <div className="flex items-center space-x-4">
@@ -61,10 +62,10 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors font-medium text-xs"
+              className="flex items-center text-emerald-400 hover:text-emerald-300 transition-colors font-semibold text-xs"
             >
               <MessageSquare className="w-3.5 h-3.5 mr-1 text-emerald-400" />
-              <span>Direct WhatsApp Inquiry</span>
+              <span>WhatsApp Sales Desk</span>
             </a>
           </div>
         </div>
@@ -78,27 +79,27 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
             className="flex items-center space-x-3 cursor-pointer group"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="w-10 h-10 bg-amber-500 text-zinc-950 rounded-lg flex items-center justify-center font-mono font-extrabold text-xl tracking-wider transform group-hover:scale-105 transition-transform duration-200 shadow-md shadow-amber-500/20">
-              T
+            <div className="w-10 h-10 bg-amber-500 text-zinc-950 rounded-xl flex items-center justify-center font-mono font-black text-xl tracking-wider transform group-hover:scale-105 transition-transform duration-200 shadow-md shadow-amber-500/20">
+              P
             </div>
             <div>
-              <span className="block text-lg font-black font-sans tracking-tight text-white leading-none">
-                TUNNEX MEGA
+              <span className="block text-base sm:text-lg font-black font-sans tracking-tight text-white leading-none">
+                PETHONA INTEGRATED
               </span>
-              <span className="block text-[11px] font-bold font-mono tracking-wider text-amber-400 uppercase leading-none mt-1">
-                FORKLIFT DEALER • LAGOS
+              <span className="block text-[10px] sm:text-[11px] font-bold font-mono tracking-wider text-amber-400 uppercase leading-none mt-1">
+                & RESOURCES LTD • HEAVY EQUIPMENT & FORKLIFTS
               </span>
             </div>
           </div>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex space-x-1">
+          <nav className="hidden xl:flex space-x-1">
             {navItems.map((item) => (
               <button
                 key={item.target}
                 id={`nav-link-${item.target}`}
                 onClick={() => handleNavClick(item.target)}
-                className="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-300 hover:text-amber-400 hover:bg-zinc-900/60 rounded-md transition-colors duration-150"
+                className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-zinc-300 hover:text-amber-400 hover:bg-zinc-900/60 rounded-lg transition-colors duration-150 cursor-pointer"
               >
                 {item.label}
               </button>
@@ -112,28 +113,28 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-1.5 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-400 px-3.5 py-2 rounded-lg text-xs font-bold font-sans transition-all duration-150"
+              className="inline-flex items-center space-x-1.5 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-400 px-3.5 py-2 rounded-xl text-xs font-bold font-sans transition-all duration-150"
             >
               <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span>WhatsApp</span>
+              <span>WhatsApp Us</span>
             </a>
             <button
               id="navbar-cta-btn"
               onClick={onInquiryClick}
-              className="bg-amber-500 hover:bg-amber-400 text-zinc-950 px-4 py-2 rounded-lg text-xs font-extrabold font-sans uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-all duration-150 transform active:scale-95"
+              className="bg-amber-500 hover:bg-amber-400 text-zinc-950 px-4 py-2 rounded-xl text-xs font-black font-sans uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-all duration-150 transform active:scale-95 cursor-pointer"
             >
-              Inquire / Quote
+              Request a Quote
             </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center space-x-2">
+          <div className="xl:hidden flex items-center space-x-2">
             <a
               id="navbar-mobile-whatsapp"
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-emerald-400 hover:text-white bg-zinc-900 border border-emerald-500/30 rounded-lg"
+              className="p-2 text-emerald-400 hover:text-white bg-zinc-900 border border-emerald-500/30 rounded-xl"
               aria-label="WhatsApp Us"
             >
               <MessageSquare className="w-5 h-5" />
@@ -141,7 +142,7 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
             <button
               id="mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-zinc-300 hover:text-white hover:bg-zinc-800 focus:outline-none transition-colors duration-150"
+              className="inline-flex items-center justify-center p-2 rounded-xl text-zinc-300 hover:text-white hover:bg-zinc-800 focus:outline-none transition-colors duration-150"
               aria-expanded={isOpen}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -154,7 +155,7 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
       {isOpen && (
         <div 
           id="mobile-nav-menu"
-          className="lg:hidden bg-zinc-950 border-b border-zinc-800 animate-in fade-in slide-in-from-top duration-200"
+          className="xl:hidden bg-zinc-950 border-b border-zinc-800 animate-in fade-in slide-in-from-top duration-200"
         >
           <div className="px-3 pt-3 pb-5 space-y-1">
             {navItems.map((item) => (
@@ -162,7 +163,7 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
                 key={item.target}
                 id={`mobile-nav-link-${item.target}`}
                 onClick={() => handleNavClick(item.target)}
-                className="block w-full text-left px-4 py-2.5 rounded-lg text-sm font-semibold text-zinc-200 hover:text-amber-400 hover:bg-zinc-900 transition-colors"
+                className="block w-full text-left px-4 py-2.5 rounded-xl text-sm font-semibold text-zinc-200 hover:text-amber-400 hover:bg-zinc-900 transition-colors"
               >
                 {item.label}
               </button>
@@ -170,7 +171,7 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
             <div className="pt-4 pb-2 border-t border-zinc-800 px-3 space-y-3">
               <div className="flex items-start text-xs font-sans text-zinc-400">
                 <MapPin className="w-4 h-4 text-amber-500 mr-2 flex-shrink-0 mt-0.5" />
-                <span>{TUNNEX_BUSINESS_INFO.address}</span>
+                <span>{PETHONA_BUSINESS_INFO.address}</span>
               </div>
               <div className="grid grid-cols-2 gap-2 pt-2">
                 <a
@@ -178,7 +179,7 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center space-x-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2.5 rounded-lg text-xs font-bold text-center"
+                  className="inline-flex items-center justify-center space-x-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2.5 rounded-xl text-xs font-bold text-center"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>WhatsApp Us</span>
@@ -189,9 +190,9 @@ export default function Navbar({ onInquiryClick, onSectionScroll }: NavbarProps)
                     setIsOpen(false);
                     onInquiryClick();
                   }}
-                  className="bg-amber-500 hover:bg-amber-400 text-zinc-950 px-3 py-2.5 rounded-lg text-xs font-extrabold uppercase text-center"
+                  className="bg-amber-500 hover:bg-amber-400 text-zinc-950 px-3 py-2.5 rounded-xl text-xs font-black uppercase text-center"
                 >
-                  Get a Quote
+                  Request Quote
                 </button>
               </div>
             </div>

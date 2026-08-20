@@ -1,31 +1,47 @@
 import React, { useState, useEffect } from "react";
 import MediaPlaceholder from "./MediaPlaceholder";
+
+// Forklift Assets
+import heroMachineryImg from "../assets/images/pethona_hero_1787249582581.jpg";
 import heroForkliftImg from "../assets/images/hero_forklift_tunnex_1787165325067.jpg";
 import electricForkliftImg from "../assets/images/electric_forklift_1787165336816.jpg";
 import dieselForkliftImg from "../assets/images/diesel_forklift_1787165348263.jpg";
 import lpgGasForkliftImg from "../assets/images/lpg_gas_forklift_1787165359127.jpg";
 import warehouseReachTruckImg from "../assets/images/warehouse_reach_truck_1787165373779.jpg";
 import heavydutyForkliftImg from "../assets/images/heavyduty_forklift_1787165386207.jpg";
-import tunnexYardImg from "../assets/images/tunnex_forklift_yard_1787165397537.jpg";
 
-// Verified professional forklift dealer equipment assets
-export const FORKLIFT_IMAGES: Record<string, string> = {
-  hero: heroForkliftImg,
+// Heavy Equipment & Machinery Assets
+import heavyExcavatorImg from "../assets/images/heavy_excavator_1787249520629.jpg";
+import heavyBulldozerImg from "../assets/images/heavy_bulldozer_1787249533527.jpg";
+import wheelLoaderImg from "../assets/images/wheel_loader_1787249555740.jpg";
+import backhoeLoaderImg from "../assets/images/backhoe_loader_1787249568713.jpg";
+import yardImg from "../assets/images/tunnex_forklift_yard_1787165397537.jpg";
+
+// Verified professional equipment dealership assets dictionary
+export const EQUIPMENT_IMAGES: Record<string, string> = {
+  hero: heroMachineryImg,
+  hero_forklift: heroForkliftImg,
+  excavator: heavyExcavatorImg,
+  bulldozer: heavyBulldozerImg,
+  wheel_loader: wheelLoaderImg,
+  backhoe_loader: backhoeLoaderImg,
   electric: electricForkliftImg,
   diesel: dieselForkliftImg,
   lpg: lpgGasForkliftImg,
   warehouse: warehouseReachTruckImg,
   heavyduty: heavydutyForkliftImg,
-  yard: tunnexYardImg,
-  "input_file_0.png": electricForkliftImg,
-  "input_file_1.png": dieselForkliftImg,
-  "input_file_2.png": lpgGasForkliftImg,
-  "input_file_3.png": warehouseReachTruckImg,
-  "input_file_4.png": heavydutyForkliftImg,
-  "input_file_5.png": tunnexYardImg,
+  yard: yardImg,
+  "input_file_0.png": heavyExcavatorImg,
+  "input_file_1.png": heavyBulldozerImg,
+  "input_file_2.png": wheelLoaderImg,
+  "input_file_3.png": backhoeLoaderImg,
+  "input_file_4.png": dieselForkliftImg,
+  "input_file_5.png": yardImg,
 };
 
-const DEFAULT_FALLBACK = heroForkliftImg;
+export const FORKLIFT_IMAGES = EQUIPMENT_IMAGES;
+
+const DEFAULT_FALLBACK = heroMachineryImg;
 
 interface MediaLoaderProps {
   src: string;
@@ -39,76 +55,34 @@ interface MediaLoaderProps {
   videoMuted?: boolean;
   videoLoop?: boolean;
   videoAutoPlay?: boolean;
-  fallbackUrl?: string; // Optional custom fallback override
+  fallbackUrl?: string;
 }
 
-// Automatically resolve placeholders directly to online URLs on render
 function getCandidateUrls(src: string, expectedFile: string, fallbackUrl?: string, type?: "image" | "video"): string[] {
   const list: string[] = [];
 
-  // 1. First, try the user's actual uploaded files (the relative paths like /input_file_0.png)
-  if (expectedFile && expectedFile.startsWith("input_file_")) {
-    const baseName = expectedFile.replace(/\.[^/.]+$/, "");
-    if (type === "video") {
-      list.push(`/${baseName}.mp4`);
-      list.push(`/${baseName}.mov`);
-      list.push(`/${baseName}.webm`);
-    } else {
-      list.push(`/${baseName}.jpg`);
-      list.push(`/${baseName}.jpeg`);
-      list.push(`/${baseName}.png`);
-      list.push(`/${baseName}.webp`);
-    }
-
-    // If looking for the maintenance image, also add candidate filenames the user might upload
-    if (expectedFile === "input_file_1.png") {
-      list.push("/pal_auto_repair.jpg");
-      list.push("/pal_auto_repair.jpeg");
-      list.push("/pal_auto_repair.png");
-      list.push("/pal_auto_repair.webp");
-      list.push("/pal_auto.jpg");
-      list.push("/pal_auto.png");
-      list.push("/maintenance.jpg");
-      list.push("/maintenance.png");
-    }
-  }
-
-  // 2. Direct match for src and its standard extension variations
-  if (src) {
-    list.push(src);
-    if (src.includes("input_file_")) {
-      const baseName = src.replace(/^\//, "").replace(/\.[^/.]+$/, "");
-      if (type === "video") {
-        list.push(`/${baseName}.mp4`);
-        list.push(`/${baseName}.mov`);
-        list.push(`/${baseName}.webm`);
-      } else {
-        list.push(`/${baseName}.jpg`);
-        list.push(`/${baseName}.jpeg`);
-        list.push(`/${baseName}.png`);
-        list.push(`/${baseName}.webp`);
-      }
-    }
-  }
-
-  // 3. Try the forklift imported assets
+  // 1. First, check direct match in our equipment registry
   const cleanFile = expectedFile ? expectedFile.trim() : "";
-  if (cleanFile && FORKLIFT_IMAGES[cleanFile]) {
-    list.push(FORKLIFT_IMAGES[cleanFile]);
+  if (cleanFile && EQUIPMENT_IMAGES[cleanFile]) {
+    list.push(EQUIPMENT_IMAGES[cleanFile]);
   }
   const cleanSrc = src ? src.replace(/^\//, "").trim() : "";
-  if (cleanSrc && FORKLIFT_IMAGES[cleanSrc]) {
-    list.push(FORKLIFT_IMAGES[cleanSrc]);
+  if (cleanSrc && EQUIPMENT_IMAGES[cleanSrc]) {
+    list.push(EQUIPMENT_IMAGES[cleanSrc]);
   }
 
-  // 4. Custom fallback URL override
+  // 2. Direct src if provided
+  if (src && !src.startsWith("input_file_")) {
+    list.push(src);
+  }
+
+  // 3. Custom fallback URL override
   if (fallbackUrl) {
     list.push(fallbackUrl);
   }
 
   list.push(DEFAULT_FALLBACK);
 
-  // Return unique list
   return Array.from(new Set(list));
 }
 
@@ -132,7 +106,6 @@ export default function MediaLoader({
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // When src or parameters change, rebuild candidate list and reset index
   useEffect(() => {
     setCandidateIndex(0);
     setHasError(false);
@@ -148,7 +121,6 @@ export default function MediaLoader({
     }
   };
 
-  // If there's an error or no src can be resolved, show custom visual card instead of a text warning
   if (hasError || !currentSrc) {
     return (
       <MediaPlaceholder
@@ -162,7 +134,7 @@ export default function MediaLoader({
   }
 
   return (
-    <div className={`relative ${aspectRatio} w-full overflow-hidden rounded-xl`}>
+    <div className={`relative ${aspectRatio} w-full overflow-hidden rounded-xl bg-zinc-950`}>
       {type === "video" ? (
         <video
           src={currentSrc}
@@ -187,10 +159,9 @@ export default function MediaLoader({
         />
       )}
 
-      {/* Loading overlay state */}
       {!isLoaded && !hasError && (
         <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
-          <div className="w-6 h-6 border-2 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="w-6 h-6 border-2 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       )}
     </div>

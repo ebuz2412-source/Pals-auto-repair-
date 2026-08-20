@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { SPEC_GUIDES } from "../data";
+import { SPEC_GUIDES, PETHONA_BUSINESS_INFO, getWhatsAppUrl } from "../data";
 import { SpecificationGuideItem } from "../types";
-import { Scale, ArrowUpRight, Zap, CircleDot, CheckCircle2, MessageSquare } from "lucide-react";
-import { FORKLIFT_IMAGES } from "./MediaLoader";
-import { getWhatsAppUrl } from "../data";
+import { Scale, ArrowUpRight, Zap, CircleDot, CheckCircle2, MessageSquare, HardHat, Truck } from "lucide-react";
 
 const ICONS_MAP: Record<string, any> = {
   Scale,
@@ -15,7 +13,7 @@ const ICONS_MAP: Record<string, any> = {
 export default function SpecificationGuide() {
   const [activeItem, setActiveItem] = useState<SpecificationGuideItem>(SPEC_GUIDES[0]);
 
-  // Vector industrial diagrams for forklift buyers
+  // Vector industrial diagrams for equipment buyers
   const renderForkliftSchematic = (id: string) => {
     switch (id) {
       case "g1": // Load Capacity & Center
@@ -23,22 +21,15 @@ export default function SpecificationGuide() {
           <div className="w-full bg-zinc-950 rounded-2xl border border-zinc-800 p-6 relative overflow-hidden flex flex-col items-center justify-center">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:16px_16px] opacity-20"></div>
             
-            {/* SVG Forklift Load Center Diagram */}
+            {/* SVG Load Center Diagram */}
             <svg className="w-full max-w-sm h-36 text-amber-500 relative z-10" viewBox="0 0 100 45" fill="none" stroke="currentColor" strokeWidth="0.8">
-              {/* Ground level */}
               <line x1="5" y1="40" x2="95" y2="40" stroke="#52525b" strokeWidth="0.5" />
-              {/* Forklift chassis outline */}
               <path d="M15,40 L15,25 L35,25 L40,15 L55,15 L55,40 Z" stroke="#d97706" strokeWidth="0.9" fill="#18181b" />
-              {/* Mast vertical */}
               <line x1="55" y1="5" x2="55" y2="40" stroke="#f59e0b" strokeWidth="1.5" />
-              {/* Horizontal Fork */}
               <line x1="55" y1="38" x2="85" y2="38" stroke="#f59e0b" strokeWidth="1.5" />
-              {/* Pallet Cargo Box */}
               <rect x="58" y="20" width="22" height="18" rx="1" stroke="#f59e0b" strokeWidth="0.8" fill="#78350f" fillOpacity="0.4" />
-              {/* Wheels */}
               <circle cx="25" cy="40" r="3.5" stroke="#71717a" strokeWidth="0.8" fill="#09090b" />
               <circle cx="50" cy="40" r="3.5" stroke="#71717a" strokeWidth="0.8" fill="#09090b" />
-              {/* Load Center Marker */}
               <line x1="69" y1="15" x2="69" y2="40" stroke="#ef4444" strokeWidth="0.6" strokeDasharray="1.5,1.5" />
               <circle cx="69" cy="29" r="1.5" fill="#ef4444" />
               <text x="63" y="13" fontSize="2.5" fill="#ef4444" fontFamily="monospace">500mm Center</text>
@@ -68,16 +59,11 @@ export default function SpecificationGuide() {
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:16px_16px] opacity-20"></div>
             
             <svg className="w-full max-w-sm h-36 text-amber-500 relative z-10" viewBox="0 0 100 45" fill="none" stroke="currentColor" strokeWidth="0.8">
-              {/* Mast Stage 1 */}
               <rect x="25" y="10" width="8" height="30" stroke="#71717a" strokeWidth="0.7" fill="#18181b" />
-              {/* Mast Stage 2 */}
               <rect x="27" y="5" width="4" height="25" stroke="#f59e0b" strokeWidth="0.8" fill="#27272a" />
-              {/* Hydraulic cylinder */}
               <line x1="29" y1="38" x2="29" y2="8" stroke="#3b82f6" strokeWidth="1" />
-              {/* Height dimension line */}
               <line x1="42" y1="5" x2="42" y2="40" stroke="#f59e0b" strokeWidth="0.5" strokeDasharray="2,1" />
               <text x="45" y="24" fontSize="3" fill="#f59e0b" fontFamily="monospace">Lift Height: 3.0m - 7.5m</text>
-              {/* Door clearance */}
               <path d="M60,5 L85,5 L85,40" stroke="#52525b" strokeWidth="0.7" strokeDasharray="2,2" />
               <text x="62" y="12" fontSize="2.5" fill="#a1a1aa" fontFamily="monospace">Container Entry Spec</text>
             </svg>
@@ -189,14 +175,14 @@ export default function SpecificationGuide() {
             Equipment Buyer's Guide
           </span>
           <h2 className="text-3xl sm:text-4xl font-black font-sans tracking-tight text-white">
-            Forklift Selection & Technical Guidelines
+            Machinery & Forklift Technical Guidelines
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
-            Understanding key specifications helps you choose the right forklift for your warehouse dimensions, pallet weights, and operational environment.
+            Understanding key operational specifications helps you select the right equipment for your warehouse dimensions, project terrain, lifting tonnages, and operational environment.
           </p>
         </div>
 
-        {/* Layout: Guide Selector on Left, Interactive Schematic & Image on Right */}
+        {/* Layout: Guide Selector on Left, Interactive Schematic on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
           {/* Left Column: Interactive Topics List */}
@@ -236,7 +222,7 @@ export default function SpecificationGuide() {
             })}
           </div>
 
-          {/* Right Column: Active Schematic & Real Equipment Media */}
+          {/* Right Column: Active Schematic */}
           <div className="lg:col-span-7 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-6 shadow-xl relative space-y-5">
             <div className="flex justify-between items-center border-b border-zinc-800 pb-3">
               <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest">
@@ -260,13 +246,13 @@ export default function SpecificationGuide() {
             <div className="pt-2 flex justify-between items-center">
               <span className="text-xs text-zinc-400">Need help deciding on specs?</span>
               <a
-                href={getWhatsAppUrl(`Hello Tunnex Mega Investment, I'd like some advice regarding ${activeItem.title} for my facility.`)}
+                href={getWhatsAppUrl(`Hello Pethona Integrated & Resources LTD, I'd like some technical advice regarding ${activeItem.title} for my operations.`)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors"
               >
                 <MessageSquare className="w-3.5 h-3.5" />
-                <span>Ask Tunnex Team</span>
+                <span>Ask Pethona Team</span>
               </a>
             </div>
           </div>

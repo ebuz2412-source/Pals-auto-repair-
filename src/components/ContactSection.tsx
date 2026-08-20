@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { Phone, Mail, MapPin, Clock, MessageSquare, ExternalLink, Send, CheckCircle2, Building2 } from "lucide-react";
-import { TUNNEX_BUSINESS_INFO, getWhatsAppUrl } from "../data";
-import tunnexYardImg from "../assets/images/tunnex_forklift_yard_1787165397537.jpg";
+import { Phone, Mail, MapPin, Clock, MessageSquare, ExternalLink, Send, CheckCircle2, Building2, HardHat } from "lucide-react";
+import { PETHONA_BUSINESS_INFO, getWhatsAppUrl } from "../data";
 
 export default function ContactSection() {
   const [formSent, setFormSent] = useState(false);
   const [senderName, setSenderName] = useState("");
   const [senderPhone, setSenderPhone] = useState("");
+  const [senderCategory, setSenderCategory] = useState("Heavy Equipment / Excavator");
   const [senderMessage, setSenderMessage] = useState("");
 
   const handleQuickSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!senderName || !senderPhone) return;
 
-    const whatsappMessage = `Hello Tunnex Mega Investment, my name is ${senderName} (${senderPhone}). Inquiry: ${senderMessage || "I'd like information on available forklifts."}`;
+    const whatsappMessage = `Hello Pethona Integrated & Resources LTD, my name is ${senderName} (${senderPhone}). Interested in: ${senderCategory}. Inquiry: ${senderMessage || "I'd like information on equipment availability and pricing."}`;
     window.open(getWhatsAppUrl(whatsappMessage), "_blank");
     setFormSent(true);
   };
@@ -25,13 +25,13 @@ export default function ContactSection() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
           <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3.5 py-1 rounded-full">
-            Contact & Dealership Yard
+            Contact & Yard Location
           </span>
           <h2 className="text-3xl sm:text-4xl font-black font-sans tracking-tight text-white">
-            Connect with Tunnex Mega Investment
+            Connect with Pethona Integrated & Resources LTD
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
-            Reach out to our sales team to discuss forklift availability, arrange on-site inspections in Ijegun, Lagos, or receive custom equipment quotes.
+            Reach out to our equipment sales desk to verify machinery availability, arrange on-site inspections in Idi Oro, Lagos, or request custom quotations.
           </p>
         </div>
 
@@ -47,17 +47,17 @@ export default function ContactSection() {
               </div>
               <div className="space-y-1">
                 <span className="block text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider">
-                  Showroom & Yard Address
+                  Yard & Office Address
                 </span>
                 <p className="text-sm font-bold text-white font-sans leading-snug">
-                  {TUNNEX_BUSINESS_INFO.address}
+                  {PETHONA_BUSINESS_INFO.address}
                 </p>
                 <span className="text-xs text-amber-400 font-mono block">
-                  Postal Code: {TUNNEX_BUSINESS_INFO.postalCode}
+                  Postal Code: {PETHONA_BUSINESS_INFO.postalCode}
                 </span>
                 <a
                   id="directions-link"
-                  href="https://maps.google.com/?q=288+Papa+Major+Bus+Stop+Ikotun+Ijegun+Road+Lagos+Nigeria"
+                  href="https://maps.google.com/?q=74+Itire+St+Idi+Oro+Lagos+Nigeria"
                   target="_blank"
                   referrerPolicy="no-referrer"
                   rel="noopener noreferrer"
@@ -69,17 +69,17 @@ export default function ContactSection() {
               </div>
             </div>
 
-            {/* Card: Direct WhatsApp & Phone */}
+            {/* Card: Direct WhatsApp Inquiries */}
             <div className="p-5 bg-zinc-900/90 border border-zinc-800 rounded-2xl flex items-start space-x-4 shadow-md">
               <div className="p-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl flex-shrink-0">
                 <MessageSquare className="w-5 h-5" />
               </div>
               <div className="space-y-1">
                 <span className="block text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider">
-                  Instant WhatsApp Inquiries
+                  Direct WhatsApp Sales Desk
                 </span>
                 <p className="text-xs text-zinc-300 font-sans">
-                  Chat directly with our sales team for fast equipment photos, forklift specifications, and quotations.
+                  Chat directly with our team for immediate equipment availability, machine walkaround photos, and pricing.
                 </p>
                 <div className="pt-2">
                   <a
@@ -101,11 +101,11 @@ export default function ContactSection() {
               <div className="flex items-center space-x-2 border-b border-zinc-800 pb-2.5">
                 <Clock className="w-4 h-4 text-amber-400" />
                 <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-                  Yard & Inspection Hours
+                  Yard & Business Hours
                 </h4>
               </div>
               <div className="space-y-2 text-xs font-sans">
-                {TUNNEX_BUSINESS_INFO.hours.map((h, idx) => (
+                {PETHONA_BUSINESS_INFO.hours.map((h, idx) => (
                   <div key={idx} className="flex justify-between text-zinc-300">
                     <span>{h.days}</span>
                     <span className="font-mono text-zinc-400">{h.times}</span>
@@ -124,16 +124,16 @@ export default function ContactSection() {
               <div className="flex items-center space-x-2.5 mb-4 border-b border-zinc-800 pb-3">
                 <Send className="w-5 h-5 text-amber-400" />
                 <h3 className="text-lg font-bold text-white font-sans">
-                  Quick Equipment Inquiry
+                  Quick Machinery & Equipment Inquiry
                 </h3>
               </div>
 
               {formSent ? (
                 <div className="p-6 bg-emerald-950/40 border border-emerald-500/30 rounded-xl text-center space-y-3">
                   <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
-                  <h4 className="text-base font-bold text-white">Opening WhatsApp Chat...</h4>
+                  <h4 className="text-base font-bold text-white">Opening WhatsApp Inquiry...</h4>
                   <p className="text-xs text-zinc-300">
-                    If WhatsApp didn't open automatically, click below:
+                    If WhatsApp did not open automatically, please click below:
                   </p>
                   <a
                     href={getWhatsAppUrl()}
@@ -155,7 +155,7 @@ export default function ContactSection() {
                         id="contact-name"
                         type="text"
                         required
-                        placeholder="e.g. Chukwuemeka Eze"
+                        placeholder="e.g. Adebayo Ogunlesi"
                         value={senderName}
                         onChange={(e) => setSenderName(e.target.value)}
                         className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-xs sm:text-sm focus:outline-none focus:border-amber-500"
@@ -179,12 +179,34 @@ export default function ContactSection() {
 
                   <div>
                     <label className="block text-xs font-mono font-bold uppercase text-zinc-400 mb-1">
-                      Forklift Type / Inquired Details
+                      Equipment Category of Interest
+                    </label>
+                    <select
+                      id="contact-category"
+                      value={senderCategory}
+                      onChange={(e) => setSenderCategory(e.target.value)}
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-xs sm:text-sm focus:outline-none focus:border-amber-500"
+                    >
+                      <option value="Hydraulic Excavator">Heavy Hydraulic Excavator</option>
+                      <option value="Crawler Bulldozer">Crawler Bulldozer</option>
+                      <option value="Articulated Wheel Loader">Articulated Wheel Loader</option>
+                      <option value="Backhoe Loader">Backhoe Loader</option>
+                      <option value="Electric Forklift">Electric Forklift</option>
+                      <option value="Diesel Heavy Forklift">Diesel Industrial Forklift</option>
+                      <option value="LPG Gas Forklift">LPG / Gas Forklift</option>
+                      <option value="Warehouse Reach Truck">Warehouse Reach Truck</option>
+                      <option value="Multiple Machinery Units">Multiple Machinery / Fleet</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono font-bold uppercase text-zinc-400 mb-1">
+                      Equipment Details / Operational Requirements
                     </label>
                     <textarea
                       id="contact-message"
                       rows={3}
-                      placeholder="Tell us what forklift capacity, power type, or mast height your business is looking for..."
+                      placeholder="Specify required machine tonnage, bucket size, mast height, job site location, or special inquiries..."
                       value={senderMessage}
                       onChange={(e) => setSenderMessage(e.target.value)}
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-xs sm:text-sm focus:outline-none focus:border-amber-500 resize-none"
@@ -208,17 +230,17 @@ export default function ContactSection() {
               <div className="flex justify-between items-center px-2 py-1.5 mb-2">
                 <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest flex items-center">
                   <MapPin className="w-3.5 h-3.5 text-amber-400 mr-1.5" />
-                  Ikotun-Ijegun Road, Lagos
+                  74 Itire St, beside MFM, Idi Oro, Lagos
                 </span>
                 <span className="text-[10px] font-mono text-amber-400 bg-amber-950/40 border border-amber-500/30 px-2 py-0.5 rounded">
-                  Nigeria 100213
+                  Nigeria 100253
                 </span>
               </div>
               <div className="h-56 w-full rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800">
                 <iframe
                   id="google-maps-iframe"
-                  title="Tunnex Mega Investment Forklift Dealer Yard Lagos"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.854619754128!2d3.262521!3d6.539824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8fbc923a1a1f%3A0x62c95a3ad5d321!2sIkotun-Ijegun%20Rd%2C%20Lagos!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng"
+                  title="Pethona Integrated & Resources LTD Yard Idi Oro Lagos"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.124599182373!2d3.356230!3d6.529810!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8c5a2c4e3a5f%3A0x629c1b72e12a938!2sItire%20Rd%2C%20Idi%20Oro%2C%20Lagos!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

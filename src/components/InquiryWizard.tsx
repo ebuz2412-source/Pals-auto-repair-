@@ -1,25 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Truck, MessageSquare, CheckCircle2, ChevronRight, ChevronLeft, Trash2, Building, PhoneCall, Mail, Sparkles, MapPin } from "lucide-react";
-import { FORKLIFT_INVENTORY, TUNNEX_BUSINESS_INFO, getWhatsAppUrl } from "../data";
-import { ForkliftInquiryRequest } from "../types";
+import { Truck, MessageSquare, CheckCircle2, ChevronRight, ChevronLeft, Trash2, Building, PhoneCall, Mail, HardHat, MapPin, Layers } from "lucide-react";
+import { PETHONA_BUSINESS_INFO, getWhatsAppUrl } from "../data";
+import { EquipmentInquiryRequest } from "../types";
 
 interface InquiryWizardProps {
   initialForklift?: string;
+  initialEquipment?: string;
 }
 
-export default function InquiryWizard({ initialForklift = "" }: InquiryWizardProps) {
+export default function InquiryWizard({ initialForklift = "", initialEquipment = "" }: InquiryWizardProps) {
   const [step, setStep] = useState(1);
 
+  const initialSelect = initialEquipment || initialForklift || "Heavy Hydraulic Excavator (20-30T)";
+
   // Form State
-  const [forkliftType, setForkliftType] = useState(initialForklift || "Electric Forklift (1.5 - 3.5 Ton)");
-  const [tonnageRequirement, setTonnageRequirement] = useState("2.5 - 3.5 Ton");
-  const [liftHeight, setLiftHeight] = useState("3.0m - 4.5m Standard Mast");
-  const [operatingEnvironment, setOperatingEnvironment] = useState("Indoor Warehouse & Factory Floor");
-  const [tirePreference, setTirePreference] = useState("Solid Rubber (Puncture-Proof)");
+  const [equipmentType, setEquipmentType] = useState(initialSelect);
+  const [capacityOrWeight, setCapacityOrWeight] = useState("20 - 30 Ton / Standard Bucket");
+  const [operatingEnvironment, setOperatingEnvironment] = useState("Construction & Road Works");
+  const [additionalRequirement, setAdditionalRequirement] = useState("Standard Configuration");
   const [companyName, setCompanyName] = useState("");
   const [contactPerson, setContactPerson] = useState("");
   const [contactPhone, setContactPhone] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
   const [locationInNigeria, setLocationInNigeria] = useState("Lagos State");
   const [specialNotes, setSpecialNotes] = useState("");
 
@@ -27,19 +28,19 @@ export default function InquiryWizard({ initialForklift = "" }: InquiryWizardPro
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Inquiry History State (persisted in localStorage)
-  const [inquiryHistory, setInquiryHistory] = useState<ForkliftInquiryRequest[]>([]);
-  const [activeInquiry, setActiveInquiry] = useState<ForkliftInquiryRequest | null>(null);
+  const [inquiryHistory, setInquiryHistory] = useState<EquipmentInquiryRequest[]>([]);
+  const [activeInquiry, setActiveInquiry] = useState<EquipmentInquiryRequest | null>(null);
 
   useEffect(() => {
-    if (initialForklift) {
-      setForkliftType(initialForklift);
+    if (initialEquipment || initialForklift) {
+      setEquipmentType(initialEquipment || initialForklift);
       setStep(1);
     }
-  }, [initialForklift]);
+  }, [initialEquipment, initialForklift]);
 
   // Load inquiries from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem("tunnex_forklift_inquiries");
+    const saved = localStorage.getItem("pethona_equipment_inquiries");
     if (saved) {
       try {
         setInquiryHistory(JSON.parse(saved));
@@ -53,8 +54,8 @@ export default function InquiryWizard({ initialForklift = "" }: InquiryWizardPro
     const newErrors: Record<string, string> = {};
 
     if (currentStep === 1) {
-      if (!forkliftType) newErrors.forkliftType = "Please select an equipment category";
-      if (!tonnageRequirement) newErrors.tonnageRequirement = "Please select load capacity";
+      if (!equipmentType) newErrors.equipmentType = "Please select an equipment category";
+      if (!capacityOrWeight) newErrors.capacityOrWeight = "Please select capacity / weight class";
     }
 
     if (currentStep === 2) {
@@ -88,20 +89,19 @@ export default function InquiryWizard({ initialForklift = "" }: InquiryWizardPro
     e.preventDefault();
     if (!validateStep(3)) return;
 
-    const randomId = "TUNNEX-" + Math.floor(100000 + Math.random() * 900000);
+    const randomId = "PETHONA-" + Math.floor(100000 + Math.random() * 900000);
 
-    const newInquiry: ForkliftInquiryRequest = {
+    const newInquiry: EquipmentInquiryRequest = {
       id: randomId,
       companyName: companyName || "Independent Business",
       contactPerson,
       contactPhone,
-      contactEmail: contactEmail || "N/A",
+      contactEmail: "N/A",
       locationInNigeria: locationInNigeria || "Lagos",
-      forkliftType,
-      tonnageRequirement,
-      liftHeight,
+      equipmentType,
+      capacityOrWeight,
       operatingEnvironment,
-      tirePreference,
+      additionalRequirement,
       specialNotes: specialNotes || "Standard inquiry",
       status: "Inquiry Generated",
       createdAt: new Date().toLocaleDateString("en-NG", {
@@ -115,7 +115,7 @@ export default function InquiryWizard({ initialForklift = "" }: InquiryWizardPro
 
     const updated = [newInquiry, ...inquiryHistory].slice(0, 5);
     setInquiryHistory(updated);
-    localStorage.setItem("tunnex_forklift_inquiries", JSON.stringify(updated));
+    localStorage.setItem("pethona_equipment_inquiries", JSON.stringify(updated));
 
     setActiveInquiry(newInquiry);
     setStep(4);
@@ -126,7 +126,6 @@ export default function InquiryWizard({ initialForklift = "" }: InquiryWizardPro
     setCompanyName("");
     setContactPerson("");
     setContactPhone("");
-    setContactEmail("");
     setSpecialNotes("");
     setErrors({});
     setActiveInquiry(null);
@@ -136,42 +135,41 @@ export default function InquiryWizard({ initialForklift = "" }: InquiryWizardPro
     e.stopPropagation();
     const filtered = inquiryHistory.filter((q) => q.id !== id);
     setInquiryHistory(filtered);
-    localStorage.setItem("tunnex_forklift_inquiries", JSON.stringify(filtered));
+    localStorage.setItem("pethona_equipment_inquiries", JSON.stringify(filtered));
     if (activeInquiry?.id === id) {
       setActiveInquiry(null);
       setStep(1);
     }
   };
 
-  // Pre-generate formatted WhatsApp message for instant 1-click send
-  const getSubmissionWhatsAppUrl = (inquiry: ForkliftInquiryRequest) => {
-    const text = `Hello Tunnex Mega Investment, I would like to request price & availability for:
-- Equipment: ${inquiry.forkliftType}
-- Capacity: ${inquiry.tonnageRequirement}
-- Lift Height: ${inquiry.liftHeight}
-- Environment: ${inquiry.operatingEnvironment}
-- Company: ${inquiry.companyName}
-- Contact: ${inquiry.contactPerson} (${inquiry.contactPhone})
+  const getSubmissionWhatsAppUrl = (inquiry: EquipmentInquiryRequest) => {
+    const text = `Hello Pethona Integrated & Resources LTD, I would like to request price & availability for:
+- Equipment: ${inquiry.equipmentType}
+- Capacity / Specs: ${inquiry.capacityOrWeight}
+- Project Environment: ${inquiry.operatingEnvironment}
+- Config: ${inquiry.additionalRequirement}
+- Client / Company: ${inquiry.contactPerson} (${inquiry.companyName})
+- Phone: ${inquiry.contactPhone}
 - Location: ${inquiry.locationInNigeria}
 - Notes: ${inquiry.specialNotes}
-Reference ID: ${inquiry.id}`;
+Reference: ${inquiry.id}`;
     return getWhatsAppUrl(text);
   };
 
   return (
-    <section id="quote" className="py-20 bg-zinc-950 text-white border-b border-zinc-800 relative">
+    <section id="inquiry" className="py-20 bg-zinc-950 text-white border-b border-zinc-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
-            Inquire For Price & Stock
+          <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3.5 py-1 rounded-full">
+            Request Equipment Quote
           </span>
           <h2 className="text-3xl sm:text-4xl font-black font-sans tracking-tight text-white">
-            Forklift Price & Specification Inquiry Wizard
+            Equipment Inquiry & Quote Generator
           </h2>
           <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
-            Tell us your lifting capacity, mast height, and facility type. We will provide pricing, current stock availability, and equipment options.
+            Select your machine type, required tonnage, and project application. Pethona Integrated & Resources LTD will provide stock availability, machine walkaround details, and quotations.
           </p>
         </div>
 
@@ -188,7 +186,7 @@ Reference ID: ${inquiry.id}`;
                     1
                   </div>
                   <span className={`text-xs font-sans font-bold uppercase hidden sm:inline ${step === 1 ? "text-white" : "text-zinc-500"}`}>
-                    Forklift Type
+                    Equipment Selection
                   </span>
                 </div>
                 <div className="h-px bg-zinc-800 flex-grow mx-3"></div>
@@ -197,7 +195,7 @@ Reference ID: ${inquiry.id}`;
                     2
                   </div>
                   <span className={`text-xs font-sans font-bold uppercase hidden sm:inline ${step === 2 ? "text-white" : "text-zinc-500"}`}>
-                    Specs & Setup
+                    Site & Setup
                   </span>
                 </div>
                 <div className="h-px bg-zinc-800 flex-grow mx-3"></div>
@@ -206,57 +204,64 @@ Reference ID: ${inquiry.id}`;
                     3
                   </div>
                   <span className={`text-xs font-sans font-bold uppercase hidden sm:inline ${step === 3 ? "text-white" : "text-zinc-500"}`}>
-                    Contact & Submit
+                    Contact & Transmit
                   </span>
                 </div>
               </div>
             )}
 
-            {/* Step 1: Forklift Type & Tonnage */}
+            {/* Step 1: Equipment Selection */}
             {step === 1 && (
               <div className="space-y-6">
                 <div className="flex items-center space-x-2.5">
-                  <Truck className="w-5 h-5 text-amber-400" />
+                  <HardHat className="w-5 h-5 text-amber-400" />
                   <h3 className="font-bold text-base sm:text-lg text-white font-sans">
-                    Select Equipment Category & Desired Capacity
+                    Select Equipment Category & Capacity
                   </h3>
                 </div>
 
                 <div className="space-y-4">
                   <div>
                     <label className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
-                      Forklift Type
+                      Equipment Category & Type
                     </label>
                     <select
                       id="inquiry-type-select"
-                      value={forkliftType}
-                      onChange={(e) => setForkliftType(e.target.value)}
+                      value={equipmentType}
+                      onChange={(e) => setEquipmentType(e.target.value)}
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 text-white font-sans text-sm focus:outline-none focus:border-amber-500"
                     >
-                      <option value="Electric Forklift (1.5 - 3.5 Ton)">Electric Forklift (Indoor / Battery Powered)</option>
-                      <option value="Diesel Heavy Duty Forklift (3.0 - 10.0+ Ton)">Diesel Forklift (High Torque / Outdoor Yards)</option>
-                      <option value="LPG / Petrol Dual-Fuel Forklift (2.0 - 5.0 Ton)">LPG / Gas Forklift (Versatile Indoor & Outdoor)</option>
-                      <option value="Warehouse Reach Truck (1.5 - 2.5 Ton)">Warehouse Reach Truck (High-Bay Narrow Aisle)</option>
-                      <option value="Heavy-Duty Container / Yard Handler (10.0 - 16.0+ Ton)">Heavy Duty Industrial / Yard Handler</option>
-                      <option value="Other Custom Forklift Specification">Other / Not Sure (Consult Tunnex Team)</option>
+                      <optgroup label="Heavy Earthmoving & Construction Equipment">
+                        <option value="Heavy Hydraulic Crawler Excavator (20-30T)">Heavy Hydraulic Crawler Excavator (20 - 30 Ton)</option>
+                        <option value="Crawler Bulldozer with Semi-U Blade (160-220HP)">Crawler Bulldozer with Semi-U Blade (160 - 220 HP)</option>
+                        <option value="Articulated Front Wheel Loader (3.0-5.0T Payload)">Articulated Front Wheel Loader (3.0 - 5.0 Ton Payload)</option>
+                        <option value="Four-Wheel-Drive Backhoe Loader (4-in-1 Bucket)">4WD Backhoe Loader (4-in-1 Front Bucket & Excavator Arm)</option>
+                      </optgroup>
+                      <optgroup label="Industrial Forklifts & Material Handling">
+                        <option value="Electric Counterbalance Forklift (2.0 - 3.5 Ton)">Electric Counterbalance Forklift (2.0 - 3.5 Ton)</option>
+                        <option value="Diesel Heavy Industrial Forklift (3.0 - 10.0+ Ton)">Diesel Heavy Industrial Forklift (3.0 - 10.0+ Ton)</option>
+                        <option value="LPG Dual-Fuel Forklift (2.5 - 5.0 Ton)">LPG / Dual-Fuel Forklift (2.5 - 5.0 Ton)</option>
+                        <option value="Warehouse Narrow-Aisle Reach Truck (1.5 - 2.5 Ton)">Warehouse Reach Truck (1.5 - 2.5 Ton)</option>
+                        <option value="High-Capacity Yard / Port Container Handler (10.0 - 16.0+ Ton)">Heavy Duty Yard Handler (10.0 - 16.0+ Ton)</option>
+                      </optgroup>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
-                      Required Load Capacity (Tonnage)
+                      Target Capacity / Weight Class
                     </label>
                     <select
-                      id="inquiry-tonnage-select"
-                      value={tonnageRequirement}
-                      onChange={(e) => setTonnageRequirement(e.target.value)}
+                      id="inquiry-capacity-select"
+                      value={capacityOrWeight}
+                      onChange={(e) => setCapacityOrWeight(e.target.value)}
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 text-white font-sans text-sm focus:outline-none focus:border-amber-500"
                     >
-                      <option value="1.5 - 2.0 Ton (Light Warehouse)">1.5 - 2.0 Ton (Standard Light Duty)</option>
-                      <option value="2.5 - 3.5 Ton (Most Popular Commercial)">2.5 - 3.5 Ton (Standard Commercial Warehousing)</option>
-                      <option value="4.0 - 5.0 Ton (Medium Manufacturing)">4.0 - 5.0 Ton (Manufacturing & Heavy Pallets)</option>
-                      <option value="7.0 - 10.0 Ton (Heavy Industrial)">7.0 - 10.0 Ton (Heavy Yard & Metal Logistics)</option>
-                      <option value="10.0+ Ton (Specialized)">10.0+ Ton (Heavy Container Handling)</option>
+                      <option value="Standard Work Class (Popular)">Standard Commercial Class (Most Popular)</option>
+                      <option value="Heavy Duty / High Tonnage Class">Heavy Duty / High Tonnage Class</option>
+                      <option value="Compact / Medium Site Utility">Compact / Medium Site Utility</option>
+                      <option value="High Reach / Extended Mast or Arm">High Reach / Extended Mast or Long Reach Arm</option>
+                      <option value="Consult Pethona for Recommendation">Consult Pethona Sales Team for Recommendation</option>
                     </select>
                   </div>
                 </div>
@@ -267,27 +272,27 @@ Reference ID: ${inquiry.id}`;
                     onClick={handleNext}
                     className="inline-flex items-center space-x-2 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold font-sans text-xs sm:text-sm px-6 py-3 rounded-xl transition-all cursor-pointer"
                   >
-                    <span>Next: Operational Environment</span>
+                    <span>Next: Site & Application</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
             )}
 
-            {/* Step 2: Environment & Mast Specs */}
+            {/* Step 2: Site Environment & Requirements */}
             {step === 2 && (
               <div className="space-y-6">
                 <div className="flex items-center space-x-2.5">
                   <Building className="w-5 h-5 text-amber-400" />
                   <h3 className="font-bold text-base sm:text-lg text-white font-sans">
-                    Facility Layout & Lift Requirements
+                    Project Environment & Operational Setup
                   </h3>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
-                      Operating Environment
+                      Operational Environment
                     </label>
                     <select
                       id="inquiry-environment-select"
@@ -295,44 +300,28 @@ Reference ID: ${inquiry.id}`;
                       onChange={(e) => setOperatingEnvironment(e.target.value)}
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 text-white font-sans text-sm focus:outline-none focus:border-amber-500"
                     >
-                      <option value="Indoor Warehouse & Factory Floor">Indoor Warehouse & Factory Floor</option>
-                      <option value="Paved Outdoor Yard & Loading Dock">Paved Outdoor Yard & Loading Dock</option>
-                      <option value="Rough Terrain / Construction Yard">Rough Terrain / Unpaved Logistics Yard</option>
-                      <option value="Cold Storage / Food Processing">Cold Storage / Food Processing Facility</option>
-                      <option value="Mixed Indoor & Outdoor Operations">Mixed Indoor & Outdoor Operations</option>
+                      <option value="Construction & Civil Infrastructure">Construction & Civil Infrastructure</option>
+                      <option value="Earthmoving, Road Grading & Land Clearing">Earthmoving, Road Grading & Land Clearing</option>
+                      <option value="Quarry, Mining & Aggregate Handling">Quarry, Mining & Aggregate Handling</option>
+                      <option value="Industrial Warehouse & Factory Floor">Industrial Warehouse & Factory Floor</option>
+                      <option value="Port, Wharf & Container Logistics Yard">Port, Wharf & Container Logistics Yard</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
-                      Estimated Mast Lift Height
+                      Configuration / Auxiliary Options
                     </label>
                     <select
-                      id="inquiry-mast-select"
-                      value={liftHeight}
-                      onChange={(e) => setLiftHeight(e.target.value)}
+                      id="inquiry-addon-select"
+                      value={additionalRequirement}
+                      onChange={(e) => setAdditionalRequirement(e.target.value)}
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 text-white font-sans text-sm focus:outline-none focus:border-amber-500"
                     >
-                      <option value="3.0m Standard Duplex Mast">3.0m (Standard Truck Loading)</option>
-                      <option value="4.5m Triplex Free-Lift Mast">4.5m (Standard Warehouse Racks)</option>
-                      <option value="6.0m High-Reach Triplex Mast">6.0m (High-Bay Warehouse Storage)</option>
-                      <option value="7.5m+ Specialized Reach Mast">7.5m+ (Ultra High-Bay Racking)</option>
-                    </select>
-                  </div>
-
-                  <div className="sm:col-span-2">
-                    <label className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-2">
-                      Tire Preference
-                    </label>
-                    <select
-                      id="inquiry-tire-select"
-                      value={tirePreference}
-                      onChange={(e) => setTirePreference(e.target.value)}
-                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3.5 text-white font-sans text-sm focus:outline-none focus:border-amber-500"
-                    >
-                      <option value="Solid Rubber (Puncture-Proof)">Solid Rubber Tires (100% Puncture-Proof for Warehouses)</option>
-                      <option value="Pneumatic Air-Filled Tires">Pneumatic Air-Filled Tires (Cushioned for Rough Yards)</option>
-                      <option value="Non-Marking Solid Tires">Non-Marking Clean Solid Tires (Food / Pharma Floors)</option>
+                      <option value="Standard Bucket / Forks Configuration">Standard Bucket / Forks Configuration</option>
+                      <option value="Hydraulic Piping for Breaker / Attachments">Auxiliary Hydraulic Piping for Attachments</option>
+                      <option value="Enclosed AC Operator Cabin">Enclosed Climate-Controlled Operator Cabin</option>
+                      <option value="Solid Puncture-Proof Tires / Heavy Shoes">Solid Puncture-Proof Tires / Heavy Duty Track Shoes</option>
                     </select>
                   </div>
                 </div>
@@ -371,17 +360,16 @@ Reference ID: ${inquiry.id}`;
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-1.5">
-                      Company / Business Name (Optional)
+                      Company / Organization Name (Optional)
                     </label>
                     <input
                       id="inquiry-company-input"
                       type="text"
-                      placeholder="e.g. Apex Logistics Nigeria Ltd"
+                      placeholder="e.g. Apex Civil Contractors Ltd"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-sm focus:outline-none focus:border-amber-500"
-                    >
-                    </input>
+                    />
                   </div>
 
                   <div>
@@ -391,7 +379,7 @@ Reference ID: ${inquiry.id}`;
                     <input
                       id="inquiry-name-input"
                       type="text"
-                      placeholder="e.g. Adebayo Ogunleye"
+                      placeholder="e.g. Adebayo Ogunlesi"
                       value={contactPerson}
                       onChange={(e) => setContactPerson(e.target.value)}
                       className={`w-full bg-zinc-950 border ${errors.contactPerson ? "border-amber-500" : "border-zinc-800"} rounded-xl p-3 text-white font-sans text-sm focus:outline-none focus:border-amber-500`}
@@ -416,12 +404,12 @@ Reference ID: ${inquiry.id}`;
 
                   <div>
                     <label className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-1.5">
-                      Location / State in Nigeria
+                      Project Location / State in Nigeria
                     </label>
                     <input
                       id="inquiry-location-input"
                       type="text"
-                      placeholder="e.g. Lagos (Ikeja, Ijegun, Apapa), Ogun, etc."
+                      placeholder="e.g. Lagos (Idi Oro, Ikeja, Lekki), Ogun, etc."
                       value={locationInNigeria}
                       onChange={(e) => setLocationInNigeria(e.target.value)}
                       className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-sm focus:outline-none focus:border-amber-500"
@@ -430,11 +418,11 @@ Reference ID: ${inquiry.id}`;
 
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-mono font-bold uppercase tracking-wider text-zinc-400 mb-1.5">
-                      Specific Notes or Inquiries (Optional)
+                      Specific Inquiries / Machine Notes (Optional)
                     </label>
                     <textarea
                       id="inquiry-notes-textarea"
-                      placeholder="Any specific brands, container mast requirements, delivery preferences, or questions?"
+                      placeholder="Specify required brands, bucket capacity, delivery preferences, or inspection dates..."
                       value={specialNotes}
                       onChange={(e) => setSpecialNotes(e.target.value)}
                       rows={3}
@@ -464,14 +452,14 @@ Reference ID: ${inquiry.id}`;
               </form>
             )}
 
-            {/* Step 4: Submission Confirmation & 1-Click WhatsApp Transmit */}
+            {/* Step 4: Submission Summary & 1-Click WhatsApp Send */}
             {step === 4 && activeInquiry && (
               <div className="space-y-6 text-zinc-100 animate-in zoom-in-95 duration-200">
                 <div className="flex flex-col items-center text-center pb-4 border-b border-zinc-800">
                   <div className="w-14 h-14 bg-emerald-600/20 border border-emerald-500/30 rounded-full flex items-center justify-center text-emerald-400 mb-3">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-2xl font-black font-sans text-white">Forklift Inquiry Generated</h3>
+                  <h3 className="text-2xl font-black font-sans text-white">Equipment Inquiry Generated</h3>
                   <p className="text-xs font-mono text-zinc-400 mt-1 uppercase tracking-wider">
                     Reference ID: <span className="text-amber-400 font-bold">{activeInquiry.id}</span>
                   </p>
@@ -481,19 +469,19 @@ Reference ID: ${inquiry.id}`;
                 <div className="bg-zinc-950 rounded-xl border border-zinc-800 p-5 font-mono text-xs space-y-3 text-left">
                   <div className="flex justify-between border-b border-zinc-900 pb-2">
                     <span className="text-zinc-500 uppercase">Equipment Requested:</span>
-                    <span className="text-white font-bold text-right">{activeInquiry.forkliftType}</span>
+                    <span className="text-white font-bold text-right">{activeInquiry.equipmentType}</span>
                   </div>
                   <div className="flex justify-between border-b border-zinc-900 pb-2">
-                    <span className="text-zinc-500 uppercase">Load Capacity:</span>
-                    <span className="text-amber-400 font-bold text-right">{activeInquiry.tonnageRequirement}</span>
+                    <span className="text-zinc-500 uppercase">Capacity / Class:</span>
+                    <span className="text-amber-400 font-bold text-right">{activeInquiry.capacityOrWeight}</span>
                   </div>
                   <div className="flex justify-between border-b border-zinc-900 pb-2">
-                    <span className="text-zinc-500 uppercase">Mast Lift Height:</span>
-                    <span className="text-white text-right">{activeInquiry.liftHeight}</span>
-                  </div>
-                  <div className="flex justify-between border-b border-zinc-900 pb-2">
-                    <span className="text-zinc-500 uppercase">Operating Environment:</span>
+                    <span className="text-zinc-500 uppercase">Project Environment:</span>
                     <span className="text-white text-right">{activeInquiry.operatingEnvironment}</span>
+                  </div>
+                  <div className="flex justify-between border-b border-zinc-900 pb-2">
+                    <span className="text-zinc-500 uppercase">Configuration:</span>
+                    <span className="text-white text-right">{activeInquiry.additionalRequirement}</span>
                   </div>
                   <div className="flex justify-between border-b border-zinc-900 pb-2">
                     <span className="text-zinc-500 uppercase">Client / Company:</span>
@@ -512,10 +500,10 @@ Reference ID: ${inquiry.id}`;
                 {/* Instant 1-Click WhatsApp Transmit Action */}
                 <div className="bg-emerald-950/40 border border-emerald-500/30 p-5 rounded-xl space-y-3 text-center">
                   <h4 className="text-sm font-bold text-white font-sans">
-                    Send this inquiry directly to Tunnex Mega Investment on WhatsApp
+                    Send this inquiry directly to Pethona Integrated & Resources LTD on WhatsApp
                   </h4>
                   <p className="text-xs text-zinc-300">
-                    Click the button below to open WhatsApp with your exact equipment specifications pre-filled.
+                    Click the button below to open WhatsApp with your equipment details pre-filled.
                   </p>
                   <a
                     id="submit-to-whatsapp-btn"
@@ -541,7 +529,7 @@ Reference ID: ${inquiry.id}`;
             )}
           </div>
 
-          {/* Right Column: Dealership Assistance & Saved Inquiries */}
+          {/* Right Column: Yard Inspection & Saved Inquiries */}
           <div className="lg:col-span-4 space-y-5">
             {/* Quick Contact Assistance Card */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5 shadow-xl space-y-3 text-left">
@@ -550,11 +538,11 @@ Reference ID: ${inquiry.id}`;
                 Yard Inspection & Visit
               </h4>
               <p className="text-xs text-zinc-300 font-sans leading-relaxed">
-                Want to inspect available forklifts in person? Visit our dealer yard at <strong>{TUNNEX_BUSINESS_INFO.addressShort}</strong>.
+                Want to inspect available heavy machinery and forklifts in person? Visit our yard at <strong>{PETHONA_BUSINESS_INFO.addressShort}</strong>.
               </p>
               <div className="pt-2">
                 <a
-                  href={getWhatsAppUrl("Hello Tunnex Mega Investment, I would like to schedule a visit to your Ijegun yard to view your forklifts.")}
+                  href={getWhatsAppUrl("Hello Pethona Integrated & Resources LTD, I would like to schedule a visit to your Idi Oro yard to inspect available equipment.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300"
@@ -593,10 +581,10 @@ Reference ID: ${inquiry.id}`;
                       <div className="flex justify-between items-start">
                         <div>
                           <span className="block text-xs font-bold text-white font-sans">
-                            {item.forkliftType}
+                            {item.equipmentType}
                           </span>
                           <span className="block text-[10px] text-amber-400 font-mono mt-0.5">
-                            {item.tonnageRequirement} • {item.id}
+                            {item.capacityOrWeight} • {item.id}
                           </span>
                           <span className="block text-[9px] text-zinc-500 font-mono mt-0.5">
                             {item.createdAt}
