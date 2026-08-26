@@ -1,87 +1,88 @@
 /**
- * Shared Type Definitions for Pethona Integrated & Resources LTD (Forklift & Heavy Equipment Dealer)
+ * Shared Type Definitions for Luxury Car Rentals
+ * Location: Adetokunbo Ademola Street, Victoria Island, Lagos 106104, Lagos
  */
 
-export type EquipmentCategoryGroup = "all" | "forklifts" | "heavy_equipment";
-
-export type EquipmentCategory = 
+export type FleetCategory =
   | "all"
-  | "electric_forklift"
-  | "diesel_forklift"
-  | "lpg_forklift"
-  | "warehouse_reach"
-  | "heavyduty_forklift"
-  | "excavator"
-  | "bulldozer"
-  | "wheel_loader"
-  | "backhoe_loader";
+  | "luxury_sedan"
+  | "suv"
+  | "sports_car"
+  | "executive_car"
+  | "exotic_vehicle";
 
-export interface EquipmentSpec {
-  capacityOrWeight: string; // e.g. "2.5 Ton Capacity" or "21.5 Ton Operating Weight"
-  reachOrLiftHeight: string; // e.g. "4,500 mm Mast" or "9.8 m Max Digging Reach"
-  enginePower: string; // e.g. "High-Torque Dual AC Motors" or "110 kW (148 HP) Turbo Diesel"
-  fuelType: string; // e.g. "Electric (48V)" or "Diesel" or "LPG / Dual-Fuel"
-  undercarriageOrTires: string; // e.g. "Solid Industrial Rubber" or "Steel Heavy Tracked" or "Heavy Off-Road Pneumatic"
-  operatingMetric: string; // e.g. "Turning Radius: 2,050mm" or "Bucket Capacity: 1.0 - 1.2 m³"
+export interface VehicleSpecs {
+  seatingCapacity: string; // e.g. "4 - 5 Luxury Leather Seats"
+  transmission: string; // e.g. "Automatic 9-Speed / Dual-Clutch"
+  engineAndPower: string; // e.g. "4.0L Twin-Turbo V8 • 500+ HP"
+  driveType: string; // e.g. "All-Wheel Drive (AWD) / RWD"
+  accelerationOrTopSpeed: string; // e.g. "0-100 km/h in 4.5s" or "Executive Cruising"
+  comfortHighlight: string; // e.g. "Executive Reclining Rear Massage Seats"
 }
 
-export interface EquipmentItem {
+export interface VehicleItem {
   id: string;
   name: string;
-  group: "Forklifts" | "Heavy Equipment";
-  category: EquipmentCategory;
+  category: FleetCategory;
   categoryLabel: string;
   tagline: string;
   shortDescription: string;
   longDescription: string;
-  pricingDisplay: string; // "Contact for Price" or "Request a Quote"
-  imageKey: string;
-  specs: EquipmentSpec;
+  pricingDisplay: string; // "Inquire for Rates" / "Contact for Availability"
+  imageKey: "hero" | "sedan" | "suv" | "sports" | "chauffeur" | "exotic";
+  specs: VehicleSpecs;
   features: string[];
-  recommendedApplications: string[];
+  idealFor: string[];
+  chauffeurAvailable: boolean;
+  selfDriveAvailable: boolean;
   isAvailable: boolean;
+  featured?: boolean;
 }
 
-export interface EquipmentInquiryRequest {
-  id: string;
-  companyName: string;
-  contactPerson: string;
-  contactPhone: string;
-  contactEmail: string;
-  locationInNigeria: string;
-  equipmentType: string;
-  capacityOrWeight: string;
-  operatingEnvironment: string;
-  additionalRequirement?: string;
-  specialNotes: string;
-  status: string;
-  createdAt: string;
-}
-
-// Backward compatibility alias for legacy components if needed
-export interface ForkliftInquiryRequest extends EquipmentInquiryRequest {
-  forkliftType?: string;
-  tonnageRequirement?: string;
-  liftHeight?: string;
-  tirePreference?: string;
-}
-
-export interface SpecificationGuideItem {
+export interface LuxuryServiceItem {
   id: string;
   title: string;
-  category: string;
+  subtitle: string;
   description: string;
-  techHighlight: string;
   iconName: string;
+  badge: string;
+  highlights: string[];
+  recommendedVehicles: string[];
+}
+
+export interface BookingInquiryRequest {
+  id: string;
+  fullName: string;
+  phoneNumber: string;
+  email?: string;
+  desiredVehicle: string;
+  vehicleCategory: string;
+  rentalDate: string;
+  returnDate: string;
+  pickupTime?: string;
+  chauffeurPreference: "Chauffeur-Driven" | "Self-Drive" | "Undecided";
+  pickupLocation: string;
+  additionalRequirements: string;
+  specialNotes?: string;
+  status: "Pending" | "Confirmed" | "Processing";
+  createdAt: string;
 }
 
 export interface TestimonialItem {
   id: string;
-  name: string;
-  role: string;
-  company: string;
-  category: string;
-  text: string;
+  clientName: string;
+  clientTitle: string;
+  organizationOrEvent: string;
+  serviceUsed: string;
+  vehicleRented: string;
+  comment: string;
   rating: number;
-  equipment: string;
+  date: string;
+}
+
+export interface LuxuryStandardItem {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
 }

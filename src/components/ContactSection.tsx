@@ -1,261 +1,203 @@
-import React, { useState } from "react";
-import { Phone, Mail, MapPin, Clock, MessageSquare, ExternalLink, Send, CheckCircle2, Building2, HardHat } from "lucide-react";
-import { PETHONA_BUSINESS_INFO, getWhatsAppUrl } from "../data";
+import React from "react";
+import { 
+  MapPin, 
+  PhoneCall, 
+  MessageSquare, 
+  Mail, 
+  Clock, 
+  Navigation, 
+  Sparkles, 
+  ShieldCheck 
+} from "lucide-react";
+import { BUSINESS_INFO, getWhatsAppUrl } from "../data";
 
 export default function ContactSection() {
-  const [formSent, setFormSent] = useState(false);
-  const [senderName, setSenderName] = useState("");
-  const [senderPhone, setSenderPhone] = useState("");
-  const [senderCategory, setSenderCategory] = useState("Heavy Equipment / Excavator");
-  const [senderMessage, setSenderMessage] = useState("");
-
-  const handleQuickSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!senderName || !senderPhone) return;
-
-    const whatsappMessage = `Hello Pethona Integrated & Resources LTD, my name is ${senderName} (${senderPhone}). Interested in: ${senderCategory}. Inquiry: ${senderMessage || "I'd like information on equipment availability and pricing."}`;
-    window.open(getWhatsAppUrl(whatsappMessage), "_blank");
-    setFormSent(true);
-  };
-
   return (
-    <section id="contact" className="py-20 bg-zinc-950 text-white relative overflow-hidden border-b border-zinc-800">
+    <section id="contact" className="py-24 bg-zinc-950 text-zinc-100 relative border-b border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <span className="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3.5 py-1 rounded-full">
-            Contact & Yard Location
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-black font-sans tracking-tight text-white">
-            Connect with Pethona Integrated & Resources LTD
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <div className="inline-flex items-center space-x-2 bg-zinc-900 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-mono font-semibold text-amber-400 uppercase tracking-wider">
+            <MapPin className="w-3.5 h-3.5 text-amber-400" />
+            <span>Victoria Island Flagship Hub</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-sans tracking-tight text-white">
+            Visit Our Showroom or <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500">
+              Contact Our VIP Concierge
+            </span>
           </h2>
+
           <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
-            Reach out to our equipment sales desk to verify machinery availability, arrange on-site inspections in Idi Oro, Lagos, or request custom quotations.
+            Located on prestigious Adetokunbo Ademola Street in Victoria Island. We welcome in-person vehicle inspections and coordinate instant nationwide dispatch.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
-          {/* Left Column: Dealership Contact Cards */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            {/* Card: Yard Address */}
-            <div className="p-5 bg-zinc-900/90 border border-zinc-800 rounded-2xl flex items-start space-x-4 shadow-md">
-              <div className="p-3 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-xl flex-shrink-0">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div className="space-y-1">
-                <span className="block text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider">
-                  Yard & Office Address
-                </span>
-                <p className="text-sm font-bold text-white font-sans leading-snug">
-                  {PETHONA_BUSINESS_INFO.address}
-                </p>
-                <span className="text-xs text-amber-400 font-mono block">
-                  Postal Code: {PETHONA_BUSINESS_INFO.postalCode}
-                </span>
-                <a
-                  id="directions-link"
-                  href="https://maps.google.com/?q=74+Itire+St+Idi+Oro+Lagos+Nigeria"
-                  target="_blank"
-                  referrerPolicy="no-referrer"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-xs font-bold text-amber-400 hover:text-amber-300 pt-1"
-                >
-                  <span>Open Directions in Google Maps</span>
-                  <ExternalLink className="w-3.5 h-3.5 ml-1" />
-                </a>
-              </div>
-            </div>
-
-            {/* Card: Direct WhatsApp Inquiries */}
-            <div className="p-5 bg-zinc-900/90 border border-zinc-800 rounded-2xl flex items-start space-x-4 shadow-md">
-              <div className="p-3 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-xl flex-shrink-0">
-                <MessageSquare className="w-5 h-5" />
-              </div>
-              <div className="space-y-1">
-                <span className="block text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider">
-                  Direct WhatsApp Sales Desk
-                </span>
-                <p className="text-xs text-zinc-300 font-sans">
-                  Chat directly with our team for immediate equipment availability, machine walkaround photos, and pricing.
-                </p>
-                <div className="pt-2">
-                  <a
-                    id="contact-whatsapp-link"
-                    href={getWhatsAppUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition-all"
-                  >
-                    <MessageSquare className="w-3.5 h-3.5" />
-                    <span>WhatsApp Sales Desk</span>
-                  </a>
+        {/* Contact Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Left Column: Business Location & Contact Details */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+            <div className="bg-zinc-900/90 border border-zinc-800 rounded-2xl p-6 sm:p-8 space-y-6">
+              {/* 1. Prime Address */}
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0 mt-0.5">
+                  <MapPin className="w-6 h-6" />
                 </div>
-              </div>
-            </div>
-
-            {/* Card: Operating Hours */}
-            <div className="p-5 bg-zinc-900/90 border border-zinc-800 rounded-2xl space-y-3 shadow-md">
-              <div className="flex items-center space-x-2 border-b border-zinc-800 pb-2.5">
-                <Clock className="w-4 h-4 text-amber-400" />
-                <h4 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
-                  Yard & Business Hours
-                </h4>
-              </div>
-              <div className="space-y-2 text-xs font-sans">
-                {PETHONA_BUSINESS_INFO.hours.map((h, idx) => (
-                  <div key={idx} className="flex justify-between text-zinc-300">
-                    <span>{h.days}</span>
-                    <span className="font-mono text-zinc-400">{h.times}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column: Direct Message Form & Map */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Quick Send Message Card */}
-            <div className="bg-zinc-900/90 border border-zinc-800 rounded-2xl p-6 sm:p-7 shadow-2xl">
-              <div className="flex items-center space-x-2.5 mb-4 border-b border-zinc-800 pb-3">
-                <Send className="w-5 h-5 text-amber-400" />
-                <h3 className="text-lg font-bold text-white font-sans">
-                  Quick Machinery & Equipment Inquiry
-                </h3>
-              </div>
-
-              {formSent ? (
-                <div className="p-6 bg-emerald-950/40 border border-emerald-500/30 rounded-xl text-center space-y-3">
-                  <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
-                  <h4 className="text-base font-bold text-white">Opening WhatsApp Inquiry...</h4>
-                  <p className="text-xs text-zinc-300">
-                    If WhatsApp did not open automatically, please click below:
+                <div className="space-y-1 text-left">
+                  <span className="text-[11px] font-mono font-semibold text-amber-400 uppercase tracking-wider block">
+                    Showroom & Fleet Dispatch Location
+                  </span>
+                  <h3 className="text-base font-bold text-white font-sans">
+                    {BUSINESS_INFO.address}
+                  </h3>
+                  <p className="text-xs text-zinc-400 font-sans">
+                    Victoria Island, Lagos 106104, Nigeria
                   </p>
+                </div>
+              </div>
+
+              {/* 2. Direct Phone / Call Now */}
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0 mt-0.5">
+                  <PhoneCall className="w-6 h-6" />
+                </div>
+                <div className="space-y-1 text-left">
+                  <span className="text-[11px] font-mono font-semibold text-amber-400 uppercase tracking-wider block">
+                    24/7 Telephone Reservations
+                  </span>
+                  <a
+                    href={`tel:${BUSINESS_INFO.phoneRaw}`}
+                    className="text-base font-bold text-white hover:text-amber-400 transition-colors block"
+                  >
+                    {BUSINESS_INFO.phone}
+                  </a>
+                  <p className="text-xs text-zinc-400">Direct line to Victoria Island VIP concierge</p>
+                </div>
+              </div>
+
+              {/* 3. WhatsApp VIP Desk */}
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0 mt-0.5">
+                  <MessageSquare className="w-6 h-6" />
+                </div>
+                <div className="space-y-1 text-left">
+                  <span className="text-[11px] font-mono font-semibold text-emerald-400 uppercase tracking-wider block">
+                    Instant WhatsApp Support
+                  </span>
                   <a
                     href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block bg-emerald-600 text-white text-xs font-bold px-5 py-2.5 rounded-xl"
+                    className="text-base font-bold text-white hover:text-emerald-400 transition-colors block"
                   >
-                    Open WhatsApp Chat
+                    Chat with Concierge on WhatsApp
                   </a>
+                  <p className="text-xs text-zinc-400">Instant photos, video walkarounds & reservations</p>
                 </div>
-              ) : (
-                <form onSubmit={handleQuickSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-mono font-bold uppercase text-zinc-400 mb-1">
-                        Your Full Name *
-                      </label>
-                      <input
-                        id="contact-name"
-                        type="text"
-                        required
-                        placeholder="e.g. Adebayo Ogunlesi"
-                        value={senderName}
-                        onChange={(e) => setSenderName(e.target.value)}
-                        className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-xs sm:text-sm focus:outline-none focus:border-amber-500"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono font-bold uppercase text-zinc-400 mb-1">
-                        Phone / WhatsApp Number *
-                      </label>
-                      <input
-                        id="contact-phone"
-                        type="tel"
-                        required
-                        placeholder="e.g. 080 1234 5678"
-                        value={senderPhone}
-                        onChange={(e) => setSenderPhone(e.target.value)}
-                        className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-xs sm:text-sm focus:outline-none focus:border-amber-500"
-                      />
-                    </div>
-                  </div>
+              </div>
 
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-zinc-400 mb-1">
-                      Equipment Category of Interest
-                    </label>
-                    <select
-                      id="contact-category"
-                      value={senderCategory}
-                      onChange={(e) => setSenderCategory(e.target.value)}
-                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-xs sm:text-sm focus:outline-none focus:border-amber-500"
-                    >
-                      <option value="Hydraulic Excavator">Heavy Hydraulic Excavator</option>
-                      <option value="Crawler Bulldozer">Crawler Bulldozer</option>
-                      <option value="Articulated Wheel Loader">Articulated Wheel Loader</option>
-                      <option value="Backhoe Loader">Backhoe Loader</option>
-                      <option value="Electric Forklift">Electric Forklift</option>
-                      <option value="Diesel Heavy Forklift">Diesel Industrial Forklift</option>
-                      <option value="LPG Gas Forklift">LPG / Gas Forklift</option>
-                      <option value="Warehouse Reach Truck">Warehouse Reach Truck</option>
-                      <option value="Multiple Machinery Units">Multiple Machinery / Fleet</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono font-bold uppercase text-zinc-400 mb-1">
-                      Equipment Details / Operational Requirements
-                    </label>
-                    <textarea
-                      id="contact-message"
-                      rows={3}
-                      placeholder="Specify required machine tonnage, bucket size, mast height, job site location, or special inquiries..."
-                      value={senderMessage}
-                      onChange={(e) => setSenderMessage(e.target.value)}
-                      className="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-3 text-white font-sans text-xs sm:text-sm focus:outline-none focus:border-amber-500 resize-none"
-                    />
-                  </div>
-
-                  <button
-                    id="contact-submit-btn"
-                    type="submit"
-                    className="w-full inline-flex items-center justify-center space-x-2 bg-amber-500 hover:bg-amber-400 text-zinc-950 font-black font-sans text-xs sm:text-sm py-3.5 px-6 rounded-xl uppercase tracking-wider shadow-lg shadow-amber-500/20 cursor-pointer"
+              {/* 4. Email Concierge */}
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 flex-shrink-0 mt-0.5">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div className="space-y-1 text-left">
+                  <span className="text-[11px] font-mono font-semibold text-amber-400 uppercase tracking-wider block">
+                    Official Email Enquiries
+                  </span>
+                  <a
+                    href={`mailto:${BUSINESS_INFO.email}`}
+                    className="text-base font-bold text-white hover:text-amber-400 transition-colors block"
                   >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>Send via WhatsApp</span>
-                  </button>
-                </form>
-              )}
-            </div>
-
-            {/* Google Map Location Frame */}
-            <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl p-3">
-              <div className="flex justify-between items-center px-2 py-1.5 mb-2">
-                <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest flex items-center">
-                  <MapPin className="w-3.5 h-3.5 text-amber-400 mr-1.5" />
-                  74 Itire St, beside MFM, Idi Oro, Lagos
-                </span>
-                <span className="text-[10px] font-mono text-amber-400 bg-amber-950/40 border border-amber-500/30 px-2 py-0.5 rounded">
-                  Nigeria 100253
-                </span>
+                    {BUSINESS_INFO.email}
+                  </a>
+                  <p className="text-xs text-zinc-400">Corporate retainers, RFP proposals & billing</p>
+                </div>
               </div>
-              <div className="h-56 w-full rounded-xl overflow-hidden bg-zinc-950 border border-zinc-800">
-                <iframe
-                  id="google-maps-iframe"
-                  title="Pethona Integrated & Resources LTD Yard Idi Oro Lagos"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.124599182373!2d3.356230!3d6.529810!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8c5a2c4e3a5f%3A0x629c1b72e12a938!2sItire%20Rd%2C%20Idi%20Oro%2C%20Lagos!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={false}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full grayscale opacity-80 hover:opacity-100 transition-opacity duration-300"
-                ></iframe>
+
+              {/* 5. Operating Hours */}
+              <div className="flex items-start space-x-4 pt-2 border-t border-zinc-800">
+                <div className="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-zinc-300 flex-shrink-0 mt-0.5">
+                  <Clock className="w-6 h-6 text-amber-400" />
+                </div>
+                <div className="space-y-1 text-left">
+                  <span className="text-[11px] font-mono font-semibold text-zinc-400 uppercase tracking-wider block">
+                    Operating Schedule
+                  </span>
+                  <p className="text-xs font-bold text-white">24 Hours a Day • 7 Days a Week</p>
+                  <p className="text-xs text-zinc-400">Chauffeurs and vehicle deliveries active around the clock</p>
+                </div>
               </div>
             </div>
 
+            {/* Quick Action CTA Box */}
+            <div className="grid grid-cols-2 gap-3">
+              <a
+                id="contact-call-btn"
+                href={`tel:${BUSINESS_INFO.phoneRaw}`}
+                className="flex items-center justify-center space-x-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-100 font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-colors"
+              >
+                <PhoneCall className="w-4 h-4 text-amber-400" />
+                <span>Call Now</span>
+              </a>
+
+              <a
+                id="contact-whatsapp-btn"
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-colors"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>WhatsApp Us</span>
+              </a>
+            </div>
           </div>
 
-        </div>
+          {/* Right Column: Victoria Island Map & Location Visualizer */}
+          <div className="lg:col-span-7 bg-zinc-900/90 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+            {/* Map Header */}
+            <div className="p-4 sm:p-5 border-b border-zinc-800 flex justify-between items-center bg-zinc-950/60">
+              <div className="flex items-center space-x-2 text-left">
+                <Navigation className="w-4 h-4 text-amber-400" />
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-200">
+                  Victoria Island, Lagos Showroom Map
+                </span>
+              </div>
+              <span className="text-[10px] font-mono text-amber-400 bg-amber-950/50 border border-amber-500/30 px-2 py-0.5 rounded">
+                Live Location
+              </span>
+            </div>
 
+            {/* Google Map Iframe Embed */}
+            <div className="relative w-full h-[400px] lg:h-full min-h-[380px] bg-zinc-950">
+              <iframe
+                title="Luxury Car Rentals Victoria Island Location Map"
+                src="https://maps.google.com/maps?q=Adetokunbo+Ademola+Street,+Victoria+Island,+Lagos,+Nigeria&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)" }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
+              ></iframe>
+
+              {/* Map Floating Location Card */}
+              <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-sm bg-zinc-950/95 border border-zinc-800 p-4 rounded-xl shadow-2xl backdrop-blur-md text-left space-y-1.5">
+                <div className="flex items-center space-x-1.5 text-[11px] font-mono font-bold text-amber-400 uppercase">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>Flagship Office</span>
+                </div>
+                <h4 className="text-xs font-bold text-white">Adetokunbo Ademola Street, Victoria Island</h4>
+                <p className="text-[11px] text-zinc-400">
+                  Easy access from Eko Hotel & Suites, Victoria Island commercial hub, and Ikoyi via Falomo Bridge.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
