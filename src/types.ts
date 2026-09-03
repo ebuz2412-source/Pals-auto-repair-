@@ -1,88 +1,78 @@
-/**
- * Shared Type Definitions for Luxury Car Rentals
- * Location: Adetokunbo Ademola Street, Victoria Island, Lagos 106104, Lagos
- */
-
-export type FleetCategory =
-  | "all"
-  | "luxury_sedan"
-  | "suv"
-  | "sports_car"
-  | "executive_car"
-  | "exotic_vehicle";
-
-export interface VehicleSpecs {
-  seatingCapacity: string; // e.g. "4 - 5 Luxury Leather Seats"
-  transmission: string; // e.g. "Automatic 9-Speed / Dual-Clutch"
-  engineAndPower: string; // e.g. "4.0L Twin-Turbo V8 • 500+ HP"
-  driveType: string; // e.g. "All-Wheel Drive (AWD) / RWD"
-  accelerationOrTopSpeed: string; // e.g. "0-100 km/h in 4.5s" or "Executive Cruising"
-  comfortHighlight: string; // e.g. "Executive Reclining Rear Massage Seats"
-}
-
-export interface VehicleItem {
-  id: string;
+export interface EstieBusinessInfo {
   name: string;
-  category: FleetCategory;
-  categoryLabel: string;
   tagline: string;
-  shortDescription: string;
-  longDescription: string;
-  pricingDisplay: string; // "Inquire for Rates" / "Contact for Availability"
-  imageKey: "hero" | "sedan" | "suv" | "sports" | "chauffeur" | "exotic";
-  specs: VehicleSpecs;
-  features: string[];
-  idealFor: string[];
-  chauffeurAvailable: boolean;
-  selfDriveAvailable: boolean;
-  isAvailable: boolean;
-  featured?: boolean;
+  motto: string;
+  type: string;
+  address: string;
+  landmark: string;
+  city: string;
+  state: string;
+  country: string;
+  rating: number;
+  reviewCount: number;
+  phone: string;
+  phoneRaw: string;
+  whatsappNumber: string;
+  email: string;
+  openingHours: string;
 }
 
-export interface LuxuryServiceItem {
+export interface EstieService {
   id: string;
   title: string;
-  subtitle: string;
-  description: string;
+  category: "design" | "windows" | "furnishings" | "flooring";
+  categoryLabel: string;
+  shortDescription: string;
+  fullDescription: string;
+  image: string;
   iconName: string;
-  badge: string;
-  highlights: string[];
-  recommendedVehicles: string[];
+  features: string[];
+  materialsOrOptions: string[];
+  idealFor: string;
 }
 
-export interface BookingInquiryRequest {
+export interface PortfolioProject {
   id: string;
-  fullName: string;
-  phoneNumber: string;
-  email?: string;
-  desiredVehicle: string;
-  vehicleCategory: string;
-  rentalDate: string;
-  returnDate: string;
-  pickupTime?: string;
-  chauffeurPreference: "Chauffeur-Driven" | "Self-Drive" | "Undecided";
-  pickupLocation: string;
-  additionalRequirements: string;
-  specialNotes?: string;
-  status: "Pending" | "Confirmed" | "Processing";
-  createdAt: string;
+  title: string;
+  category: string;
+  location: string;
+  year: string;
+  description: string;
+  image: string;
+  clientType: "Residential" | "Commercial" | "Hospitality";
+  servicesIncluded: string[];
+  highlights: string[];
 }
 
-export interface TestimonialItem {
+export interface GalleryItem {
+  id: string;
+  title: string;
+  category: "all" | "living" | "window-treatments" | "bedding" | "flooring" | "commercial";
+  categoryLabel: string;
+  image: string;
+  caption: string;
+}
+
+export interface ClientReview {
   id: string;
   clientName: string;
   clientTitle: string;
-  organizationOrEvent: string;
-  serviceUsed: string;
-  vehicleRented: string;
-  comment: string;
+  location: string;
   rating: number;
+  projectType: string;
   date: string;
+  reviewText: string;
 }
 
-export interface LuxuryStandardItem {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
+export interface ConsultationRequest {
+  fullName: string;
+  phone: string;
+  email: string;
+  locationInLagos: string;
+  serviceNeeded: string;
+  propertyType: "Residential Apartment/Villa" | "Commercial Office" | "Hotel/Shortlet" | "New Construction" | "Renovation";
+  estimatedRooms: string;
+  timeline: string;
+  consultationPreference: "Sangotedo Showroom Visit" | "On-Site Space Assessment" | "Virtual Consultation via WhatsApp";
+  notes: string;
 }
