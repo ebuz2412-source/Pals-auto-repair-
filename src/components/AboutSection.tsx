@@ -1,15 +1,13 @@
 import React from "react";
 import { 
-  MapPin, 
   Sparkles, 
   Check, 
-  Ruler, 
-  ShieldCheck, 
-  Layers, 
   Star,
-  ArrowRight
+  ArrowRight,
+  Maximize2,
+  Calendar
 } from "lucide-react";
-import { ESTIE_BUSINESS_INFO, ESTIE_IMAGES, getWhatsAppUrl } from "../data";
+import { SPACEBOUND_BUSINESS_INFO, SPACEBOUND_IMAGES } from "../data";
 
 interface AboutSectionProps {
   onBookConsultation: () => void;
@@ -28,8 +26,8 @@ export default function AboutSection({ onBookConsultation, onExploreServices }: 
               {/* Primary Studio Image */}
               <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-[#E7E2D8] shadow-lg bg-[#EFE9DF]">
                 <img
-                  src={ESTIE_IMAGES.showroomTextures}
-                  alt="Estie Interior Studio & Fabric Selection in Sangotedo Lagos"
+                  src={SPACEBOUND_IMAGES.cabinetryHardware}
+                  alt="Spacebound Interiors Bespoke Cabinetry & Hardware Craftsmanship in Lagos"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
@@ -44,27 +42,27 @@ export default function AboutSection({ onBookConsultation, onExploreServices }: 
                 </div>
                 <div className="font-serif text-2xl font-bold text-[#1C1917]">5.0 Rating</div>
                 <p className="text-xs text-[#7D7569] font-sans mt-1">
-                  Verified excellence by homeowners, architects, and corporate executives across Lagos.
+                  Rated 5.0 stars with verified client appreciation for custom spaces, precision joinery, and tailored interior elegance.
                 </p>
               </div>
 
               {/* Location Tag */}
               <div className="absolute top-4 left-4 bg-[#1C1917]/90 text-[#FAF8F5] px-3.5 py-1.5 text-[11px] font-mono tracking-wider uppercase backdrop-blur-sm">
-                Sangotedo Showroom
+                Ajah, Lagos Studio
               </div>
             </div>
 
             {/* Micro Details Grid */}
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="p-4 bg-white border border-[#E7E2D8] text-left">
-                <span className="font-serif text-2xl font-normal text-[#B5905C] block">100%</span>
-                <span className="text-xs font-semibold text-[#1C1917] block uppercase tracking-wider">Custom Tailoring</span>
-                <p className="text-[11px] text-[#7D7569] mt-0.5">Every curtain, blind, and headboard made to measure.</p>
+                <span className="font-serif text-2xl font-normal text-[#B5905C] block">Custom</span>
+                <span className="text-xs font-semibold text-[#1C1917] block uppercase tracking-wider">Tailored Spaces</span>
+                <p className="text-[11px] text-[#7D7569] mt-0.5">Personalized residential and commercial design solutions.</p>
               </div>
               <div className="p-4 bg-white border border-[#E7E2D8] text-left">
-                <span className="font-serif text-2xl font-normal text-[#B5905C] block">Km 46</span>
-                <span className="text-xs font-semibold text-[#1C1917] block uppercase tracking-wider">Lekki-Epe Axis</span>
-                <p className="text-[11px] text-[#7D7569] mt-0.5">Beside Safeway Hospital, serving all of Lagos.</p>
+                <span className="font-serif text-2xl font-normal text-[#B5905C] block">Ajah</span>
+                <span className="text-xs font-semibold text-[#1C1917] block uppercase tracking-wider">Abraham Adesanya</span>
+                <p className="text-[11px] text-[#7D7569] mt-0.5">Serving discerning clients across Lagos, Nigeria.</p>
               </div>
             </div>
           </div>
@@ -73,21 +71,21 @@ export default function AboutSection({ onBookConsultation, onExploreServices }: 
           <div className="lg:col-span-6 space-y-6 text-left">
             <div className="inline-flex items-center space-x-2 bg-white border border-[#E7E2D8] px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#B5905C] uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-[#B5905C]" />
-              <span>About Estie Interior</span>
+              <span>About Spacebound Interiors</span>
             </div>
 
             <div className="space-y-3">
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1C1917] tracking-tight leading-tight">
-                Where Architectural Vision Meets <br />
-                <span className="italic text-[#B5905C] font-light">Artisanal Finishing</span>
+                Where Modern Elegance Meets <br />
+                <span className="italic text-[#B5905C] font-light">Artisanal Craftsmanship</span>
               </h2>
 
               <p className="text-sm sm:text-base text-[#5E574F] font-sans font-light leading-relaxed">
-                Located on the bustling Lekki-Epe corridor in Sangotedo, <strong>ESTIE INTERIOR</strong> is a premier interior design and bespoke window treatment studio dedicated to elevating Nigerian homes, corporate headquarters, and luxury developments.
+                Located in <strong>Estate, Abraham Adesanya, Ajah, Lagos</strong>, <strong>Spacebound Interiors</strong> is a premium interior design studio creating refined, highly personalized environments for distinguished homeowners and forward-thinking businesses.
               </p>
 
               <p className="text-xs sm:text-sm text-[#7D7569] font-sans leading-relaxed">
-                We believe exceptional spaces are born from thoughtful restraint, tactile materials, and precise execution. From custom ripple-fold sheer drapery that filters tropical sunlight to motorized architectural blinds, tailored commercial suites, and imported European flooring, every project is executed with obsessive craftsmanship.
+                We believe exceptional interior design transcends transient trends. By combining architectural spatial balance, honest materiality, bespoke cabinetry, and curated hardware, we orchestrate spaces that feel effortless, warm, and deeply personal. Every bedroom retreat, dining salon, custom walk-in wardrobe, and commercial suite is realized with uncompromising attention to detail.
               </p>
             </div>
 
@@ -99,10 +97,10 @@ export default function AboutSection({ onBookConsultation, onExploreServices }: 
                 </div>
                 <div>
                   <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1C1917]">
-                    End-to-End Window Treatment Expertise
+                    Personalized Interior Solutions
                   </h4>
                   <p className="text-xs text-[#7D7569]">
-                    Specialized in all kinds of windows—double-volume curtains, smart motorized shades, Basswood blinds, and architectural pelmets.
+                    Each project begins with deep listening to uncover your daily rituals, aesthetic affinities, and lifestyle or commercial workflow requirements.
                   </p>
                 </div>
               </div>
@@ -113,10 +111,10 @@ export default function AboutSection({ onBookConsultation, onExploreServices }: 
                 </div>
                 <div>
                   <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1C1917]">
-                    Commercial & Residential Versatility
+                    Bespoke Cabinetry & Architectural Hardware
                   </h4>
                   <p className="text-xs text-[#7D7569]">
-                    Seamlessly bridging high-traffic corporate offices, boutique retail spaces, and serene private master sanctuaries.
+                    Specialized in precision millwork, fluted timber joinery, custom walk-in wardrobes, and hand-finished bronze and brass hardware.
                   </p>
                 </div>
               </div>
@@ -127,10 +125,10 @@ export default function AboutSection({ onBookConsultation, onExploreServices }: 
                 </div>
                 <div>
                   <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1C1917]">
-                    Sangotedo Showroom & Physical Fabric Library
+                    Residential Sanctuaries & Commercial Prestige
                   </h4>
                   <p className="text-xs text-[#7D7569]">
-                    Visit our studio beside Safeway Hospital to feel texture swatches, test motorization systems, and discuss your blueprints in person.
+                    Bridging tranquil private master bedrooms and dramatic dining salons with commanding corporate boardrooms and executive suites.
                   </p>
                 </div>
               </div>
@@ -142,7 +140,7 @@ export default function AboutSection({ onBookConsultation, onExploreServices }: 
                 onClick={onBookConsultation}
                 className="bg-[#1C1917] hover:bg-[#2B2723] text-[#FAF8F5] px-7 py-3.5 text-xs font-semibold tracking-[0.14em] uppercase border border-[#1C1917] hover:border-[#B5905C] transition-all cursor-pointer flex items-center space-x-2"
               >
-                <span>Book a Consultation</span>
+                <span>Request Consultation</span>
                 <ArrowRight className="w-4 h-4 text-[#B5905C]" />
               </button>
 

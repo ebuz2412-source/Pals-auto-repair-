@@ -4,11 +4,10 @@ import {
   Sparkles, 
   ArrowRight, 
   Check, 
-  Layers, 
   Calendar,
   X
 } from "lucide-react";
-import { ESTIE_PORTFOLIO_PROJECTS, getWhatsAppUrl } from "../data";
+import { SPACEBOUND_PORTFOLIO_PROJECTS } from "../data";
 import { PortfolioProject } from "../types";
 
 interface PortfolioSectionProps {
@@ -25,22 +24,22 @@ export default function PortfolioSection({ onBookConsultation }: PortfolioSectio
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center space-x-2 bg-white border border-[#E7E2D8] px-3.5 py-1.5 rounded-full text-xs font-mono font-medium text-[#B5905C] uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-[#B5905C]" />
-            <span>Curated Portfolio</span>
+            <span>Selected Portfolio</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1C1917] tracking-tight leading-tight">
-            Selected Projects & <br />
-            <span className="italic text-[#B5905C] font-light">Architectural Spaces</span>
+            Curated Spaces & <br />
+            <span className="italic text-[#B5905C] font-light">Architectural Interiors</span>
           </h2>
 
           <p className="text-sm sm:text-base text-[#5E574F] font-sans font-light leading-relaxed">
-            Explore our recent residential sanctuaries and commercial developments completed across Sangotedo, Lekki Phase 1, Ikoyi, and Pinnock Beach Estate in Lagos.
+            Explore our curated residential sanctuaries, bespoke cabinetry installations, and commercial environments in Abraham Adesanya, Ajah, and across Lagos.
           </p>
         </div>
 
         {/* Portfolio Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {ESTIE_PORTFOLIO_PROJECTS.map((project) => (
+          {SPACEBOUND_PORTFOLIO_PROJECTS.map((project) => (
             <div
               key={project.id}
               id={`portfolio-card-${project.id}`}
@@ -86,8 +85,8 @@ export default function PortfolioSection({ onBookConsultation }: PortfolioSectio
 
                 {/* Highlights */}
                 <div className="space-y-1.5 pt-2 border-t border-[#EFECE6]">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#7D7569] font-bold block">
-                    Execution Highlights
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#7D7569] font-semibold block">
+                    Execution Highlights:
                   </span>
                   <ul className="space-y-1 text-xs text-[#1C1917]">
                     {project.highlights.map((h, i) => (
@@ -145,35 +144,39 @@ export default function PortfolioSection({ onBookConsultation }: PortfolioSectio
 
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 bg-white/90 text-[#1C1917] hover:text-[#B5905C] transition-colors shadow-sm cursor-pointer"
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#1C1917]/80 hover:bg-[#1C1917] text-white flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Close modal"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
 
               <div className="absolute bottom-4 left-6 right-6">
-                <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold block">
-                  {selectedProject.location} • {selectedProject.year}
+                <span className="bg-[#1C1917] text-[#FAF8F5] text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 font-semibold">
+                  {selectedProject.category}
                 </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917] mt-2">
                   {selectedProject.title}
                 </h3>
+                <span className="text-xs font-mono text-[#7D7569]">
+                  {selectedProject.location}
+                </span>
               </div>
             </div>
 
-            {/* Modal Content */}
-            <div className="p-6 sm:p-8 space-y-5">
+            {/* Modal Body */}
+            <div className="p-6 sm:p-8 space-y-6">
               <div>
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-1.5">
+                <h4 className="text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-2">
                   Project Narrative
                 </h4>
-                <p className="text-sm text-[#4A453E] leading-relaxed font-sans font-light">
+                <p className="text-sm text-[#4A453E] font-sans font-light leading-relaxed">
                   {selectedProject.description}
                 </p>
               </div>
 
               <div>
                 <h4 className="text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-2">
-                  Scope of Work Delivered
+                  Services Delivered
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.servicesIncluded.map((serv, i) => (
@@ -204,18 +207,11 @@ export default function PortfolioSection({ onBookConsultation }: PortfolioSectio
                     setSelectedProject(null);
                     onBookConsultation();
                   }}
-                  className="flex-1 bg-[#1C1917] hover:bg-[#2B2723] text-[#FAF8F5] py-3 px-4 text-xs font-semibold tracking-[0.14em] uppercase border border-[#1C1917] hover:border-[#B5905C] transition-all cursor-pointer text-center"
+                  className="w-full bg-[#1C1917] hover:bg-[#2B2723] text-[#FAF8F5] py-3.5 px-4 text-xs font-semibold tracking-[0.14em] uppercase border border-[#1C1917] hover:border-[#B5905C] transition-all cursor-pointer text-center flex items-center justify-center space-x-2"
                 >
-                  Consult on Similar Project
+                  <Calendar className="w-3.5 h-3.5 text-[#B5905C]" />
+                  <span>Consult on a Similar Project</span>
                 </button>
-                <a
-                  href={getWhatsAppUrl(`Hello ESTIE INTERIOR, I am inquiring about your portfolio project: "${selectedProject.title}". I would like a quote for a similar installation in Lagos.`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-[#2E7D32] hover:bg-[#1B5E20] text-white py-3 px-4 text-xs font-semibold tracking-[0.14em] uppercase transition-all flex items-center justify-center space-x-2 text-center"
-                >
-                  <span>WhatsApp Inquire</span>
-                </a>
               </div>
             </div>
           </div>

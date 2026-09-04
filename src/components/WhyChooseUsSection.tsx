@@ -4,13 +4,11 @@ import {
   MapPin, 
   ShieldCheck, 
   Sparkles, 
-  Ruler, 
   Clock, 
   Star, 
-  Quote,
-  CheckCircle2
+  Maximize2
 } from "lucide-react";
-import { WHY_ESTIE_PILLARS, ESTIE_REVIEWS, ESTIE_BUSINESS_INFO } from "../data";
+import { WHY_SPACEBOUND_PILLARS, SPACEBOUND_REVIEWS, SPACEBOUND_BUSINESS_INFO } from "../data";
 
 export default function WhyChooseUsSection() {
   const getPillarIcon = (iconName: string) => {
@@ -23,8 +21,8 @@ export default function WhyChooseUsSection() {
         return <ShieldCheck className="w-5 h-5 text-[#B5905C]" />;
       case "Sparkles":
         return <Sparkles className="w-5 h-5 text-[#B5905C]" />;
-      case "Ruler":
-        return <Ruler className="w-5 h-5 text-[#B5905C]" />;
+      case "Maximize2":
+        return <Maximize2 className="w-5 h-5 text-[#B5905C]" />;
       case "Clock":
         return <Clock className="w-5 h-5 text-[#B5905C]" />;
       default:
@@ -40,22 +38,22 @@ export default function WhyChooseUsSection() {
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center space-x-2 bg-white border border-[#E7E2D8] px-3.5 py-1.5 rounded-full text-xs font-mono font-medium text-[#B5905C] uppercase tracking-wider">
             <Award className="w-3.5 h-3.5 text-[#B5905C]" />
-            <span>Why Choose Estie Interior</span>
+            <span>Why Spacebound Interiors</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1C1917] tracking-tight leading-tight">
-            Uncompromising Standards & <br />
-            <span className="italic text-[#B5905C] font-light">Flawless Lagos Execution</span>
+            Artisanal Standards & <br />
+            <span className="italic text-[#B5905C] font-light">Enduring Lagos Craftsmanship</span>
           </h2>
 
           <p className="text-sm sm:text-base text-[#5E574F] font-sans font-light leading-relaxed">
-            Our 5.0-star reputation is built on meticulous measurement, authentic materials, on-time project completion, and a physical design studio in Sangotedo where you can touch and feel every finish.
+            Our 5.0-star rating is founded on personalized spatial discovery, millimeter-precision cabinetry, honest material selection, and dedicated execution in Abraham Adesanya, Ajah, and across Lagos.
           </p>
         </div>
 
         {/* 6 Core Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
-          {WHY_ESTIE_PILLARS.map((pillar, idx) => (
+          {WHY_SPACEBOUND_PILLARS.map((pillar, idx) => (
             <div
               key={idx}
               className="bg-white p-7 border border-[#E7E2D8] hover:border-[#B5905C] transition-all duration-300 shadow-2xs hover:shadow-md text-left space-y-3"
@@ -80,13 +78,13 @@ export default function WhyChooseUsSection() {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-8 border-b border-[#EFECE6]">
             <div className="space-y-2">
               <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold">
-                Client Testimonials
+                Client Testimonial
               </span>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
                 Rated 5.0 Stars by Discerning Clients
               </h3>
               <p className="text-xs sm:text-sm text-[#7D7569]">
-                Verified reviews from homeowners, commercial managers, and architects in Lagos.
+                Verified feedback celebrating our custom spaces, bespoke cabinetry, and modern interior execution in Lagos.
               </p>
             </div>
 
@@ -102,24 +100,24 @@ export default function WhyChooseUsSection() {
                   ))}
                 </div>
                 <div className="text-[11px] font-mono text-[#7D7569] uppercase tracking-wider mt-0.5">
-                  Based on 4 Verified Reviews
+                  5.0 Stars (1 Review)
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 4 Verified Reviews Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
-            {ESTIE_REVIEWS.map((rev) => (
+          {/* 1 Verified Review Showcase */}
+          <div className="pt-8">
+            {SPACEBOUND_REVIEWS.map((rev) => (
               <div
                 key={rev.id}
-                className="bg-[#FAF8F5] p-6 border border-[#E7E2D8] flex flex-col justify-between space-y-4"
+                className="bg-[#FAF8F5] p-6 sm:p-8 border border-[#E7E2D8] flex flex-col justify-between space-y-5"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-[#B5905C]">
                       {[...Array(rev.rating)].map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 fill-[#B5905C]" />
+                        <Star key={i} className="w-4 h-4 fill-[#B5905C]" />
                       ))}
                     </div>
                     <span className="text-[11px] font-mono text-[#7D7569]">
@@ -127,22 +125,23 @@ export default function WhyChooseUsSection() {
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-[#4A453E] font-sans italic leading-relaxed">
+                  <p className="text-sm sm:text-base text-[#4A453E] font-sans italic leading-relaxed">
                     "{rev.reviewText}"
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#E7E2D8] flex items-center justify-between text-left">
+                <div className="pt-4 border-t border-[#E7E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-left">
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-[#1C1917]">
                       {rev.clientName}
                     </h4>
-                    <span className="text-[11px] text-[#7D7569] block">
+                    <span className="text-xs text-[#7D7569] block">
                       {rev.clientTitle} • {rev.location}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono bg-white px-2 py-0.5 border border-[#E7E2D8] text-[#B5905C] font-medium uppercase">
-                    Verified
+
+                  <span className="text-[11px] font-mono bg-white border border-[#E7E2D8] px-3 py-1 text-[#B5905C] self-start sm:self-auto">
+                    {rev.projectType}
                   </span>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-export interface EstieBusinessInfo {
+export interface SpaceboundBusinessInfo {
   name: string;
   tagline: string;
   motto: string;
@@ -8,19 +8,16 @@ export interface EstieBusinessInfo {
   city: string;
   state: string;
   country: string;
+  postalCode: string;
   rating: number;
   reviewCount: number;
-  phone: string;
-  phoneRaw: string;
-  whatsappNumber: string;
-  email: string;
   openingHours: string;
 }
 
-export interface EstieService {
+export interface SpaceboundService {
   id: string;
   title: string;
-  category: "design" | "windows" | "furnishings" | "flooring";
+  category: "bedroom" | "cabinetry" | "commercial" | "dining";
   categoryLabel: string;
   shortDescription: string;
   fullDescription: string;
@@ -30,6 +27,9 @@ export interface EstieService {
   materialsOrOptions: string[];
   idealFor: string;
 }
+
+export type EstieBusinessInfo = SpaceboundBusinessInfo;
+export type EstieService = SpaceboundService;
 
 export interface PortfolioProject {
   id: string;
@@ -47,7 +47,7 @@ export interface PortfolioProject {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: "all" | "living" | "window-treatments" | "bedding" | "flooring" | "commercial";
+  category: "all" | "bedroom" | "cabinetry" | "commercial" | "dining" | "living";
   categoryLabel: string;
   image: string;
   caption: string;
@@ -73,6 +73,6 @@ export interface ConsultationRequest {
   propertyType: "Residential Apartment/Villa" | "Commercial Office" | "Hotel/Shortlet" | "New Construction" | "Renovation";
   estimatedRooms: string;
   timeline: string;
-  consultationPreference: "Sangotedo Showroom Visit" | "On-Site Space Assessment" | "Virtual Consultation via WhatsApp";
+  consultationPreference: "Studio Visit in Abraham Adesanya, Ajah" | "On-Site Space Assessment" | "Digital Concept Review";
   notes: string;
 }

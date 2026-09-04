@@ -1,14 +1,16 @@
 import React from "react";
 import { 
   MapPin, 
-  MessageSquare, 
   ArrowRight, 
   Star, 
   Sparkles, 
-  Check, 
-  Eye 
+  Eye,
+  Calendar,
+  Layers,
+  Building2,
+  Maximize2
 } from "lucide-react";
-import { ESTIE_BUSINESS_INFO, ESTIE_IMAGES, getWhatsAppUrl } from "../data";
+import { SPACEBOUND_BUSINESS_INFO, SPACEBOUND_IMAGES } from "../data";
 
 interface HeroProps {
   onExploreServices: () => void;
@@ -29,18 +31,18 @@ export default function Hero({ onExploreServices, onBookConsultation, onViewPort
           <div className="inline-flex items-center space-x-2 bg-white/90 border border-[#E7E2D8] px-3.5 py-1.5 rounded-full shadow-xs">
             <MapPin className="w-3.5 h-3.5 text-[#B5905C]" />
             <span className="text-xs font-medium text-[#4A453E] tracking-wider uppercase">
-              Sangotedo, Lagos
+              Abraham Adesanya, Ajah, Lagos
             </span>
           </div>
 
-          {/* 5.0 Star Rating & Craftsmanship Note */}
+          {/* 5.0 Star Rating Indicator */}
           <div className="inline-flex items-center space-x-2 bg-white/90 border border-[#E7E2D8] px-3.5 py-1.5 rounded-full shadow-xs text-xs font-medium text-[#4A453E]">
             <div className="flex items-center text-[#B5905C]">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-3.5 h-3.5 fill-[#B5905C]" />
               ))}
             </div>
-            <span>5.0 Stars (4 Verified Client Reviews)</span>
+            <span>5.0 Stars (1 Review)</span>
           </div>
         </div>
 
@@ -49,24 +51,24 @@ export default function Hero({ onExploreServices, onBookConsultation, onViewPort
           {/* Tagline Label */}
           <div className="inline-block">
             <span className="text-xs font-medium tracking-[0.28em] text-[#B5905C] uppercase font-sans border-b border-[#B5905C]/40 pb-1">
-              ESTIE INTERIOR • BESPOKE DESIGN & WINDOW DRESSING
+              SPACEBOUND INTERIORS • INTERIOR DESIGNER
             </span>
           </div>
 
-          {/* Headline as requested: "Transform Your Space Into Something Extraordinary" */}
+          {/* Headline */}
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#1C1917] tracking-tight leading-[1.08]">
-            Transform Your Space Into <br className="hidden sm:inline" />
-            <span className="italic font-light text-[#B5905C]">Something Extraordinary</span>
+            Crafting Elegant Interiors & <br className="hidden sm:inline" />
+            <span className="italic font-light text-[#B5905C]">Custom Modern Spaces</span>
           </h1>
 
-          {/* Subheadline as requested */}
+          {/* Subheadline emphasizing elegant interiors, custom spaces, craftsmanship, modern design, and personalized solutions */}
           <p className="max-w-2xl mx-auto text-base sm:text-lg text-[#5E574F] font-sans font-light leading-relaxed">
-            Elegant interior design, window treatments and décor solutions tailored to create beautiful, comfortable spaces.
+            Premier interior design studio based in Abraham Adesanya, Ajah, Lagos. We craft personalized bedroom retreats, bespoke cabinetry & hardware, high-performance commercial environments, and timeless dining rooms.
           </p>
 
           {/* Call to Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            {/* Primary CTA: "Explore Our Services" */}
+            {/* Primary CTA */}
             <button
               id="hero-explore-services-btn"
               onClick={onExploreServices}
@@ -76,34 +78,32 @@ export default function Hero({ onExploreServices, onBookConsultation, onViewPort
               <ArrowRight className="w-4 h-4 text-[#B5905C] group-hover:translate-x-1 transition-transform" />
             </button>
 
-            {/* Secondary CTA: "Chat on WhatsApp" */}
-            <a
-              id="hero-whatsapp-btn"
-              href={getWhatsAppUrl("Hello ESTIE INTERIOR, I saw your showroom on the website and would like to inquire about interior design / window treatments for my space.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto bg-white hover:bg-[#F5F1EA] text-[#1C1917] px-8 py-4 text-xs font-semibold tracking-[0.16em] uppercase border border-[#D6CABE] hover:border-[#B5905C] transition-all duration-200 shadow-xs flex items-center justify-center space-x-2.5"
-            >
-              <MessageSquare className="w-4 h-4 text-[#2E7D32]" />
-              <span>Chat on WhatsApp</span>
-            </a>
-
-            {/* Direct Consultation Link */}
+            {/* Secondary CTA */}
             <button
+              id="hero-consultation-btn"
               onClick={onBookConsultation}
+              className="w-full sm:w-auto bg-white hover:bg-[#F5F1EA] text-[#1C1917] px-8 py-4 text-xs font-semibold tracking-[0.16em] uppercase border border-[#D6CABE] hover:border-[#B5905C] transition-all duration-200 shadow-xs flex items-center justify-center space-x-2.5 cursor-pointer"
+            >
+              <Calendar className="w-4 h-4 text-[#B5905C]" />
+              <span>Request Consultation</span>
+            </button>
+
+            {/* Direct Portfolio Link */}
+            <button
+              onClick={onViewPortfolio}
               className="text-xs font-semibold tracking-[0.14em] uppercase text-[#7D7569] hover:text-[#1C1917] underline underline-offset-8 transition-colors py-2 cursor-pointer"
             >
-              Or Book Consultation
+              View Selected Portfolio
             </button>
           </div>
         </div>
 
-        {/* Full-width Stunning Hero Photography Container */}
+        {/* Full-width Hero Photography Container */}
         <div className="relative rounded-none sm:rounded-2xl overflow-hidden border border-[#E7E2D8] shadow-xl bg-[#EDE7DD] group">
           <div className="relative aspect-[16/9] sm:aspect-[21/10] w-full overflow-hidden">
             <img
-              src={ESTIE_IMAGES.hero}
-              alt="Estie Interior Luxury Living Space & Bespoke Window Drapery in Lagos"
+              src={SPACEBOUND_IMAGES.hero}
+              alt="Spacebound Interiors Luxury Contemporary Interior Design in Lagos"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-1000 ease-out"
             />
@@ -115,10 +115,10 @@ export default function Hero({ onExploreServices, onBookConsultation, onViewPort
             <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
               <div className="bg-[#FAF8F5]/90 backdrop-blur-md px-4 py-2 border border-white/60 shadow-md">
                 <span className="block text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold">
-                  Showroom Flagship
+                  Interior Design Studio
                 </span>
                 <span className="block font-serif text-sm sm:text-base font-bold text-[#1C1917]">
-                  Km 46 Lekki-Epe Express Way, Sangotedo
+                  Estate, Abraham Adesanya, Ajah, Lagos
                 </span>
               </div>
             </div>
@@ -127,10 +127,10 @@ export default function Hero({ onExploreServices, onBookConsultation, onViewPort
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-wrap items-end justify-between gap-3 text-white">
               <div className="space-y-1 max-w-xl text-left">
                 <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-[#E4DCD0] font-semibold block">
-                  Signature Philosophy
+                  Design Philosophy
                 </span>
                 <p className="font-serif text-lg sm:text-2xl font-normal text-white drop-shadow-sm">
-                  “Luxury interiors. Beautiful spaces. Exceptional finishing.”
+                  “{SPACEBOUND_BUSINESS_INFO.tagline}”
                 </p>
               </div>
 
@@ -147,53 +147,65 @@ export default function Hero({ onExploreServices, onBookConsultation, onViewPort
           </div>
         </div>
 
-        {/* 4 Feature Value Pillars below hero */}
+        {/* 4 Core Services Value Pillars below hero */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
-          <div className="bg-white p-5 border border-[#E7E2D8] text-left space-y-1.5 shadow-2xs">
-            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
-              Bespoke Windows
-            </span>
-            <h4 className="font-serif text-base font-medium text-[#1C1917]">
-              Curtains & Automated Blinds
-            </h4>
-            <p className="text-xs text-[#7D7569] leading-relaxed">
-              Tailored sheer drapery, blackout velvets, and smart motorized shading.
-            </p>
-          </div>
-
-          <div className="bg-white p-5 border border-[#E7E2D8] text-left space-y-1.5 shadow-2xs">
-            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
-              Commercial Design
-            </span>
-            <h4 className="font-serif text-base font-medium text-[#1C1917]">
-              Offices, Boardrooms & Retail
-            </h4>
-            <p className="text-xs text-[#7D7569] leading-relaxed">
-              Productive, high-prestige executive environments along the Lekki corridor.
-            </p>
-          </div>
-
-          <div className="bg-white p-5 border border-[#E7E2D8] text-left space-y-1.5 shadow-2xs">
-            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
-              Surfaces & Finishing
-            </span>
-            <h4 className="font-serif text-base font-medium text-[#1C1917]">
-              Flooring Selection
-            </h4>
-            <p className="text-xs text-[#7D7569] leading-relaxed">
-              Herringbone oak timber, Italian porcelain slabs, and luxury SPC tiles.
-            </p>
-          </div>
-
-          <div className="bg-white p-5 border border-[#E7E2D8] text-left space-y-1.5 shadow-2xs">
+          <div 
+            onClick={onExploreServices}
+            className="bg-white p-5 border border-[#E7E2D8] hover:border-[#B5905C] text-left space-y-1.5 shadow-2xs cursor-pointer transition-all"
+          >
             <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
               Sanctuary Living
             </span>
             <h4 className="font-serif text-base font-medium text-[#1C1917]">
-              Custom Bedding Ensembles
+              Bedroom Design
             </h4>
             <p className="text-xs text-[#7D7569] leading-relaxed">
-              Egyptian cotton sheets, custom headboards, and plush tailored cushions.
+              Custom floating bedframes, acoustic wall paneling & architectural lighting.
+            </p>
+          </div>
+
+          <div 
+            onClick={onExploreServices}
+            className="bg-white p-5 border border-[#E7E2D8] hover:border-[#B5905C] text-left space-y-1.5 shadow-2xs cursor-pointer transition-all"
+          >
+            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
+              Bespoke Joinery
+            </span>
+            <h4 className="font-serif text-base font-medium text-[#1C1917]">
+              Cabinetry & Hardware
+            </h4>
+            <p className="text-xs text-[#7D7569] leading-relaxed">
+              Walk-in wardrobes, luxury millwork & curated artisan architectural hardware.
+            </p>
+          </div>
+
+          <div 
+            onClick={onExploreServices}
+            className="bg-white p-5 border border-[#E7E2D8] hover:border-[#B5905C] text-left space-y-1.5 shadow-2xs cursor-pointer transition-all"
+          >
+            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
+              Executive Spaces
+            </span>
+            <h4 className="font-serif text-base font-medium text-[#1C1917]">
+              Commercial Interior Design
+            </h4>
+            <p className="text-xs text-[#7D7569] leading-relaxed">
+              Corporate headquarters, executive boardrooms & brand reception lounges.
+            </p>
+          </div>
+
+          <div 
+            onClick={onExploreServices}
+            className="bg-white p-5 border border-[#E7E2D8] hover:border-[#B5905C] text-left space-y-1.5 shadow-2xs cursor-pointer transition-all"
+          >
+            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
+              Culinary Elegance
+            </span>
+            <h4 className="font-serif text-base font-medium text-[#1C1917]">
+              Dining Room Design
+            </h4>
+            <p className="text-xs text-[#7D7569] leading-relaxed">
+              Travertine stone tables, sculptural seating, wine credenzas & lighting.
             </p>
           </div>
         </div>

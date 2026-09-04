@@ -7,7 +7,7 @@ import {
   ChevronRight,
   Maximize2
 } from "lucide-react";
-import { ESTIE_GALLERY } from "../data";
+import { SPACEBOUND_GALLERY } from "../data";
 import { GalleryItem } from "../types";
 
 export default function GallerySection() {
@@ -15,8 +15,8 @@ export default function GallerySection() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filteredItems = activeFilter === "all"
-    ? ESTIE_GALLERY
-    : ESTIE_GALLERY.filter(item => item.category === activeFilter);
+    ? SPACEBOUND_GALLERY
+    : SPACEBOUND_GALLERY.filter(item => item.category === activeFilter);
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -51,12 +51,12 @@ export default function GallerySection() {
           </div>
 
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1C1917] tracking-tight leading-tight">
-            Design & Window <br />
-            <span className="italic text-[#B5905C] font-light">Treatment Gallery</span>
+            Interior Architecture & <br />
+            <span className="italic text-[#B5905C] font-light">Craftsmanship Gallery</span>
           </h2>
 
           <p className="text-sm sm:text-base text-[#5E574F] font-sans font-light leading-relaxed">
-            A glimpse into the textures, draping, automated blinds, and architectural finishes designed and installed by ESTIE INTERIOR.
+            A visual curation of custom bedroom sanctuaries, bespoke fluted cabinetry, statement dining salons, and executive commercial environments by Spacebound Interiors.
           </p>
         </div>
 
@@ -64,11 +64,11 @@ export default function GallerySection() {
         <div className="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 mb-10 gap-2 no-scrollbar">
           {[
             { id: "all", label: "All Works" },
-            { id: "window-treatments", label: "Window Treatments" },
-            { id: "bedding", label: "Bespoke Bedding" },
+            { id: "bedroom", label: "Bedroom Design" },
+            { id: "cabinetry", label: "Cabinetry & Hardware" },
+            { id: "commercial", label: "Commercial Design" },
+            { id: "dining", label: "Dining Room Design" },
             { id: "living", label: "Living Spaces" },
-            { id: "commercial", label: "Commercial Offices" },
-            { id: "flooring", label: "Flooring Selection" },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -84,7 +84,7 @@ export default function GallerySection() {
           ))}
         </div>
 
-        {/* Masonry / Grid Gallery */}
+        {/* Grid Gallery */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredItems.map((item, index) => (
             <div
@@ -119,13 +119,6 @@ export default function GallerySection() {
                   </p>
                 </div>
               </div>
-
-              {/* Static subtle label on bottom when not hovered */}
-              <div className="absolute bottom-0 inset-x-0 bg-[#1C1917]/60 backdrop-blur-xs py-2 px-3 text-left group-hover:opacity-0 transition-opacity">
-                <span className="text-[10px] font-mono tracking-wider uppercase text-[#E4DCD0] block truncate">
-                  {item.title}
-                </span>
-              </div>
             </div>
           ))}
         </div>
@@ -135,56 +128,67 @@ export default function GallerySection() {
       {lightboxIndex !== null && filteredItems[lightboxIndex] && (
         <div
           id="gallery-lightbox"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1C1917]/90 backdrop-blur-sm p-4 select-none animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1C1917]/90 backdrop-blur-md p-4 animate-in fade-in duration-200"
           onClick={closeLightbox}
         >
-          <button
-            onClick={closeLightbox}
-            className="absolute top-6 right-6 p-2.5 text-white/80 hover:text-white bg-black/40 rounded-full cursor-pointer z-10"
-            aria-label="Close lightbox"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevLightbox}
-            className="absolute left-4 sm:left-8 p-3 text-white/80 hover:text-white bg-black/40 hover:bg-black/60 rounded-full cursor-pointer z-10 transition-colors"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-
-          <button
-            onClick={nextLightbox}
-            className="absolute right-4 sm:right-8 p-3 text-white/80 hover:text-white bg-black/40 hover:bg-black/60 rounded-full cursor-pointer z-10 transition-colors"
-            aria-label="Next image"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Center Image Container */}
           <div
-            className="max-w-4xl w-full max-h-[85vh] flex flex-col items-center"
+            className="relative max-w-4xl w-full max-h-[90vh] flex flex-col bg-[#1C1917] border border-[#2D2926] shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative max-h-[75vh] w-auto overflow-hidden rounded-sm border border-white/20 shadow-2xl">
+            {/* Top Toolbar */}
+            <div className="p-4 flex items-center justify-between border-b border-[#2D2926] text-white">
+              <div className="text-left">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C]">
+                  {filteredItems[lightboxIndex].categoryLabel}
+                </span>
+                <h4 className="font-serif text-lg font-bold text-white">
+                  {filteredItems[lightboxIndex].title}
+                </h4>
+              </div>
+
+              <div className="flex items-center space-x-3">
+                <span className="text-xs font-mono text-[#A89F91]">
+                  {lightboxIndex + 1} / {filteredItems.length}
+                </span>
+                <button
+                  onClick={closeLightbox}
+                  className="p-2 text-[#D6CABE] hover:text-white cursor-pointer"
+                  aria-label="Close lightbox"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Lightbox Image Stage */}
+            <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-black flex items-center justify-center overflow-hidden">
               <img
                 src={filteredItems[lightboxIndex].image}
                 alt={filteredItems[lightboxIndex].title}
                 referrerPolicy="no-referrer"
-                className="max-h-[75vh] max-w-full object-contain"
+                className="w-full h-full object-contain"
               />
+
+              {/* Prev / Next buttons */}
+              <button
+                onClick={prevLightbox}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#1C1917]/70 hover:bg-[#1C1917] text-white flex items-center justify-center backdrop-blur-xs transition-colors cursor-pointer"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                onClick={nextLightbox}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#1C1917]/70 hover:bg-[#1C1917] text-white flex items-center justify-center backdrop-blur-xs transition-colors cursor-pointer"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
 
-            {/* Caption Bar */}
-            <div className="mt-4 text-center max-w-xl text-white space-y-1">
-              <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold">
-                {filteredItems[lightboxIndex].categoryLabel} ({lightboxIndex + 1} of {filteredItems.length})
-              </span>
-              <h3 className="font-serif text-lg sm:text-xl font-bold">
-                {filteredItems[lightboxIndex].title}
-              </h3>
+            {/* Bottom Caption */}
+            <div className="p-4 bg-[#1C1917] text-left">
               <p className="text-xs text-[#D6CABE] font-sans">
                 {filteredItems[lightboxIndex].caption}
               </p>

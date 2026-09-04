@@ -3,13 +3,12 @@ import {
   Menu, 
   X, 
   MapPin, 
-  Phone, 
-  MessageSquare, 
   Calendar, 
   Star,
-  Sparkles
+  Sparkles,
+  Compass
 } from "lucide-react";
-import { ESTIE_BUSINESS_INFO, getWhatsAppUrl } from "../data";
+import { SPACEBOUND_BUSINESS_INFO } from "../data";
 
 interface NavbarProps {
   onSectionScroll: (sectionId: string) => void;
@@ -56,33 +55,27 @@ export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarPr
           <div className="flex items-center space-x-4">
             <span className="flex items-center space-x-1">
               <MapPin className="w-3.5 h-3.5 text-[#B5905C]" />
-              <span>Km 46 Lekki-Epe Express Way, Beside Safeway Hospital, Sangotedo, Lagos</span>
+              <span>Estate, Abraham Adesanya, Ajah, Lagos 106104, Nigeria</span>
             </span>
             <span className="inline-block w-1 h-1 rounded-full bg-[#D6CABE]"></span>
             <span className="flex items-center space-x-1 text-[#1C1917] font-medium">
               <Star className="w-3.5 h-3.5 fill-[#B5905C] text-[#B5905C]" />
-              <span>5.0 Star Rating (4 Verified Reviews)</span>
+              <span>5.0 Star Rating (1 Review)</span>
             </span>
           </div>
 
           <div className="flex items-center space-x-4">
-            <a
-              href={`tel:${ESTIE_BUSINESS_INFO.phoneRaw}`}
-              className="hover:text-[#B5905C] transition-colors flex items-center space-x-1"
-            >
-              <Phone className="w-3 h-3 text-[#B5905C]" />
-              <span>{ESTIE_BUSINESS_INFO.phone}</span>
-            </a>
+            <span className="text-[#8C8275] tracking-wider uppercase font-mono text-[10px]">
+              Interior Designer • Bespoke Spaces
+            </span>
             <span className="text-[#D6CABE]">|</span>
-            <a
-              href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#B5905C] transition-colors flex items-center space-x-1 text-[#2E7D32]"
+            <button
+              onClick={() => handleNavClick("contact")}
+              className="hover:text-[#B5905C] transition-colors flex items-center space-x-1 cursor-pointer text-[#1C1917] font-medium"
             >
-              <MessageSquare className="w-3 h-3" />
-              <span>WhatsApp Showroom</span>
-            </a>
+              <Compass className="w-3 h-3 text-[#B5905C]" />
+              <span>Studio Location & Hours</span>
+            </button>
           </div>
         </div>
       </div>
@@ -94,15 +87,15 @@ export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarPr
             onClick={() => handleNavClick("hero")}
             className="cursor-pointer group flex items-center space-x-3 text-left"
           >
-            <div className="w-10 h-10 rounded-sm bg-[#1C1917] text-[#FAF8F5] flex items-center justify-center font-serif text-lg tracking-widest border border-[#B5905C]/40 shadow-sm group-hover:border-[#B5905C] transition-colors">
-              E
+            <div className="w-10 h-10 rounded-xs bg-[#1C1917] text-[#FAF8F5] flex items-center justify-center font-serif text-lg tracking-widest border border-[#B5905C]/40 shadow-sm group-hover:border-[#B5905C] transition-colors">
+              S
             </div>
             <div>
-              <span className="block font-serif text-xl sm:text-2xl font-bold tracking-[0.18em] text-[#1C1917] leading-none uppercase">
-                ESTIE INTERIOR
+              <span className="block font-serif text-xl sm:text-2xl font-bold tracking-[0.16em] text-[#1C1917] leading-none uppercase">
+                SPACEBOUND INTERIORS
               </span>
               <span className="block text-[9px] font-sans tracking-[0.25em] text-[#B5905C] uppercase font-semibold mt-1">
-                Luxury Spaces • Sangotedo, Lagos
+                Interior Designer • Abraham Adesanya, Ajah
               </span>
             </div>
           </div>
@@ -120,7 +113,7 @@ export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarPr
             ))}
           </nav>
 
-          {/* Action CTA: Book a Consultation */}
+          {/* Action CTA: Request a Consultation */}
           <div className="hidden sm:flex items-center space-x-3">
             <button
               id="nav-book-consultation-btn"
@@ -128,7 +121,7 @@ export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarPr
               className="bg-[#1C1917] hover:bg-[#2B2723] text-[#FAF8F5] border border-[#1C1917] hover:border-[#B5905C] px-5 py-2.5 rounded-none text-xs tracking-[0.14em] font-semibold uppercase transition-all duration-200 shadow-sm cursor-pointer flex items-center space-x-2"
             >
               <Calendar className="w-3.5 h-3.5 text-[#B5905C]" />
-              <span>Book a Consultation</span>
+              <span>Request Consultation</span>
             </button>
           </div>
 
@@ -166,25 +159,23 @@ export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarPr
                 onBookConsultation();
                 setMobileMenuOpen(false);
               }}
-              className="w-full bg-[#1C1917] text-[#FAF8F5] py-3 text-xs tracking-[0.14em] font-semibold uppercase text-center flex items-center justify-center space-x-2"
+              className="w-full bg-[#1C1917] text-[#FAF8F5] py-3 text-xs tracking-[0.14em] font-semibold uppercase text-center flex items-center justify-center space-x-2 cursor-pointer"
             >
               <Calendar className="w-4 h-4 text-[#B5905C]" />
-              <span>Book a Consultation</span>
+              <span>Request Consultation</span>
             </button>
 
-            <a
-              href={getWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full bg-[#2E7D32] text-white py-3 text-xs tracking-[0.14em] font-semibold uppercase text-center flex items-center justify-center space-x-2"
+            <button
+              onClick={() => handleNavClick("contact")}
+              className="w-full bg-white text-[#1C1917] border border-[#D6CABE] py-3 text-xs tracking-[0.14em] font-semibold uppercase text-center flex items-center justify-center space-x-2 cursor-pointer"
             >
-              <MessageSquare className="w-4 h-4" />
-              <span>Chat on WhatsApp</span>
-            </a>
+              <MapPin className="w-4 h-4 text-[#B5905C]" />
+              <span>View Location in Ajah</span>
+            </button>
           </div>
 
           <div className="text-[11px] text-[#7D7569] pt-2 text-center">
-            Km 46 Lekki-Epe Express Way, Beside Safeway Hospital, Sangotedo, Lagos
+            Estate, Abraham Adesanya, Ajah, Lagos 106104, Nigeria
           </div>
         </div>
       )}

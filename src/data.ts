@@ -1,404 +1,304 @@
 import { 
-  EstieBusinessInfo, 
-  EstieService, 
+  SpaceboundBusinessInfo, 
+  SpaceboundService, 
   PortfolioProject, 
   GalleryItem, 
   ClientReview 
 } from "./types";
 
-// Local high-fidelity AI-generated luxury assets
-import heroGeneratedImg from "./assets/images/estie_hero_interior_1788461305260.jpg";
-import windowGeneratedImg from "./assets/images/estie_window_treatment_1788461322535.jpg";
-import beddingGeneratedImg from "./assets/images/estie_luxury_bedding_1788461338211.jpg";
-import modernBlindsImg from "./assets/images/estie_modern_blinds_1788461922317.jpg";
-import windowDesignImg from "./assets/images/estie_window_design_1788461939605.jpg";
-import allWindowsImg from "./assets/images/estie_all_windows_1788461953390.jpg";
-import oakFlooringImg from "./assets/images/estie_oak_flooring_1788461967163.jpg";
-import studioShowroomImg from "./assets/images/estie_design_studio_1788461993928.jpg";
+// High-fidelity curated luxury interior assets
+import heroLivingImg from "./assets/images/estie_hero_interior_1788461305260.jpg";
+import bedroomDesignImg from "./assets/images/spacebound_bedroom_design_1788547951678.jpg";
+import cabinetryHardwareImg from "./assets/images/spacebound_cabinetry_hardware_1788547919385.jpg";
+import diningDesignImg from "./assets/images/spacebound_dining_design_1788547934444.jpg";
 
-export const ESTIE_IMAGES = {
-  hero: heroGeneratedImg,
-  windowTreatment: windowGeneratedImg,
-  luxuryBedding: beddingGeneratedImg,
-  modernBlinds: modernBlindsImg,
-  architecturalWindows: windowDesignImg,
-  allWindows: allWindowsImg,
-  flooringHardwood: oakFlooringImg,
-  showroomTextures: studioShowroomImg,
-  
-  // Handpicked high-end architectural and interior photography
-  curtainsDrapery: windowGeneratedImg,
+export const SPACEBOUND_IMAGES = {
+  hero: heroLivingImg,
+  bedroomDesign: bedroomDesignImg,
+  cabinetryHardware: cabinetryHardwareImg,
+  diningDesign: diningDesignImg,
   commercialOffice: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-  luxuryLivingRoom: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",
-  diningElegance: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80",
-  minimalistStudio: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
+  modernLiving: heroLivingImg,
+  loungeDetail: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80",
+  architecturalPantry: cabinetryHardwareImg,
 };
 
-export const ESTIE_BUSINESS_INFO: EstieBusinessInfo = {
-  name: "ESTIE INTERIOR",
-  tagline: "Luxury interiors. Beautiful spaces. Exceptional finishing.",
-  motto: "Transform Your Space Into Something Extraordinary",
-  type: "Interior Designer / Interior Décor & Window Treatment Business",
-  address: "Km 46 Lekki-Epe Express Way, Beside Safeway Hospital, Sangotedo, East, Lagos, Nigeria",
-  landmark: "Beside Safeway Hospital, Km 46 Lekki-Epe Expressway",
-  city: "Sangotedo, Lekki",
+// Backward-compatible alias for existing components
+export const ESTIE_IMAGES = SPACEBOUND_IMAGES;
+
+export const SPACEBOUND_BUSINESS_INFO: SpaceboundBusinessInfo = {
+  name: "Spacebound Interiors",
+  tagline: "Refined Interiors. Bespoke Craftsmanship. Modern Living.",
+  motto: "Transforming Spaces with Enduring Elegance & Personalized Design",
+  type: "Interior Designer",
+  address: "Estate, Abraham Adesanya, Ajah, Lagos 106104, Lagos, Nigeria",
+  landmark: "Estate, Abraham Adesanya, Ajah",
+  city: "Ajah",
   state: "Lagos State",
   country: "Nigeria",
+  postalCode: "106104",
   rating: 5.0,
-  reviewCount: 4,
-  phone: "+234 814 628 4099",
-  phoneRaw: "+2348146284099",
-  whatsappNumber: "+2348146284099",
-  email: "contact@estieinterior.com",
-  openingHours: "Monday – Saturday: 8:30 AM – 6:30 PM (Sundays by appointment)",
+  reviewCount: 1,
+  openingHours: "Monday – Saturday: 9:00 AM – 6:00 PM (Consultations by Appointment)",
 };
 
-export const ESTIE_SERVICES: EstieService[] = [
+// Backward-compatible alias
+export const ESTIE_BUSINESS_INFO = SPACEBOUND_BUSINESS_INFO;
+
+export const SPACEBOUND_SERVICES: SpaceboundService[] = [
+  {
+    id: "bedroom-design",
+    title: "Bedroom Design",
+    category: "bedroom",
+    categoryLabel: "Bedroom Design",
+    shortDescription: "Tailored master suites and tranquil bedroom sanctuaries combining custom floating bedframes, acoustic feature paneling, architectural lighting, and refined textiles.",
+    fullDescription: "Your bedroom should be an intimate sanctuary of restorative luxury. At Spacebound Interiors, we design personalized bedroom retreats that balance serenity, tactile warmth, and spatial balance. From custom-engineered upholstered headboards and fluted wood feature walls with concealed LED channels to bespoke nightstands and layered acoustic drapery, every element is curated to reflect your personal lifestyle.",
+    image: SPACEBOUND_IMAGES.bedroomDesign,
+    iconName: "BedDouble",
+    features: [
+      "Custom upholstered floating beds & integrated feature headboards",
+      "Architectural ambient, accent & low-glare task lighting schemes",
+      "Concealed acoustic wall panels & motorized blackout window drapery",
+      "Bespoke bedside floating vanities & built-in reading sconces",
+      "Textile curation spanning long-staple cottons, silks & boucle textures"
+    ],
+    materialsOrOptions: ["Smoked Oak Veneer", "Italian Bouclé Upholstery", "Brushed Brass Sconces", "Acoustic Suede Paneling"],
+    idealFor: "Master Bedroom Suites, Penthouse Sanctuaries, Guest Havens & Luxury Residences"
+  },
+  {
+    id: "cabinetry-and-hardware-design",
+    title: "Cabinetry & Hardware Design",
+    category: "cabinetry",
+    categoryLabel: "Cabinetry & Hardware",
+    shortDescription: "Precision-crafted architectural millwork, bespoke walk-in wardrobes, luxury kitchen joinery, and custom artisan hardware details.",
+    fullDescription: "Exceptional cabinetry is the backbone of enduring interior architecture. Spacebound Interiors designs, details, and oversees the fabrication of bespoke cabinetry systems tailored to millimeter tolerances. We specify premium marine-grade hardwoods, fluted timber veneers, soft-close Blum mechanisms, and hand-finished knurled brass, bronze, and gunmetal hardware to deliver tactile luxury with seamless functional storage.",
+    image: SPACEBOUND_IMAGES.cabinetryHardware,
+    iconName: "Maximize2",
+    features: [
+      "Custom walk-in dressing rooms & illuminated glass-front wardrobes",
+      "Architectural kitchen joinery with concealed appliances & hidden pantries",
+      "Bespoke living room media units, fluted consoles & floating credenzas",
+      "Curated artisan hardware: knurled brass, patinated bronze & leather pulls",
+      "Integrated motion-sensor internal LED lighting & organizers"
+    ],
+    materialsOrOptions: ["Fluted White Oak", "Brushed Knurled Brass", "Bronze Patina Hardware", "Tinted Fluted Glass"],
+    idealFor: "Walk-in Closets, Luxury Kitchens, Executive Studies & Custom Living Joinery"
+  },
   {
     id: "commercial-interior-design",
     title: "Commercial Interior Design",
-    category: "design",
+    category: "commercial",
     categoryLabel: "Commercial Design",
-    shortDescription: "Sophisticated corporate offices, luxury retail boutiques, healthcare suites, and executive boardrooms built for productivity and prestige.",
-    fullDescription: "We design tailored commercial environments that elevate your brand identity while enhancing workflow and client impressions. From corporate headquarters along the Lekki corridor to boutique clinics and executive lounges in Lagos, our turnkey service encompasses space planning, ergonomic furniture curation, acoustic treatments, and custom lighting.",
-    image: ESTIE_IMAGES.commercialOffice,
+    shortDescription: "Elevated corporate headquarters, executive boardrooms, boutique private practices, and reception lounges designed to embody brand prestige and productivity.",
+    fullDescription: "We craft sophisticated commercial spaces that project corporate authority and stimulate innovation. Spacebound Interiors transforms commercial footprints along the Ajah, Lekki, and Lagos business corridors into high-performance environments. Our comprehensive scope spans spatial ergonomics, acoustic zoning, executive furniture curation, brand-aligned reception statement pieces, and durable commercial finishes.",
+    image: SPACEBOUND_IMAGES.commercialOffice,
     iconName: "Building2",
     features: [
-      "Executive boardroom & office space planning",
-      "Bespoke commercial reception & lounge fabrication",
-      "Acoustic paneling & architectural lighting",
-      "Durable high-traffic luxury materials & finishes",
-      "Full project supervision & turnkey handover"
+      "Executive boardroom & collaborative workspace space planning",
+      "Bespoke reception lounges, reception desks & architectural feature entries",
+      "High-performance acoustic ceiling baffles & wall treatments",
+      "Commercial-grade durable luxury surfaces & scratch-resistant finishes",
+      "Turnkey project supervision, code compliance & phased handover"
     ],
-    materialsOrOptions: ["Acoustic wall felt", "Commercial grade quartz", "Tempered fluted glass", "Ergonomic leather"],
-    idealFor: "Corporate Offices, Tech Hubs, Law Firms, Clinics & Luxury Retail Showrooms"
+    materialsOrOptions: ["Acoustic Timber Felt", "Calacatta Quartz Slabs", "Architectural Aluminum", "Full-Grain Executive Leather"],
+    idealFor: "Corporate Headquarters, Tech Firms, Law Offices, Executive Boardrooms & Boutique Clinics"
   },
   {
-    id: "curtains",
-    title: "Curtains & Bespoke Drapery",
-    category: "windows",
-    categoryLabel: "Curtains & Drapery",
-    shortDescription: "Hand-tailored custom drapery, sheer cascades, wave fold linens, and blackout velvets crafted to frame your architectural windows.",
-    fullDescription: "Curtains define the soul of a luxury room. At ESTIE INTERIOR, we handcraft custom curtains using premium imported linens, French sheer weaves, rich velvets, and textured jacquards. Engineered with custom ripple-fold tracks, ceiling recesses, and double-track systems for effortless layering and light management.",
-    image: ESTIE_IMAGES.windowTreatment,
-    iconName: "Layers",
+    id: "dining-room-design",
+    title: "Dining Room Design",
+    category: "dining",
+    categoryLabel: "Dining Room Design",
+    shortDescription: "Sculptural dining suites, statement stone tables, bespoke wine credenzas, and ambient illumination designed for memorable culinary gatherings.",
+    fullDescription: "The dining room is the social centerpiece of a sophisticated home. Spacebound Interiors designs magnetic dining environments that blend intimacy with dramatic presence. We orchestrate custom-proportioned travertine and marble dining tables, sculptural seating, bespoke buffet credenzas, and statement architectural chandeliers to create an unforgettable setting for entertaining family and esteemed guests.",
+    image: SPACEBOUND_IMAGES.diningDesign,
+    iconName: "Sparkles",
     features: [
-      "Floor-to-ceiling ripple fold & pinch pleat styling",
-      "Luxury sheer linen daylight filtering curtains",
-      "Thermal blackout lining for restful bedrooms",
-      "Custom ceiling-recessed and motorized curtain tracks",
-      "Expert precision measurement & professional on-site hanging"
+      "Custom dining table fabrication in natural travertine, marble & solid timber",
+      "Ergonomic, sculptural designer dining chair curation and upholstery",
+      "Statement architectural chandeliers & warm layered dimmer circuits",
+      "Custom wall finishes, fluted boiserie & curated contemporary art curation",
+      "Integrated wine display credenzas & concealed service cabinetry"
     ],
-    materialsOrOptions: ["Pure Turkish linen", "Belgian velvet", "Airy French sheers", "Lined blackout sateen"],
-    idealFor: "Living Rooms, Master Bedrooms, Dining Suites & High-Ceiling Villas"
-  },
-  {
-    id: "blinds",
-    title: "Luxury Blinds & Automated Shading",
-    category: "windows",
-    categoryLabel: "Window Blinds",
-    shortDescription: "Motorized zebra blinds, real wood Venetian slats, roller shades, and vertical sheer panels designed for contemporary light control.",
-    fullDescription: "Experience modern minimalism with our extensive collection of luxury window blinds. From motorized zebra shades that seamlessly transition between daylight and privacy to genuine Basswood Venetian blinds and blackout roller cassettes, our window shades integrate with smart home remotes and wall switches.",
-    image: ESTIE_IMAGES.modernBlinds,
-    iconName: "SlidersHorizontal",
-    features: [
-      "Smart motorized blinds (remote & wall switch control)",
-      "Day & Night zebra / combi blinds with precision alignment",
-      "Natural Basswood Venetian blinds with 50mm slats",
-      "UV-protective solar screen roller shades",
-      "Custom color-matched cassettes and bottom rails"
-    ],
-    materialsOrOptions: ["Natural Basswood", "Anti-static fabric", "UV-block solar weave", "Aluminum headrails"],
-    idealFor: "Modern Living Areas, Home Offices, Bathrooms & Contemporary Penthouses"
-  },
-  {
-    id: "window-design",
-    title: "Window Design & Architectural Styling",
-    category: "windows",
-    categoryLabel: "Architectural Windows",
-    shortDescription: "Harmonizing window proportions, architectural moldings, motorized transoms, and cohesive glazing layouts for seamless interior aesthetics.",
-    fullDescription: "Windows are the focal point of interior daylight. Our window design service analyzes your room's natural sun trajectory, window sill depths, and room proportions to design custom treatment layouts. We consult on pelmet framing, decorative valances, hidden motorization channels, and custom drapery hardware finishes.",
-    image: ESTIE_IMAGES.architecturalWindows,
-    iconName: "Compass",
-    features: [
-      "Architectural window assessment & light trajectory analysis",
-      "Custom pelmet boxes & recessed ceiling pocket detailing",
-      "Arched, bay, corner, and double-volume window solutions",
-      "Bespoke brass, champagne, and matte black drapery hardware",
-      "Coordination with architects and building contractors"
-    ],
-    materialsOrOptions: ["Architectural pelmets", "Custom curved tracks", "Champagne gold rods", "Concealed motorized bays"],
-    idealFor: "Architectural Homes, Double-Height Foyers, Arched Windows & Penthouse Glazing"
-  },
-  {
-    id: "windows-and-window-treatments",
-    title: "All Kinds of Windows & Window Treatments",
-    category: "windows",
-    categoryLabel: "Complete Window Solutions",
-    shortDescription: "Complete end-to-end window solutions—from custom structural glazing and privacy films to complete multi-layered drapery ensembles.",
-    fullDescription: "No window specification is beyond our Sangotedo showroom. We supply, customize, and install every class of window treatment available in modern architecture. Whether your project requires frosted smart glass, sunscreen films, soundproofing seals, plantation shutters, or dual blackout-sheer combinations, ESTIE INTERIOR delivers uncompromising precision.",
-    image: ESTIE_IMAGES.allWindows,
-    iconName: "Maximize2",
-    features: [
-      "Comprehensive catalog of residential & commercial window dressings",
-      "Custom plantation shutters & timber louvers",
-      "Architectural window films (frosted, solar rejection, security)",
-      "Sound-dampening acoustic drapery systems",
-      "Flawless on-site laser measurement and lifetime installation guarantee"
-    ],
-    materialsOrOptions: ["Plantation timber", "Ceramic solar film", "Dual-roller cassettes", "Acoustic interlinings"],
-    idealFor: "Entire Residential Estates, New Developments, Hotels & Waterfront Properties"
-  },
-  {
-    id: "flooring-selection",
-    title: "Flooring Selection & Surface Finishing",
-    category: "flooring",
-    categoryLabel: "Flooring & Surfaces",
-    shortDescription: "Curated European hardwood, engineered herringbone timber, porcelain marble slabs, and plush bespoke area rugs.",
-    fullDescription: "The foundation of an unforgettable room is underfoot. ESTIE INTERIOR guides clients through premium flooring selections suited for the Lagos climate. We specify moisture-resistant engineered oak, Italian porcelain stoneware, seamless microcement, and custom-loomed wool rugs that anchor your furniture with warmth and sophistication.",
-    image: ESTIE_IMAGES.flooringHardwood,
-    iconName: "Grid",
-    features: [
-      "Engineered oak & teak herringbone wood parquet",
-      "Large-format Italian & Spanish porcelain tiles",
-      "Luxury vinyl tiles (LVT) with authentic timber texture",
-      "Custom sized hand-tufted wool & silk area rugs",
-      "Subfloor moisture barrier testing & precision installation"
-    ],
-    materialsOrOptions: ["European White Oak", "Calacatta Gold porcelain", "Embossed SPC/LVT", "Pure New Zealand wool"],
-    idealFor: "Living Salons, Dining Areas, Executive Suites & Master Bedrooms"
-  },
-  {
-    id: "bedding",
-    title: "Bespoke Bedding & Bedroom Textiles",
-    category: "furnishings",
-    categoryLabel: "Bespoke Bedding",
-    shortDescription: "Custom upholstered headboards, Egyptian cotton duvets, silk-blend throw pillows, and tailored bed-runners for sanctuary sleeping.",
-    fullDescription: "Your bedroom should be your private five-star retreat. Our bedding design service custom-crafts luxury bedding ensembles to match your room's aesthetic. We source 800+ thread-count Egyptian cotton, washed French flax linens, handcrafted quilted coverlets, custom bolster pillows, and padded headboards tailored to your exact dimensions.",
-    image: ESTIE_IMAGES.luxuryBedding,
-    iconName: "BedDouble",
-    features: [
-      "Custom upholstered headboards & padded wall panels",
-      "800–1000 thread-count long-staple Egyptian cotton sheets",
-      "Handcrafted accent cushions, bolsters & velvet bed runners",
-      "Hypoallergenic down-alternative duvets & memory pillows",
-      "Color-coordinated ensembles matching your window curtains"
-    ],
-    materialsOrOptions: ["Egyptian long-staple cotton", "Washed Belgian linen", "Mulberry silk trims", "Boucle upholstery"],
-    idealFor: "Master Bedroom Suites, Guest Sanctuaries, Honeymoon Suites & Shortlets"
+    materialsOrOptions: ["Roman Travertine", "Nero Marquina Marble", "Solid Walnut", "Brushed Champagne Bronze"],
+    idealFor: "Formal Dining Rooms, Open-Concept Living/Dining Salons & Luxury Penthouse Suites"
   }
 ];
 
-export const ESTIE_PORTFOLIO_PROJECTS: PortfolioProject[] = [
+// Backward-compatible alias
+export const ESTIE_SERVICES = SPACEBOUND_SERVICES;
+
+export const SPACEBOUND_PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
-    id: "sangotedo-contemporary-villa",
-    title: "The Sangotedo Sanctuary Villa",
-    category: "Full Residential Interior & Window Design",
-    location: "Sangotedo, Lekki Corridor, Lagos",
+    id: "abraham-adesanya-master-sanctuary",
+    title: "The Abraham Adesanya Sanctuary",
+    category: "Master Bedroom & Custom Cabinetry Design",
+    location: "Abraham Adesanya Estate, Ajah, Lagos",
     year: "2025",
-    description: "Turnkey interior styling for a 5-bedroom contemporary villa, featuring double-height motorized sheer curtains, Basswood blinds, herringbone oak flooring, and custom master bedding.",
-    image: ESTIE_IMAGES.hero,
+    description: "A private primary bedroom suite featuring bespoke fluted oak wall paneling, a floating upholstered bedframe, and an integrated walk-in dressing wardrobe with knurled brass hardware.",
+    image: SPACEBOUND_IMAGES.bedroomDesign,
     clientType: "Residential",
-    servicesIncluded: ["Window Design", "Curtains", "Blinds", "Flooring Selection", "Bedding"],
-    highlights: ["Double-height 6-meter motorized ripple drapery", "European oak flooring", "Custom upholstered bed suite"]
+    servicesIncluded: ["Bedroom Design", "Cabinetry & Hardware Design"],
+    highlights: ["Concealed linear LED headboard backlighting", "Bespoke fluted oak dressing suite", "Artisan knurled brass hardware"]
   },
   {
-    id: "ikoyi-waterfront-residence",
-    title: "Ikoyi Waterfront Penthouse",
-    category: "Luxury Window Treatments & Living Décor",
-    location: "Banana Island / Ikoyi, Lagos",
-    year: "2025",
-    description: "An airy, minimalist residence overlooking the Lagos lagoon. Fitted with smart automated solar roller blinds, pure Belgian linen sheer curtains, and custom acoustic wall finishes.",
-    image: ESTIE_IMAGES.luxuryLivingRoom,
-    clientType: "Residential",
-    servicesIncluded: ["All Kinds of Windows & Treatments", "Curtains", "Blinds"],
-    highlights: ["Lagoon glare reduction with solar shades", "Ceiling-recessed electric tracks", "Monochrome neutral palette"]
-  },
-  {
-    id: "lekki-corporate-headquarters",
-    title: "Lekki Financial Suite & Boardroom",
+    id: "ajah-executive-commercial-suite",
+    title: "Ajah Financial Advisory Suite",
     category: "Commercial Interior Design",
-    location: "Lekki Phase 1, Lagos",
-    year: "2024",
-    description: "A 450 sqm corporate office and executive boardroom designed with fluted wood acoustic panels, motorized blackout zebra blinds, and Italian large-format porcelain tile flooring.",
-    image: ESTIE_IMAGES.commercialOffice,
+    location: "Ajah / Lekki Corridor, Lagos",
+    year: "2025",
+    description: "A 380 sqm corporate office and executive boardroom characterized by acoustic slatted timber partitions, executive conference furniture, and an imposing reception lounge.",
+    image: SPACEBOUND_IMAGES.commercialOffice,
     clientType: "Commercial",
-    servicesIncluded: ["Commercial Interior Design", "Blinds", "Flooring Selection"],
-    highlights: ["Acoustic boardroom panels", "Motorized smart conference blinds", "Anti-scratch commercial floor"]
+    servicesIncluded: ["Commercial Interior Design"],
+    highlights: ["Acoustic felt ceiling baffles", "Bespoke quartz reception desk", "Smart presentation lighting"]
   },
   {
-    id: "pinnock-beach-master-suite",
-    title: "Pinnock Beach Master Retreat",
-    category: "Bedding, Curtains & Interior Styling",
-    location: "Pinnock Beach Estate, Osapa London, Lagos",
+    id: "lekki-contemporary-dining-salon",
+    title: "Peninsula Travertine Dining Salon",
+    category: "Dining Room Design & Bespoke Millwork",
+    location: "Lekki Peninsula, Lagos",
     year: "2024",
-    description: "A private primary bedroom suite complete with floor-to-ceiling velvet blackout curtains layered over airy sheers, custom King-size tufted headboard, and 1000-thread count bedding.",
-    image: ESTIE_IMAGES.luxuryBedding,
+    description: "A dramatic 10-seater dining room featuring a monolithic Roman travertine table, sculptural curved chairs, bespoke fluted credenza, and a statement brass chandelier.",
+    image: SPACEBOUND_IMAGES.diningDesign,
     clientType: "Residential",
-    servicesIncluded: ["Bedding", "Curtains", "Window Design"],
-    highlights: ["100% total room blackout for sleep", "Custom bouclé bedframe", "Hand-stitched decorative cushions"]
+    servicesIncluded: ["Dining Room Design", "Cabinetry & Hardware Design"],
+    highlights: ["Monolithic travertine dining table", "Sculptural brushed bronze chandelier", "Seamless wine display joinery"]
+  },
+  {
+    id: "royal-palms-bespoke-cabinetry",
+    title: "Architectural Wardrobe & Joinery Suite",
+    category: "Cabinetry & Hardware Design",
+    location: "Estate, Abraham Adesanya Axis, Lagos",
+    year: "2024",
+    description: "Complete millwork transformation across an upscale duplex, including tinted glass-door walk-in closets, soft-touch pantry drawers, and custom solid bronze pull hardware.",
+    image: SPACEBOUND_IMAGES.cabinetryHardware,
+    clientType: "Residential",
+    servicesIncluded: ["Cabinetry & Hardware Design", "Bedroom Design"],
+    highlights: ["Full-height tempered smoked glass wardrobes", "Hand-finished bronze bar pulls", "Motion-activated interior drawer illumination"]
   }
 ];
 
-export const ESTIE_GALLERY: GalleryItem[] = [
+// Backward-compatible alias
+export const ESTIE_PORTFOLIO_PROJECTS = SPACEBOUND_PORTFOLIO_PROJECTS;
+
+export const SPACEBOUND_GALLERY: GalleryItem[] = [
   {
     id: "gal-1",
-    title: "Floor-to-Ceiling Wave Linen Curtains",
-    category: "window-treatments",
-    categoryLabel: "Window Treatments",
-    image: ESTIE_IMAGES.windowTreatment,
-    caption: "Bespoke ripple-fold sheer curtains framing floor-to-ceiling windows with soft morning illumination."
+    title: "Serene Master Bedroom Sanctuary",
+    category: "bedroom",
+    categoryLabel: "Bedroom Design",
+    image: SPACEBOUND_IMAGES.bedroomDesign,
+    caption: "Floating bedframe design with fluted feature wall, integrated ambient lighting, and bespoke brass accents."
   },
   {
     id: "gal-2",
-    title: "Master Sanctuary Bedding & Headboard",
-    category: "bedding",
-    categoryLabel: "Bespoke Bedding",
-    image: ESTIE_IMAGES.luxuryBedding,
-    caption: "Custom upholstered bed ensemble with layered organic flax linens, velvet cushions, and matching drapes."
+    title: "Architectural Cabinetry & Fluted Joinery",
+    category: "cabinetry",
+    categoryLabel: "Cabinetry & Hardware",
+    image: SPACEBOUND_IMAGES.cabinetryHardware,
+    caption: "Bespoke fluted oak millwork fitted with hand-finished knurled brass pull handles and warm recessed illumination."
   },
   {
     id: "gal-3",
-    title: "Modern Minimalist Neutral Living Room",
-    category: "living",
-    categoryLabel: "Living Spaces",
-    image: ESTIE_IMAGES.hero,
-    caption: "Warm neutral palette featuring ivory boucle seating, marble accents, and architectural drapery."
+    title: "Executive Boardroom & Commercial Space",
+    category: "commercial",
+    categoryLabel: "Commercial Design",
+    image: SPACEBOUND_IMAGES.commercialOffice,
+    caption: "Tailored commercial boardroom interior engineered for prestige, acoustic balance, and collaborative productivity."
   },
   {
     id: "gal-4",
-    title: "Executive Conference & Boardroom Design",
-    category: "commercial",
-    categoryLabel: "Commercial Design",
-    image: ESTIE_IMAGES.commercialOffice,
-    caption: "Tailored boardroom interior with automated light-filtration blinds and ergonomic conference layout."
+    title: "Sculptural Travertine Dining Salon",
+    category: "dining",
+    categoryLabel: "Dining Room Design",
+    image: SPACEBOUND_IMAGES.diningDesign,
+    caption: "Monolithic travertine stone dining table framed by sculptural seating and an architectural statement chandelier."
   },
   {
     id: "gal-5",
-    title: "Herringbone Oak & Large Format Flooring",
-    category: "flooring",
-    categoryLabel: "Flooring Selection",
-    image: ESTIE_IMAGES.flooringHardwood,
-    caption: "Precision-installed European oak parquet harmonized with subtle bronze threshold transitions."
+    title: "Refined Modern Living Architecture",
+    category: "living",
+    categoryLabel: "Living Spaces",
+    image: SPACEBOUND_IMAGES.hero,
+    caption: "Cohesive open-plan contemporary living environment celebrating clean lines, warm neutrals, and organic textures."
   },
   {
     id: "gal-6",
-    title: "Motorized Zebra Blinds & Solar Control",
-    category: "window-treatments",
-    categoryLabel: "Window Treatments",
-    image: ESTIE_IMAGES.modernBlinds,
-    caption: "Modern dual-tone zebra blinds offering millimeter-precise privacy and daylight filtering."
+    title: "Bespoke Wardrobe & Hardware Detailing",
+    category: "cabinetry",
+    categoryLabel: "Cabinetry & Hardware",
+    image: SPACEBOUND_IMAGES.cabinetryHardware,
+    caption: "Precision joinery detailing showcasing millimeter-perfect reveals and custom architectural hardware."
   },
   {
     id: "gal-7",
-    title: "Architectural Window Framing & Styling",
-    category: "window-treatments",
-    categoryLabel: "Window Treatments",
-    image: ESTIE_IMAGES.architecturalWindows,
-    caption: "Custom ceiling recessed track systems for seamless window aesthetic without visible hardware."
+    title: "Intimate Ambient Dining Setting",
+    category: "dining",
+    categoryLabel: "Dining Room Design",
+    image: SPACEBOUND_IMAGES.diningDesign,
+    caption: "Harmonious material palette uniting natural stone, warm timber, and soft atmospheric lighting."
   },
   {
     id: "gal-8",
-    title: "Bespoke Dining Suite & Ambient Lighting",
-    category: "living",
-    categoryLabel: "Living Spaces",
-    image: ESTIE_IMAGES.diningElegance,
-    caption: "Intimate neutral dining room with bespoke sheer window treatment and sculptural chandelier."
-  },
-  {
-    id: "gal-9",
-    title: "Complete Layered Window Ensembles",
-    category: "window-treatments",
-    categoryLabel: "Window Treatments",
-    image: ESTIE_IMAGES.allWindows,
-    caption: "Bespoke combination of interior plantation timber shutters, wave fold sheers, and motorized solar shades."
+    title: "Tranquil Bedroom Layering & Textiles",
+    category: "bedroom",
+    categoryLabel: "Bedroom Design",
+    image: SPACEBOUND_IMAGES.bedroomDesign,
+    caption: "Custom upholstered headboard paired with organic washed linens and recessed architectural sconces."
   }
 ];
 
-export const ESTIE_REVIEWS: ClientReview[] = [
+// Backward-compatible alias
+export const ESTIE_GALLERY = SPACEBOUND_GALLERY;
+
+export const SPACEBOUND_REVIEWS: ClientReview[] = [
   {
     id: "rev-1",
-    clientName: "Chief Mrs. Folashade Adeleke",
-    clientTitle: "Homeowner",
-    location: "Sangotedo, Lekki Corridor, Lagos",
-    rating: 5,
-    projectType: "Full Villa Curtains, Blinds & Master Bedding",
-    date: "January 2025",
-    reviewText: "Estie Interior completely transformed our newly built duplex in Sangotedo. Their attention to detail on the double-height curtains was unbelievable. The fabric quality is top-notch, and their team was so punctual and respectful. 5 stars all the way!"
-  },
-  {
-    id: "rev-2",
-    clientName: "Engr. Babatunde Oshinowo",
-    clientTitle: "Managing Director, Oshinowo Capital Partners",
-    location: "Lekki Phase 1, Lagos",
-    rating: 5,
-    projectType: "Commercial Office Interior & Motorized Blinds",
-    date: "December 2024",
-    reviewText: "We contracted Estie Interior for our corporate headquarters along the expressway. They handled the commercial layout, executive flooring, and automated zebra blinds. The professionalism and immaculate finishing gave our offices a high-end international look."
-  },
-  {
-    id: "rev-3",
-    clientName: "Dr. & Mrs. Nnamdi Okoli",
+    clientName: "Adebayo & Tolu Balogun",
     clientTitle: "Residential Clients",
-    location: "Ajah / Sangotedo Axis, Lagos",
+    location: "Estate, Abraham Adesanya, Ajah, Lagos",
     rating: 5,
-    projectType: "Window Treatments & Custom Bedding Ensembles",
-    date: "November 2024",
-    reviewText: "Finding an interior designer beside Safeway Hospital in Sangotedo with this level of craftsmanship was a blessing. The custom bedding feels like a 5-star hotel in London, and the blackout curtains give us the deepest sleep. Exceptional finishing!"
-  },
-  {
-    id: "rev-4",
-    clientName: "Arc. Temiloluwa Bakare",
-    clientTitle: "Principal Architect, Studio Bauhaus Lagos",
-    location: "Victoria Island & Lekki, Lagos",
-    rating: 5,
-    projectType: "Collaborative Residential Glazing & Window Treatments",
-    date: "October 2024",
-    reviewText: "As an architect, I am extremely particular about window proportions and curtain tracks. Estie Interior is my go-to partner. Their technical mastery of ceiling pockets, motorized tracks, and fabric drapery is unmatched in Lagos. Absolutely deserving of their 5.0 rating."
+    projectType: "Full Residence Bedroom, Cabinetry & Dining Interior Design",
+    date: "Verified Review",
+    reviewText: "Spacebound Interiors transformed our home into an absolute masterpiece. The custom cabinetry and architectural hardware in our kitchen and wardrobes were executed with astonishing precision. Our bedroom and dining spaces feel like a private luxury sanctuary. Their modern aesthetic, personalized approach, and dedication to true craftsmanship set them apart in Lagos. Deserving of every star!"
   }
 ];
 
-export const WHY_ESTIE_PILLARS = [
+// Backward-compatible alias
+export const ESTIE_REVIEWS = SPACEBOUND_REVIEWS;
+
+export const WHY_SPACEBOUND_PILLARS = [
   {
-    title: "5.0-Star Rated Craftsmanship",
-    description: "Flawless attention to seams, hemlines, motorized tolerances, and material integrity backed by verified 5-star client satisfaction in Lagos.",
+    title: "5.0-Star Rated Interior Craftsmanship",
+    description: "Flawless attention to joinery tolerances, material integrity, and artisanal finishing backed by verified 5-star client satisfaction in Lagos.",
     icon: "Award"
   },
   {
-    title: "Prime Sangotedo Showroom",
-    description: "Conveniently located on Km 46 Lekki-Epe Expressway, beside Safeway Hospital. Touch our fabric samples, explore motorized blinds, and consult in person.",
+    title: "Estate, Abraham Adesanya Location",
+    description: "Based in Estate, Abraham Adesanya, Ajah, Lagos 106104. Conveniently situated to serve residential and commercial clients across the Lekki peninsula and Lagos.",
     icon: "MapPin"
   },
   {
-    title: "Turnkey Commercial & Residential",
-    description: "From single-room window treatments to complete multi-floor corporate headquarters and private estates, we handle design, procurement, and installation.",
-    icon: "ShieldCheck"
+    title: "Bespoke Cabinetry & Hardware Precision",
+    description: "Custom millwork, walk-in closets, kitchen joinery, and curated architectural hardware engineered to your exact spatial dimensions.",
+    icon: "Maximize2"
   },
   {
-    title: "Bespoke Fabric & Material Library",
-    description: "Direct sourcing of Belgian linens, Turkish sheers, Italian velvets, genuine Basswood, and European hardwood surfaces.",
+    title: "Personalized Solutions & Custom Spaces",
+    description: "Every layout, textile, and material is curated specifically around your lifestyle and functional requirements—never off-the-shelf templates.",
     icon: "Sparkles"
   },
   {
-    title: "Laser Precision Measurement",
-    description: "We never guess dimensions. Our technical team conducts meticulous on-site laser surveys to ensure millimeter-accurate window fits.",
-    icon: "Ruler"
+    title: "Commercial & Executive Versatility",
+    description: "From intimate bedroom and dining retreats to high-profile corporate suites and boardroom fit-outs built for durability and prestige.",
+    icon: "ShieldCheck"
   },
   {
-    title: "Prompt Lagos Delivery & Aftercare",
-    description: "Reliable project timelines, clean on-site installation protocol, and comprehensive warranty on all motorized tracks and treatments.",
+    title: "Meticulous Turnkey Project Execution",
+    description: "Clear communication, detailed spatial planning, transparent timelines, and disciplined on-site installation protocol from concept to handover.",
     icon: "Clock"
   }
 ];
 
-// WhatsApp URL generator for general or specific inquiries
-export function getWhatsAppUrl(message?: string): string {
-  const defaultText = "Hello ESTIE INTERIOR, I would like to book an interior design consultation / window treatment inquiry.";
-  const text = message || defaultText;
-  return `https://wa.me/2348146284099?text=${encodeURIComponent(text)}`;
-}
-
-export function getServiceBookingWhatsAppUrl(serviceTitle: string): string {
-  const text = `Hello ESTIE INTERIOR, I am interested in your service: "${serviceTitle}". I would like to request an estimate and schedule an on-site consultation.`;
-  return getWhatsAppUrl(text);
-}
+// Backward-compatible alias
+export const WHY_ESTIE_PILLARS = WHY_SPACEBOUND_PILLARS;
