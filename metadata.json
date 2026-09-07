@@ -1,6 +1,6 @@
 {
-  "name": "Spacebound Interiors",
-  "description": "Premier luxury interior designer based in Estate, Abraham Adesanya, Ajah, Lagos 106104, Nigeria. Rated 5.0 stars. Specializing in bespoke Bedroom Design, Cabinetry & Hardware Design, Commercial Interior Design, and Dining Room Design.",
+  "name": "Glass and Mirror Vendor",
+  "description": "Professional glass & mirror shop located at 52 Bauri Street, Mushin, Lagos 100253, Nigeria. Open 24 hours. Specialists in custom mirrors, frameless shower cubicles, glass doors, office partitions, tempered glass, and balustrades across Lagos.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

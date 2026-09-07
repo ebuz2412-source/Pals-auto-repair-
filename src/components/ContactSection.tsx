@@ -1,200 +1,212 @@
-import React, { useState } from "react";
+import React from "react";
 import { 
   MapPin, 
   Clock, 
+  Phone, 
+  MessageSquare, 
   Compass, 
-  Copy, 
-  Check, 
-  Star, 
-  Sparkles,
-  Building2
+  Sparkles, 
+  Truck, 
+  ExternalLink,
+  Navigation,
+  ShieldCheck
 } from "lucide-react";
-import { SPACEBOUND_BUSINESS_INFO } from "../data";
+import { BUSINESS_INFO, SERVICE_AREAS_LAGOS } from "../data";
 
 export default function ContactSection() {
-  const [copiedAddress, setCopiedAddress] = useState(false);
-
-  const handleCopyAddress = () => {
-    navigator.clipboard.writeText(SPACEBOUND_BUSINESS_INFO.address);
-    setCopiedAddress(true);
-    setTimeout(() => setCopiedAddress(false), 2500);
-  };
-
   return (
-    <section id="contact" className="py-24 bg-[#FAF8F5] text-[#1C1917] border-b border-[#E7E2D8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-white border border-[#E7E2D8] px-3.5 py-1.5 rounded-full text-xs font-mono font-medium text-[#B5905C] uppercase tracking-wider">
-            <MapPin className="w-3.5 h-3.5 text-[#B5905C]" />
-            <span>Studio Location & Hours</span>
+    <section id="contact" className="py-20 lg:py-28 bg-[#0E131F] border-b border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-sky-400">
+            <MapPin className="w-3.5 h-3.5" />
+            <span>FIND OUR WORKSHOP & SHOWROOM</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1C1917] tracking-tight leading-tight">
-            Visit Our Studio in <br />
-            <span className="italic text-[#B5905C] font-light">Abraham Adesanya, Ajah</span>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            Contact & Location
           </h2>
 
-          <p className="text-sm sm:text-base text-[#5E574F] font-sans font-light leading-relaxed">
-            Conveniently situated in Estate, Abraham Adesanya, Ajah, Lagos 106104. We welcome residential and commercial clients across Lagos for private interior consultations.
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Conveniently based in Mushin to serve both Lagos Mainland and Lagos Island. Visit our workshop for cut-to-size glass pickups or schedule site measurement and installation anywhere in Lagos.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
-          {/* Left Details Card */}
-          <div className="lg:col-span-5 space-y-6 text-left">
-            <div className="bg-white p-8 border border-[#E7E2D8] shadow-xs space-y-6">
-              
-              {/* Brand Title */}
-              <div className="border-b border-[#EFECE6] pb-5 space-y-2">
-                <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold block">
-                  Official Studio Details
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-[#1C1917]">
-                  Spacebound Interiors
+        {/* Contact Info Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {/* Location Card */}
+          <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-white/15 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-sky-400">
+                <MapPin className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading text-lg font-bold text-white">Workshop & Shop Address</h3>
+              <p className="text-slate-200 text-sm font-medium">
+                52 Bauri Street, Mushin, Lagos 100253, Lagos, Nigeria
+              </p>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                Central Mushin location with easy road connectivity to Surulere, Ikeja, Oshodi, and Island expressways.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-white/10">
+              <a
+                id="contact-directions-btn"
+                href={BUSINESS_INFO.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-semibold inline-flex items-center justify-center space-x-2 shadow-sm transition-all"
+              >
+                <Compass className="w-4 h-4" />
+                <span>Open Google Maps Directions</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Operating Hours Card */}
+          <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-emerald-500/30 space-y-4 flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-bl-full pointer-events-none"></div>
+            
+            <div className="space-y-3 relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <Clock className="w-6 h-6" />
+              </div>
+              <div className="flex items-center space-x-2">
+                <h3 className="font-heading text-lg font-bold text-white">Operating Hours</h3>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              </div>
+              <div className="text-emerald-400 font-semibold text-base">
+                Open 24 Hours Daily
+              </div>
+              <p className="text-slate-300 text-xs leading-relaxed">
+                Operating 24/7 across Monday through Sunday. Available for overnight fabrication, early morning deliveries, and round-the-clock emergency glass repair.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-white/10 relative z-10">
+              <a
+                id="contact-call-btn"
+                href={BUSINESS_INFO.phoneLink}
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold inline-flex items-center justify-center space-x-2 border border-white/20 transition-all"
+              >
+                <Phone className="w-4 h-4 text-emerald-400" />
+                <span>Call Business (24 Hours)</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Service Area & Direct Chat */}
+          <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-white/15 space-y-4 flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+                <MessageSquare className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading text-lg font-bold text-white">Direct WhatsApp Inquiry</h3>
+              <p className="text-slate-200 text-sm font-medium">
+                Service Area: All Lagos State, Nigeria
+              </p>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                Chat with our glass specialists for instant product availability, pricing inquiries, custom dimension questions, or site assessments.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-white/10">
+              <a
+                id="contact-whatsapp-btn"
+                href={BUSINESS_INFO.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold inline-flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/20 transition-all"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Start WhatsApp Chat</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Interactive Location Showcase & Map Embed / Visualizer */}
+        <div className="glass-panel rounded-2xl border border-white/15 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12">
+            {/* Map Frame */}
+            <div className="lg:col-span-7 bg-slate-950 relative min-h-[360px] flex items-center justify-center">
+              {/* Google Maps iFrame */}
+              <iframe
+                title="Glass and Mirror Vendor Location Map"
+                src="https://maps.google.com/maps?q=52+Bauri+Street,+Mushin,+Lagos,+Nigeria&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                className="w-full h-full min-h-[360px] border-0 filter contrast-125 opacity-90 hover:opacity-100 transition-opacity"
+                loading="lazy"
+              ></iframe>
+
+              {/* Inset Badge */}
+              <div className="absolute top-4 left-4 glass-panel px-3 py-2 rounded-xl border border-white/20 shadow-xl pointer-events-none">
+                <div className="text-white font-heading font-bold text-xs flex items-center space-x-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-sky-400" />
+                  <span>52 Bauri St, Mushin</span>
+                </div>
+                <span className="text-[10px] text-emerald-400 font-medium">Open 24 Hours</span>
+              </div>
+            </div>
+
+            {/* Road Connectivity & Access Directions */}
+            <div className="lg:col-span-5 p-6 sm:p-8 space-y-6 bg-slate-900/60 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-sky-400">
+                  <Navigation className="w-4 h-4" />
+                  <span>Road Connectivity & Delivery Access</span>
+                </div>
+
+                <h3 className="font-heading text-xl font-bold text-white">
+                  Strategically Situated in Mushin, Lagos
                 </h3>
-                <span className="inline-block text-xs font-medium text-[#7D7569] uppercase tracking-wider">
-                  Interior Designer • Lagos, Nigeria
-                </span>
-              </div>
 
-              {/* Physical Location */}
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#7D7569]">
-                  <MapPin className="w-4 h-4 text-[#B5905C]" />
-                  <span>Physical Address</span>
-                </div>
-                <p className="font-serif text-lg font-medium text-[#1C1917] leading-snug">
-                  {SPACEBOUND_BUSINESS_INFO.address}
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  Located in the heart of Lagos Mainland, our 52 Bauri Street workshop provides rapid access to both Mainland commercial hubs and Island residential estates:
                 </p>
-                <div className="pt-1">
-                  <button
-                    onClick={handleCopyAddress}
-                    className="inline-flex items-center space-x-1.5 text-xs text-[#B5905C] hover:text-[#1C1917] transition-colors cursor-pointer"
-                  >
-                    {copiedAddress ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-green-600" />
-                        <span className="text-green-600 font-semibold">Address Copied to Clipboard</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        <span>Copy Exact Address</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
 
-              {/* Hours */}
-              <div className="space-y-2 border-t border-[#EFECE6] pt-5">
-                <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#7D7569]">
-                  <Clock className="w-4 h-4 text-[#B5905C]" />
-                  <span>Studio Hours</span>
-                </div>
-                <p className="text-sm text-[#1C1917] font-sans font-medium">
-                  {SPACEBOUND_BUSINESS_INFO.openingHours}
-                </p>
-                <p className="text-xs text-[#7D7569]">
-                  Sunday: Closed (Private on-site appointments by prior arrangement)
-                </p>
-              </div>
-
-              {/* Verified Rating */}
-              <div className="space-y-2 border-t border-[#EFECE6] pt-5">
-                <div className="flex items-center space-x-2 text-xs font-mono uppercase text-[#7D7569]">
-                  <Star className="w-4 h-4 text-[#B5905C]" />
-                  <span>Client Rating</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <div className="flex items-center text-[#B5905C]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#B5905C]" />
-                    ))}
+                <div className="space-y-2.5 text-xs text-slate-300">
+                  <div className="flex items-start space-x-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-1.5 flex-shrink-0"></span>
+                    <span><strong>From Surulere & Yaba:</strong> Quick transit via Western Avenue / Funsho Williams and Agege Motor Road.</span>
                   </div>
-                  <span className="text-sm font-semibold text-[#1C1917]">
-                    5.0 Stars (1 Review)
-                  </span>
+                  <div className="flex items-start space-x-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-1.5 flex-shrink-0"></span>
+                    <span><strong>From Ikeja & Maryland:</strong> Direct access down Ikorodu Road or Oshodi expressway.</span>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-400 mt-1.5 flex-shrink-0"></span>
+                    <span><strong>To Lagos Island, VI & Lekki:</strong> Seamless link via 3rd Mainland Bridge or Eko Bridge for timely site installations.</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Landmarks */}
-              <div className="bg-[#FAF8F5] p-4 border border-[#E7E2D8] text-xs text-[#5E574F] space-y-1">
-                <div className="flex items-center space-x-1.5 font-semibold text-[#1C1917]">
-                  <Compass className="w-3.5 h-3.5 text-[#B5905C]" />
-                  <span>Landmark & Access Guide:</span>
-                </div>
-                <p>
-                  Located in Abraham Adesanya Estate axis, Ajah, off the Lekki-Epe expressway, Lagos 106104. Convenient access from Sangotedo, Lekki Phase 1, and Victoria Island.
-                </p>
-              </div>
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3">
+                <a
+                  id="map-directions-link-btn"
+                  href={BUSINESS_INFO.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-semibold inline-flex items-center space-x-2 shadow-sm transition-all"
+                >
+                  <Compass className="w-4 h-4" />
+                  <span>Navigate with Google Maps</span>
+                </a>
 
+                <a
+                  id="map-whatsapp-inquiry-btn"
+                  href={BUSINESS_INFO.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-slate-200 text-xs font-semibold inline-flex items-center space-x-2 border border-white/15 transition-all"
+                >
+                  <MessageSquare className="w-4 h-4 text-emerald-400" />
+                  <span>Send Site Location</span>
+                </a>
+              </div>
             </div>
           </div>
-
-          {/* Right Visual Map Card */}
-          <div className="lg:col-span-7 bg-white p-4 sm:p-6 border border-[#E7E2D8] shadow-xs text-left">
-            <div className="relative aspect-[16/11] w-full bg-[#EAE6DF] border border-[#E7E2D8] overflow-hidden">
-              {/* Architectural Stylized Map Simulation of Ajah Axis */}
-              <div className="absolute inset-0 bg-[#F4F1EA] flex items-center justify-center p-6 text-center">
-                {/* SVG Map Grid Illustration */}
-                <svg className="absolute inset-0 w-full h-full opacity-30 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <pattern id="studio-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#D6CABE" strokeWidth="0.75" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#studio-grid)" />
-                  {/* Stylized Lekki-Epe Expressway */}
-                  <path d="M -50 180 Q 250 140 500 200 T 900 160" fill="none" stroke="#B5905C" strokeWidth="5" strokeLinecap="round" opacity="0.6" />
-                  {/* Axis Road to Abraham Adesanya */}
-                  <path d="M 380 170 L 440 380" fill="none" stroke="#1C1917" strokeWidth="3" strokeDasharray="6 4" opacity="0.4" />
-                </svg>
-
-                {/* Studio Location Pin Marker */}
-                <div className="relative z-10 max-w-sm bg-white/95 backdrop-blur-md p-6 border border-[#B5905C]/40 shadow-xl space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-[#1C1917] text-[#B5905C] flex items-center justify-center mx-auto shadow-md">
-                    <Building2 className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold block">
-                      Interior Designer
-                    </span>
-                    <h4 className="font-serif text-xl font-bold text-[#1C1917]">
-                      Spacebound Interiors
-                    </h4>
-                    <p className="text-xs text-[#5E574F] mt-1">
-                      Estate, Abraham Adesanya, Ajah, Lagos 106104, Lagos, Nigeria
-                    </p>
-                  </div>
-
-                  <div className="pt-2 border-t border-[#EFECE6] flex items-center justify-center space-x-2 text-[11px] font-mono text-[#7D7569]">
-                    <MapPin className="w-3.5 h-3.5 text-[#B5905C]" />
-                    <span>Lagos State, Nigeria</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Map Legend */}
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-[#7D7569]">
-              <span className="flex items-center space-x-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#B5905C]"></span>
-                <span>Lekki-Epe Corridor Access</span>
-              </span>
-              <span className="flex items-center space-x-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#1C1917]"></span>
-                <span>Estate, Abraham Adesanya, Ajah</span>
-              </span>
-              <span className="font-mono text-[11px] text-[#1C1917]">
-                Postal Code: 106104
-              </span>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>

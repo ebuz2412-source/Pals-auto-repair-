@@ -1,158 +1,211 @@
 import React from "react";
 import { 
+  MapPin, 
+  Clock, 
+  CheckCircle2, 
+  Ruler, 
   Sparkles, 
-  Check, 
-  Star,
-  ArrowRight,
-  Maximize2,
-  Calendar
+  ShieldCheck, 
+  Compass, 
+  Phone, 
+  MessageSquare,
+  Truck,
+  ArrowRight
 } from "lucide-react";
-import { SPACEBOUND_BUSINESS_INFO, SPACEBOUND_IMAGES } from "../data";
+import { BUSINESS_INFO, GLASS_IMAGES, SERVICE_AREAS_LAGOS } from "../data";
 
 interface AboutSectionProps {
-  onBookConsultation: () => void;
+  onRequestQuote: () => void;
   onExploreServices: () => void;
 }
 
-export default function AboutSection({ onBookConsultation, onExploreServices }: AboutSectionProps) {
+export default function AboutSection({ onRequestQuote, onExploreServices }: AboutSectionProps) {
   return (
-    <section id="about" className="py-24 bg-[#FAF8F5] text-[#1C1917] border-b border-[#E7E2D8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 lg:py-28 bg-[#0E131F] border-b border-white/10 relative overflow-hidden">
+      {/* Glow highlight */}
+      <div className="absolute top-1/2 -left-48 w-96 h-96 bg-sky-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          {/* Left Column: Visual Collage with Generous Spacing */}
-          <div className="lg:col-span-6 space-y-6">
+          {/* Left Column: Image Mosaic showcasing real craftsmanship */}
+          <div className="lg:col-span-6 space-y-4">
             <div className="relative">
-              {/* Primary Studio Image */}
-              <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-[#E7E2D8] shadow-lg bg-[#EFE9DF]">
+              {/* Primary Workshop & Product Image */}
+              <div className="rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-slate-900 aspect-[4/3] relative">
                 <img
-                  src={SPACEBOUND_IMAGES.cabinetryHardware}
-                  alt="Spacebound Interiors Bespoke Cabinetry & Hardware Craftsmanship in Lagos"
-                  referrerPolicy="no-referrer"
+                  src={GLASS_IMAGES.customMirrors}
+                  alt="Glass and Mirror Vendor - Custom mirrors and glass fabrication in Mushin Lagos"
                   className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+
+                {/* Floating location tag on image */}
+                <div className="absolute bottom-4 left-4 right-4 glass-panel p-3.5 rounded-xl border border-white/20">
+                  <div className="flex items-center space-x-2 text-sky-400 font-semibold text-xs mb-1">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>52 Bauri Street, Mushin, Lagos</span>
+                  </div>
+                  <p className="text-white text-xs font-medium">
+                    Central fabrication workshop supplying glass & mirror installations across all of Lagos.
+                  </p>
+                </div>
               </div>
 
-              {/* Overlapping Detail Badge */}
-              <div className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-6 bg-white border border-[#E7E2D8] p-6 shadow-xl max-w-xs text-left">
-                <div className="flex items-center space-x-1 text-[#B5905C] mb-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#B5905C]" />
-                  ))}
+              {/* Secondary Inset Image - Precision Edge Finishing */}
+              <div className="hidden sm:block absolute -bottom-8 -right-6 w-56 rounded-xl overflow-hidden border-2 border-slate-900 shadow-2xl bg-slate-950">
+                <div className="aspect-[4/3] relative">
+                  <img
+                    src={GLASS_IMAGES.edgePolishing}
+                    alt="Precision glass cutting and edge polishing on diamond wheel"
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-slate-950/30"></div>
+                  <div className="absolute bottom-2 left-2 right-2 px-2 py-1 bg-black/75 rounded text-[10px] text-slate-200 font-medium text-center">
+                    Precision Edge Polishing
+                  </div>
                 </div>
-                <div className="font-serif text-2xl font-bold text-[#1C1917]">5.0 Rating</div>
-                <p className="text-xs text-[#7D7569] font-sans mt-1">
-                  Rated 5.0 stars with verified client appreciation for custom spaces, precision joinery, and tailored interior elegance.
+              </div>
+            </div>
+
+            {/* Quick 24 Hours Availability Indicator Banner */}
+            <div className="pt-8 sm:pt-4">
+              <div className="glass-panel p-4 rounded-xl border border-emerald-500/20 flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                    <Clock className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold text-white">Open 24 Hours Daily</h4>
+                    <p className="text-xs text-slate-400">Available day and night for production & installations</p>
+                  </div>
+                </div>
+
+                <a
+                  id="about-call-now"
+                  href={BUSINESS_INFO.phoneLink}
+                  className="px-3.5 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 text-xs font-semibold border border-emerald-500/30 transition-colors"
+                >
+                  Call Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: About Content */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-sky-400">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>ABOUT OUR SHOP & WORKSHOP</span>
+            </div>
+
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
+              Lagos’s Specialist in Custom Glass Cutting, Mirrors & Architectural Glazing
+            </h2>
+
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Based at <strong className="text-white font-medium">52 Bauri Street, Mushin</strong>, <span className="text-white font-semibold">Glass and Mirror Vendor</span> is a dedicated glass and mirror shop providing comprehensive glass cutting, bespoke mirror fabrication, and professional architectural installation throughout Lagos, Nigeria.
+            </p>
+
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Whether you are an architect detailing frameless office partitions, a homeowner remodeling a bathroom with custom frameless shower cubicles, or an interior decorator sourcing LED backlit vanity mirrors, our shop delivers precision-cut glass with clean bevelled or polished edges and certified structural durability.
+            </p>
+
+            {/* Core Pillars */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="glass-panel p-3.5 rounded-xl border border-white/10">
+                <div className="flex items-center space-x-2.5 text-white font-semibold text-sm mb-1">
+                  <Ruler className="w-4 h-4 text-sky-400" />
+                  <span>Precision Custom Sizing</span>
+                </div>
+                <p className="text-xs text-slate-400">
+                  Cut-to-size glass and mirrors tailored to exact room dimensions and angles.
                 </p>
               </div>
 
-              {/* Location Tag */}
-              <div className="absolute top-4 left-4 bg-[#1C1917]/90 text-[#FAF8F5] px-3.5 py-1.5 text-[11px] font-mono tracking-wider uppercase backdrop-blur-sm">
-                Ajah, Lagos Studio
+              <div className="glass-panel p-3.5 rounded-xl border border-white/10">
+                <div className="flex items-center space-x-2.5 text-white font-semibold text-sm mb-1">
+                  <ShieldCheck className="w-4 h-4 text-sky-400" />
+                  <span>Tempered Safety Glass</span>
+                </div>
+                <p className="text-xs text-slate-400">
+                  Toughened monolithic and laminated glass engineered for high safety.
+                </p>
+              </div>
+
+              <div className="glass-panel p-3.5 rounded-xl border border-white/10">
+                <div className="flex items-center space-x-2.5 text-white font-semibold text-sm mb-1">
+                  <Clock className="w-4 h-4 text-emerald-400" />
+                  <span>24 Hours Operation</span>
+                </div>
+                <p className="text-xs text-slate-400">
+                  Continuous workshop operation for fast turnaround and emergency jobs.
+                </p>
+              </div>
+
+              <div className="glass-panel p-3.5 rounded-xl border border-white/10">
+                <div className="flex items-center space-x-2.5 text-white font-semibold text-sm mb-1">
+                  <Truck className="w-4 h-4 text-sky-400" />
+                  <span>Lagos-Wide Delivery</span>
+                </div>
+                <p className="text-xs text-slate-400">
+                  Safe glass transit and professional on-site mounting anywhere in Lagos.
+                </p>
               </div>
             </div>
 
-            {/* Micro Details Grid */}
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="p-4 bg-white border border-[#E7E2D8] text-left">
-                <span className="font-serif text-2xl font-normal text-[#B5905C] block">Custom</span>
-                <span className="text-xs font-semibold text-[#1C1917] block uppercase tracking-wider">Tailored Spaces</span>
-                <p className="text-[11px] text-[#7D7569] mt-0.5">Personalized residential and commercial design solutions.</p>
-              </div>
-              <div className="p-4 bg-white border border-[#E7E2D8] text-left">
-                <span className="font-serif text-2xl font-normal text-[#B5905C] block">Ajah</span>
-                <span className="text-xs font-semibold text-[#1C1917] block uppercase tracking-wider">Abraham Adesanya</span>
-                <p className="text-[11px] text-[#7D7569] mt-0.5">Serving discerning clients across Lagos, Nigeria.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Narrative & Craftsmanship Story */}
-          <div className="lg:col-span-6 space-y-6 text-left">
-            <div className="inline-flex items-center space-x-2 bg-white border border-[#E7E2D8] px-3.5 py-1 rounded-full text-xs font-mono font-medium text-[#B5905C] uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-[#B5905C]" />
-              <span>About Spacebound Interiors</span>
-            </div>
-
-            <div className="space-y-3">
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1C1917] tracking-tight leading-tight">
-                Where Modern Elegance Meets <br />
-                <span className="italic text-[#B5905C] font-light">Artisanal Craftsmanship</span>
-              </h2>
-
-              <p className="text-sm sm:text-base text-[#5E574F] font-sans font-light leading-relaxed">
-                Located in <strong>Estate, Abraham Adesanya, Ajah, Lagos</strong>, <strong>Spacebound Interiors</strong> is a premium interior design studio creating refined, highly personalized environments for distinguished homeowners and forward-thinking businesses.
-              </p>
-
-              <p className="text-xs sm:text-sm text-[#7D7569] font-sans leading-relaxed">
-                We believe exceptional interior design transcends transient trends. By combining architectural spatial balance, honest materiality, bespoke cabinetry, and curated hardware, we orchestrate spaces that feel effortless, warm, and deeply personal. Every bedroom retreat, dining salon, custom walk-in wardrobe, and commercial suite is realized with uncompromising attention to detail.
-              </p>
-            </div>
-
-            {/* Core Values / Distinctions */}
-            <div className="space-y-3.5 pt-2 border-t border-[#EFECE6]">
-              <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 rounded-full bg-[#EFE9DF] flex items-center justify-center text-[#B5905C] flex-shrink-0 mt-0.5">
-                  <Check className="w-3 h-3" />
-                </div>
-                <div>
-                  <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1C1917]">
-                    Personalized Interior Solutions
-                  </h4>
-                  <p className="text-xs text-[#7D7569]">
-                    Each project begins with deep listening to uncover your daily rituals, aesthetic affinities, and lifestyle or commercial workflow requirements.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 rounded-full bg-[#EFE9DF] flex items-center justify-center text-[#B5905C] flex-shrink-0 mt-0.5">
-                  <Check className="w-3 h-3" />
-                </div>
-                <div>
-                  <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1C1917]">
-                    Bespoke Cabinetry & Architectural Hardware
-                  </h4>
-                  <p className="text-xs text-[#7D7569]">
-                    Specialized in precision millwork, fluted timber joinery, custom walk-in wardrobes, and hand-finished bronze and brass hardware.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-3">
-                <div className="w-5 h-5 rounded-full bg-[#EFE9DF] flex items-center justify-center text-[#B5905C] flex-shrink-0 mt-0.5">
-                  <Check className="w-3 h-3" />
-                </div>
-                <div>
-                  <h4 className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#1C1917]">
-                    Residential Sanctuaries & Commercial Prestige
-                  </h4>
-                  <p className="text-xs text-[#7D7569]">
-                    Bridging tranquil private master bedrooms and dramatic dining salons with commanding corporate boardrooms and executive suites.
-                  </p>
-                </div>
+            {/* Lagos Service Coverage List */}
+            <div className="pt-2 border-t border-white/10">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                Serving All Areas Across Lagos State:
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {SERVICE_AREAS_LAGOS.map((area, idx) => (
+                  <span
+                    key={idx}
+                    className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300"
+                  >
+                    {area}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
-              <button
-                onClick={onBookConsultation}
-                className="bg-[#1C1917] hover:bg-[#2B2723] text-[#FAF8F5] px-7 py-3.5 text-xs font-semibold tracking-[0.14em] uppercase border border-[#1C1917] hover:border-[#B5905C] transition-all cursor-pointer flex items-center space-x-2"
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3 pt-4">
+              <a
+                id="about-directions-btn"
+                href={BUSINESS_INFO.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold border border-white/15 transition-all"
               >
-                <span>Request Consultation</span>
-                <ArrowRight className="w-4 h-4 text-[#B5905C]" />
-              </button>
+                <Compass className="w-4 h-4 text-sky-400" />
+                <span>Get Directions (Mushin)</span>
+              </a>
+
+              <a
+                id="about-whatsapp-btn"
+                href={BUSINESS_INFO.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-600 text-white text-xs font-semibold transition-all"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Chat on WhatsApp</span>
+              </a>
 
               <button
-                onClick={onExploreServices}
-                className="bg-white hover:bg-[#F5F1EA] text-[#1C1917] px-7 py-3.5 text-xs font-semibold tracking-[0.14em] uppercase border border-[#D6CABE] hover:border-[#B5905C] transition-all cursor-pointer"
+                id="about-quote-btn"
+                onClick={onRequestQuote}
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-semibold transition-all cursor-pointer"
               >
-                Explore Services
+                <span>Request a Quote</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
-
         </div>
       </div>
     </section>

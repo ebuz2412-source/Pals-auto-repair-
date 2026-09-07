@@ -1,212 +1,220 @@
 import React from "react";
 import { 
   MapPin, 
+  Phone, 
+  MessageSquare, 
+  Compass, 
   ArrowRight, 
-  Star, 
-  Sparkles, 
-  Eye,
-  Calendar,
+  Clock, 
+  ShieldCheck, 
+  Sparkles,
   Layers,
-  Building2,
+  ChevronRight,
   Maximize2
 } from "lucide-react";
-import { SPACEBOUND_BUSINESS_INFO, SPACEBOUND_IMAGES } from "../data";
+import { BUSINESS_INFO, GLASS_IMAGES } from "../data";
 
 interface HeroProps {
   onExploreServices: () => void;
-  onBookConsultation: () => void;
-  onViewPortfolio: () => void;
+  onRequestQuote: () => void;
+  onViewProjects: () => void;
 }
 
-export default function Hero({ onExploreServices, onBookConsultation, onViewPortfolio }: HeroProps) {
+export default function Hero({ onExploreServices, onRequestQuote, onViewProjects }: HeroProps) {
   return (
-    <section id="hero" className="relative pt-32 sm:pt-36 pb-20 lg:pb-28 bg-[#FAF8F5] overflow-hidden border-b border-[#E7E2D8]">
-      {/* Background Soft Glow Accents */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#EFE9DF]/60 rounded-full blur-[120px] pointer-events-none -z-0"></div>
+    <section 
+      id="hero" 
+      className="relative pt-32 sm:pt-40 pb-20 lg:pb-32 overflow-hidden border-b border-white/10"
+      style={{
+        background: "radial-gradient(circle at 50% 20%, rgba(30, 41, 59, 0.6) 0%, rgba(11, 15, 23, 1) 80%)"
+      }}
+    >
+      {/* Translucent Glass Grid Ambient Elements */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+      {/* Subtle light reflections */}
+      <div className="absolute -top-32 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/3 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Top Badges & Location Indicator */}
+        {/* Top Badges & Status Strip */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
-          {/* Subtle Location Indicator */}
-          <div className="inline-flex items-center space-x-2 bg-white/90 border border-[#E7E2D8] px-3.5 py-1.5 rounded-full shadow-xs">
-            <MapPin className="w-3.5 h-3.5 text-[#B5905C]" />
-            <span className="text-xs font-medium text-[#4A453E] tracking-wider uppercase">
-              Abraham Adesanya, Ajah, Lagos
-            </span>
+          {/* Location Badge */}
+          <div className="inline-flex items-center space-x-2 bg-slate-900/80 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full shadow-sm text-xs font-medium text-slate-300">
+            <MapPin className="w-3.5 h-3.5 text-sky-400" />
+            <span>52 Bauri Street, Mushin, Lagos 100253, Lagos, Nigeria</span>
           </div>
 
-          {/* 5.0 Star Rating Indicator */}
-          <div className="inline-flex items-center space-x-2 bg-white/90 border border-[#E7E2D8] px-3.5 py-1.5 rounded-full shadow-xs text-xs font-medium text-[#4A453E]">
-            <div className="flex items-center text-[#B5905C]">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 fill-[#B5905C]" />
-              ))}
-            </div>
-            <span>5.0 Stars (1 Review)</span>
+          {/* 24/7 Availability Badge */}
+          <div className="inline-flex items-center space-x-2 bg-slate-900/80 backdrop-blur-md border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-sm text-xs font-medium text-emerald-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <Clock className="w-3.5 h-3.5" />
+            <span>Open 24 Hours • Prompt Lagos-Wide Delivery & Installation</span>
           </div>
         </div>
 
-        {/* Hero Central Header */}
+        {/* Central Hero Typography & Value Proposition */}
         <div className="max-w-4xl mx-auto text-center space-y-6 mb-12">
-          {/* Tagline Label */}
-          <div className="inline-block">
-            <span className="text-xs font-medium tracking-[0.28em] text-[#B5905C] uppercase font-sans border-b border-[#B5905C]/40 pb-1">
-              SPACEBOUND INTERIORS • INTERIOR DESIGNER
+          {/* Category Tag */}
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+            <Sparkles className="w-3.5 h-3.5 text-sky-400" />
+            <span className="text-[11px] font-semibold tracking-[0.25em] text-slate-300 uppercase">
+              PREMIER GLASS & MIRROR SHOP IN LAGOS
             </span>
           </div>
 
-          {/* Headline */}
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#1C1917] tracking-tight leading-[1.08]">
-            Crafting Elegant Interiors & <br className="hidden sm:inline" />
-            <span className="italic font-light text-[#B5905C]">Custom Modern Spaces</span>
+          {/* Main Headline */}
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1]">
+            Precision Glass, Custom Mirrors & <br className="hidden sm:inline" />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-slate-200 to-blue-400">
+              Architectural Glazing
+            </span>
           </h1>
 
-          {/* Subheadline emphasizing elegant interiors, custom spaces, craftsmanship, modern design, and personalized solutions */}
-          <p className="max-w-2xl mx-auto text-base sm:text-lg text-[#5E574F] font-sans font-light leading-relaxed">
-            Premier interior design studio based in Abraham Adesanya, Ajah, Lagos. We craft personalized bedroom retreats, bespoke cabinetry & hardware, high-performance commercial environments, and timeless dining rooms.
+          {/* Subtitle / Description */}
+          <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            Your trusted glass and mirror vendor in Lagos. We supply, custom-cut, and professionally install custom LED mirrors, frameless shower cubicles, office glass partitions, tempered glass doors, and structural balustrades for homes and businesses.
           </p>
 
-          {/* Call to Actions */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            {/* Primary CTA */}
-            <button
-              id="hero-explore-services-btn"
-              onClick={onExploreServices}
-              className="w-full sm:w-auto bg-[#1C1917] hover:bg-[#2B2723] text-[#FAF8F5] px-8 py-4 text-xs font-semibold tracking-[0.16em] uppercase border border-[#1C1917] hover:border-[#B5905C] transition-all duration-200 shadow-sm cursor-pointer flex items-center justify-center space-x-2.5 group"
+          {/* DIRECT CALL-TO-ACTION BUTTONS (Call, WhatsApp, Get Directions, Request Quote) */}
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2">
+            {/* WhatsApp Button */}
+            <a
+              id="hero-whatsapp-btn"
+              href={BUSINESS_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2.5 bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wide shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] cursor-pointer"
             >
-              <span>Explore Our Services</span>
-              <ArrowRight className="w-4 h-4 text-[#B5905C] group-hover:translate-x-1 transition-transform" />
-            </button>
+              <MessageSquare className="w-4 h-4" />
+              <span>Chat on WhatsApp</span>
+            </a>
 
-            {/* Secondary CTA */}
-            <button
-              id="hero-consultation-btn"
-              onClick={onBookConsultation}
-              className="w-full sm:w-auto bg-white hover:bg-[#F5F1EA] text-[#1C1917] px-8 py-4 text-xs font-semibold tracking-[0.16em] uppercase border border-[#D6CABE] hover:border-[#B5905C] transition-all duration-200 shadow-xs flex items-center justify-center space-x-2.5 cursor-pointer"
+            {/* Call Us Button */}
+            <a
+              id="hero-call-btn"
+              href={BUSINESS_INFO.phoneLink}
+              className="inline-flex items-center space-x-2.5 bg-slate-800 hover:bg-slate-700 text-white border border-white/20 px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wide shadow-md transition-all hover:scale-[1.02] cursor-pointer"
             >
-              <Calendar className="w-4 h-4 text-[#B5905C]" />
-              <span>Request Consultation</span>
-            </button>
+              <Phone className="w-4 h-4 text-sky-400" />
+              <span>Call Business</span>
+            </a>
 
-            {/* Direct Portfolio Link */}
-            <button
-              onClick={onViewPortfolio}
-              className="text-xs font-semibold tracking-[0.14em] uppercase text-[#7D7569] hover:text-[#1C1917] underline underline-offset-8 transition-colors py-2 cursor-pointer"
+            {/* Get Directions Button (Google Maps) */}
+            <a
+              id="hero-directions-btn"
+              href={BUSINESS_INFO.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2.5 bg-white/5 hover:bg-white/10 text-slate-200 border border-white/15 px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wide backdrop-blur-md transition-all hover:scale-[1.02] cursor-pointer"
             >
-              View Selected Portfolio
+              <Compass className="w-4 h-4 text-sky-400" />
+              <span>Get Directions</span>
+            </a>
+
+            {/* Calculate / Request Quote */}
+            <button
+              id="hero-quote-btn"
+              onClick={onRequestQuote}
+              className="inline-flex items-center space-x-2.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white px-6 py-3.5 rounded-xl text-sm font-semibold tracking-wide shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] cursor-pointer"
+            >
+              <span>Instant Glass Calculator</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
-        {/* Full-width Hero Photography Container */}
-        <div className="relative rounded-none sm:rounded-2xl overflow-hidden border border-[#E7E2D8] shadow-xl bg-[#EDE7DD] group">
-          <div className="relative aspect-[16/9] sm:aspect-[21/10] w-full overflow-hidden">
-            <img
-              src={SPACEBOUND_IMAGES.hero}
-              alt="Spacebound Interiors Luxury Contemporary Interior Design in Lagos"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-1000 ease-out"
-            />
+        {/* Feature Hero Visual Grid */}
+        <div className="relative mt-8 lg:mt-14 max-w-6xl mx-auto">
+          {/* Framed Glass Showcase Container */}
+          <div className="rounded-2xl border border-white/15 bg-slate-900/60 backdrop-blur-xl p-2 sm:p-3 shadow-2xl relative overflow-hidden">
+            <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-xl overflow-hidden bg-slate-950">
+              <img
+                src={GLASS_IMAGES.hero}
+                alt="Glass and Mirror Vendor - Architectural glass and custom mirror installation in Lagos"
+                className="w-full h-full object-cover object-center transform scale-100 hover:scale-105 transition-transform duration-700"
+                referrerPolicy="no-referrer"
+              />
 
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/75 via-transparent to-[#1C1917]/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent"></div>
 
-            {/* Floating Brand Badge & Location Tag */}
-            <div className="absolute top-4 left-4 sm:top-6 sm:left-6">
-              <div className="bg-[#FAF8F5]/90 backdrop-blur-md px-4 py-2 border border-white/60 shadow-md">
-                <span className="block text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold">
-                  Interior Design Studio
-                </span>
-                <span className="block font-serif text-sm sm:text-base font-bold text-[#1C1917]">
-                  Estate, Abraham Adesanya, Ajah, Lagos
-                </span>
+              {/* In-Image Glass Overlay Card */}
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+                <div className="glass-panel p-4 rounded-xl max-w-lg border border-white/15">
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-sky-400">
+                    Workshop & Showroom in Mushin
+                  </span>
+                  <h2 className="text-white font-heading font-semibold text-base sm:text-lg mt-0.5">
+                    52 Bauri Street, Mushin, Lagos 100253
+                  </h2>
+                  <p className="text-slate-300 text-xs mt-1">
+                    Precision CNC cutting, diamond-edge bevelling, and certified toughened glass engineered for Lagos residential & commercial architecture.
+                  </p>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <button
+                    id="hero-view-services-pill"
+                    onClick={onExploreServices}
+                    className="glass-panel hover:bg-white/20 text-white text-xs font-semibold px-4 py-2.5 rounded-lg border border-white/20 flex items-center space-x-1.5 transition-colors cursor-pointer"
+                  >
+                    <span>View All Services</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+
+                  <button
+                    id="hero-view-projects-pill"
+                    onClick={onViewProjects}
+                    className="bg-sky-500 hover:bg-sky-400 text-white text-xs font-semibold px-4 py-2.5 rounded-lg flex items-center space-x-1.5 transition-colors cursor-pointer"
+                  >
+                    <span>Completed Projects</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Pillars Strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-6">
+            <div className="glass-panel p-3.5 sm:p-4 rounded-xl border border-white/10 flex items-center space-x-3">
+              <div className="w-9 h-9 rounded-lg bg-sky-500/10 border border-sky-400/20 flex items-center justify-center flex-shrink-0 text-sky-400">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-white">Custom Mirrors</h4>
+                <p className="text-[11px] text-slate-400">LED, Bevelled & Wall Mirrors</p>
               </div>
             </div>
 
-            {/* Bottom Floating Value Chips */}
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-wrap items-end justify-between gap-3 text-white">
-              <div className="space-y-1 max-w-xl text-left">
-                <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-[#E4DCD0] font-semibold block">
-                  Design Philosophy
-                </span>
-                <p className="font-serif text-lg sm:text-2xl font-normal text-white drop-shadow-sm">
-                  “{SPACEBOUND_BUSINESS_INFO.tagline}”
-                </p>
+            <div className="glass-panel p-3.5 sm:p-4 rounded-xl border border-white/10 flex items-center space-x-3">
+              <div className="w-9 h-9 rounded-lg bg-sky-500/10 border border-sky-400/20 flex items-center justify-center flex-shrink-0 text-sky-400">
+                <ShieldCheck className="w-5 h-5" />
               </div>
-
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={onViewPortfolio}
-                  className="bg-white/95 hover:bg-white text-[#1C1917] px-4 py-2.5 text-xs font-semibold tracking-wider uppercase backdrop-blur-sm transition-all shadow-sm flex items-center space-x-2 cursor-pointer"
-                >
-                  <Eye className="w-3.5 h-3.5 text-[#B5905C]" />
-                  <span>View Project Portfolio</span>
-                </button>
+              <div>
+                <h4 className="text-xs font-semibold text-white">Shower Cubicles</h4>
+                <p className="text-[11px] text-slate-400">Frameless Tempered Glass</p>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* 4 Core Services Value Pillars below hero */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8">
-          <div 
-            onClick={onExploreServices}
-            className="bg-white p-5 border border-[#E7E2D8] hover:border-[#B5905C] text-left space-y-1.5 shadow-2xs cursor-pointer transition-all"
-          >
-            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
-              Sanctuary Living
-            </span>
-            <h4 className="font-serif text-base font-medium text-[#1C1917]">
-              Bedroom Design
-            </h4>
-            <p className="text-xs text-[#7D7569] leading-relaxed">
-              Custom floating bedframes, acoustic wall paneling & architectural lighting.
-            </p>
-          </div>
+            <div className="glass-panel p-3.5 sm:p-4 rounded-xl border border-white/10 flex items-center space-x-3">
+              <div className="w-9 h-9 rounded-lg bg-sky-500/10 border border-sky-400/20 flex items-center justify-center flex-shrink-0 text-sky-400">
+                <Layers className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-white">Office Partitions</h4>
+                <p className="text-[11px] text-slate-400">Acoustic & Frosted Glass</p>
+              </div>
+            </div>
 
-          <div 
-            onClick={onExploreServices}
-            className="bg-white p-5 border border-[#E7E2D8] hover:border-[#B5905C] text-left space-y-1.5 shadow-2xs cursor-pointer transition-all"
-          >
-            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
-              Bespoke Joinery
-            </span>
-            <h4 className="font-serif text-base font-medium text-[#1C1917]">
-              Cabinetry & Hardware
-            </h4>
-            <p className="text-xs text-[#7D7569] leading-relaxed">
-              Walk-in wardrobes, luxury millwork & curated artisan architectural hardware.
-            </p>
-          </div>
-
-          <div 
-            onClick={onExploreServices}
-            className="bg-white p-5 border border-[#E7E2D8] hover:border-[#B5905C] text-left space-y-1.5 shadow-2xs cursor-pointer transition-all"
-          >
-            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
-              Executive Spaces
-            </span>
-            <h4 className="font-serif text-base font-medium text-[#1C1917]">
-              Commercial Interior Design
-            </h4>
-            <p className="text-xs text-[#7D7569] leading-relaxed">
-              Corporate headquarters, executive boardrooms & brand reception lounges.
-            </p>
-          </div>
-
-          <div 
-            onClick={onExploreServices}
-            className="bg-white p-5 border border-[#E7E2D8] hover:border-[#B5905C] text-left space-y-1.5 shadow-2xs cursor-pointer transition-all"
-          >
-            <span className="text-[10px] font-mono tracking-widest text-[#B5905C] uppercase font-bold block">
-              Culinary Elegance
-            </span>
-            <h4 className="font-serif text-base font-medium text-[#1C1917]">
-              Dining Room Design
-            </h4>
-            <p className="text-xs text-[#7D7569] leading-relaxed">
-              Travertine stone tables, sculptural seating, wine credenzas & lighting.
-            </p>
+            <div className="glass-panel p-3.5 sm:p-4 rounded-xl border border-white/10 flex items-center space-x-3">
+              <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center flex-shrink-0 text-emerald-400">
+                <Clock className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-xs font-semibold text-white">Open 24 Hours</h4>
+                <p className="text-[11px] text-slate-400">24/7 Emergency Glazing</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

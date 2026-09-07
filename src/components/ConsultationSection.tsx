@@ -1,320 +1,387 @@
 import React, { useState, useEffect } from "react";
 import { 
-  Calendar, 
-  MapPin, 
+  Calculator, 
   Sparkles, 
+  Check, 
   Send, 
-  Clock, 
-  CheckCircle2
+  Ruler, 
+  ShieldCheck, 
+  MessageSquare, 
+  Phone,
+  Layers,
+  MapPin,
+  Clock
 } from "lucide-react";
-import { SPACEBOUND_BUSINESS_INFO, SPACEBOUND_SERVICES } from "../data";
-import { ConsultationRequest } from "../types";
+import { BUSINESS_INFO, SERVICE_AREAS_LAGOS } from "../data";
 
 interface ConsultationSectionProps {
   preselectedService?: string;
 }
 
 export default function ConsultationSection({ preselectedService }: ConsultationSectionProps) {
-  const [formData, setFormData] = useState<ConsultationRequest>({
-    fullName: "",
-    phone: "",
-    email: "",
-    locationInLagos: "Abraham Adesanya / Ajah Axis",
-    serviceNeeded: preselectedService || "Bedroom Design",
-    propertyType: "Residential Apartment/Villa",
-    estimatedRooms: "3 - 5 Rooms / Spaces",
-    timeline: "Within 2 - 4 Weeks",
-    consultationPreference: "Studio Visit in Abraham Adesanya, Ajah",
-    notes: ""
-  });
+  const [productType, setProductType] = useState<string>(preselectedService || "Custom Mirrors");
+  const [glassThickness, setGlassThickness] = useState<string>("8mm Tempered Glass");
+  const [glassFinish, setGlassFinish] = useState<string>("Clear Float Glass");
+  const [widthMm, setWidthMm] = useState<number>(1000);
+  const [heightMm, setHeightMm] = useState<number>(2100);
+  const [quantity, setQuantity] = useState<number>(1);
+  const [needInstallation, setNeedInstallation] = useState<boolean>(true);
+  const [locationInLagos, setLocationInLagos] = useState<string>("Mushin / Mainland");
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [fullName, setFullName] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [notes, setNotes] = useState<string>("");
+
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
     if (preselectedService) {
-      setFormData(prev => ({ ...prev, serviceNeeded: preselectedService }));
+      setProductType(preselectedService);
     }
   }, [preselectedService]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Calculate Square Meters
+  const areaSqM = Number(((widthMm * heightMm) / 1000000 * quantity).toFixed(2));
+
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
   };
 
+  // Build prefilled WhatsApp message with the exact glass specifications
+  const getWhatsAppMessage = () => {
+    const text = `Hello Glass and Mirror Vendor,
+I would like an inquiry/quote for:
+• Product: ${productType}
+• Dimensions: ${widthMm}mm (W) x ${heightMm}mm (H)
+• Quantity: ${quantity} unit(s) (${areaSqM} m² total)
+• Glass Spec: ${glassThickness} (${glassFinish})
+• Installation Required: ${needInstallation ? "Yes (Lagos On-Site)" : "Supply Only / Pick-up"}
+• Location: ${locationInLagos}
+${fullName ? `• Name: ${fullName}` : ""}
+${phoneNumber ? `• Phone: ${phoneNumber}` : ""}
+${notes ? `• Notes: ${notes}` : ""}`;
+    return encodeURIComponent(text);
+  };
+
   return (
-    <section id="consultation" className="py-24 bg-white text-[#1C1917] border-b border-[#E7E2D8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="calculator" className="py-20 lg:py-28 bg-[#0B0F17] border-b border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-[#FAF8F5] border border-[#E7E2D8] px-3.5 py-1.5 rounded-full text-xs font-mono font-medium text-[#B5905C] uppercase tracking-wider">
-            <Calendar className="w-3.5 h-3.5 text-[#B5905C]" />
-            <span>Consultation & Project Assessment</span>
+        <div className="max-w-3xl mx-auto text-center space-y-4 mb-14">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-sky-400">
+            <Calculator className="w-3.5 h-3.5" />
+            <span>INSTANT ESTIMATOR & CUSTOM QUOTE</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1C1917] tracking-tight leading-tight">
-            Schedule a Personalized <br />
-            <span className="italic text-[#B5905C] font-light">Interior Design Consultation</span>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            Glass Sizing & Quote Calculator
           </h2>
 
-          <p className="text-sm sm:text-base text-[#5E574F] font-sans font-light leading-relaxed">
-            Begin the journey to your custom-crafted space. Meet with our interior design team in Abraham Adesanya, Ajah, or request an on-site spatial assessment across Lagos.
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Select your product, input approximate measurements in millimeters, and generate an instant quote request for fabrication and installation in Lagos.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left Column: Quick Info & Studio Details */}
-          <div className="lg:col-span-5 space-y-6 text-left">
-            <div className="bg-[#FAF8F5] p-8 border border-[#E7E2D8] space-y-6">
-              <div className="space-y-2">
-                <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold block">
-                  Design Studio
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-[#1C1917]">
-                  Spacebound Interiors
-                </h3>
-                <p className="text-xs text-[#7D7569] font-sans leading-relaxed">
-                  Bespoke interior design studio specializing in Bedroom Design, Cabinetry & Hardware Design, Commercial Interior Design, and Dining Room Design.
-                </p>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Column: Interactive Calculator Form */}
+          <div className="lg:col-span-7 glass-panel p-6 sm:p-8 rounded-2xl border border-white/15 space-y-6">
+            <h3 className="font-heading text-xl font-bold text-white flex items-center space-x-2">
+              <Ruler className="w-5 h-5 text-sky-400" />
+              <span>Configure Your Glass or Mirror Specifications</span>
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Product Type */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-slate-300">Product / Service Needed</label>
+                <select
+                  id="calc-product-type"
+                  value={productType}
+                  onChange={(e) => setProductType(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none"
+                >
+                  <option value="Custom Mirrors">Custom Mirrors (LED / Bevelled)</option>
+                  <option value="Frameless Glass Shower Cubicle">Frameless Glass Shower Cubicle</option>
+                  <option value="Frameless Glass Door">Frameless Glass Door (Pivot / Sliding)</option>
+                  <option value="Office Glass Partition">Office Glass Partition (Acoustic)</option>
+                  <option value="Glass Balustrade & Handrail">Glass Balustrade & Handrail</option>
+                  <option value="Tempered Safety Glass Sheet">Tempered Safety Glass Sheet</option>
+                  <option value="Window Glass & Glazing">Window Glass & Glazing</option>
+                  <option value="Emergency Glass Replacement">Emergency Glass Replacement</option>
+                </select>
               </div>
 
-              <div className="space-y-4 text-xs font-sans text-[#4A453E] border-t border-[#EFECE6] pt-4">
-                <div className="flex items-start space-x-3">
-                  <MapPin className="w-4 h-4 text-[#B5905C] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-[#1C1917]">Studio Location:</strong>
-                    <span>{SPACEBOUND_BUSINESS_INFO.address}</span>
+              {/* Glass Thickness */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-slate-300">Glass Thickness</label>
+                <select
+                  id="calc-thickness"
+                  value={glassThickness}
+                  onChange={(e) => setGlassThickness(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none"
+                >
+                  <option value="5mm Mirror Glass">5mm High-Clarity Mirror</option>
+                  <option value="6mm Safety-Backed Mirror">6mm Safety-Backed Mirror</option>
+                  <option value="6mm Toughened Glass">6mm Toughened Glass</option>
+                  <option value="8mm Tempered Glass">8mm Tempered Glass (Standard Showers)</option>
+                  <option value="10mm Tempered Glass">10mm Tempered Glass (Heavy Duty Showers/Partitions)</option>
+                  <option value="12mm Tempered Glass">12mm Monolithic Tempered (Doors/Balustrades)</option>
+                  <option value="13.52mm Laminated Safety Glass">13.52mm Toughened Laminated (Structural Balustrade)</option>
+                </select>
+              </div>
+
+              {/* Glass Finish */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-slate-300">Glass Style / Finish</label>
+                <select
+                  id="calc-finish"
+                  value={glassFinish}
+                  onChange={(e) => setGlassFinish(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none"
+                >
+                  <option value="Clear Float Glass">Clear Float Glass</option>
+                  <option value="Ultra-Clear Low-Iron Glass">Ultra-Clear Low-Iron Glass (Crystal)</option>
+                  <option value="Frosted / Acid-Etched Privacy Glass">Frosted / Acid-Etched Privacy</option>
+                  <option value="Tinted Dark Grey Glass">Tinted Dark Grey Glass</option>
+                  <option value="Tinted Euro Bronze Glass">Tinted Euro Bronze Glass</option>
+                  <option value="Fluted / Reeded Architectural Glass">Fluted / Reeded Textured Glass</option>
+                  <option value="Silver High-Clarity Mirror">Silver High-Clarity Mirror</option>
+                  <option value="Bronze Decorative Mirror">Bronze Decorative Mirror</option>
+                </select>
+              </div>
+
+              {/* Lagos Delivery / Installation Location */}
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold text-slate-300">Project Location in Lagos</label>
+                <select
+                  id="calc-location"
+                  value={locationInLagos}
+                  onChange={(e) => setLocationInLagos(e.target.value)}
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none"
+                >
+                  <option value="Mushin / Surulere (Mainland)">Mushin / Surulere (Mainland)</option>
+                  <option value="Ikeja / Maryland / Opebi">Ikeja / Maryland / Opebi</option>
+                  <option value="Victoria Island / Ikoyi">Victoria Island / Ikoyi</option>
+                  <option value="Lekki Phase 1 / Chevron">Lekki Phase 1 / Chevron</option>
+                  <option value="Ajah / Sangotedo / Ibeju-Lekki">Ajah / Sangotedo / Ibeju-Lekki</option>
+                  <option value="Yaba / Gbagada / Magodo">Yaba / Gbagada / Magodo</option>
+                  <option value="Festac / Amuwo-Odofin / Apapa">Festac / Amuwo-Odofin / Apapa</option>
+                  <option value="Other Lagos Location">Other Lagos Location</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Dimension Sliders & Inputs */}
+            <div className="p-4 bg-white/5 rounded-xl border border-white/10 space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-white">Approximate Dimensions (in Millimeters):</span>
+                <span className="text-xs font-mono text-sky-400 font-bold">
+                  {widthMm}mm × {heightMm}mm ({areaSqM} m²)
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-xs text-slate-300">
+                    <span>Width (mm):</span>
+                    <span className="font-mono text-white font-semibold">{widthMm} mm</span>
+                  </div>
+                  <input
+                    id="calc-width-slider"
+                    type="range"
+                    min="300"
+                    max="3500"
+                    step="50"
+                    value={widthMm}
+                    onChange={(e) => setWidthMm(Number(e.target.value))}
+                    className="w-full accent-sky-400 cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] text-slate-400">
+                    <span>300mm</span>
+                    <span>3,500mm</span>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3">
-                  <Clock className="w-4 h-4 text-[#B5905C] flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="block text-[#1C1917]">Studio Hours:</strong>
-                    <span>{SPACEBOUND_BUSINESS_INFO.openingHours}</span>
+                <div className="space-y-1.5">
+                  <div className="flex justify-between text-xs text-slate-300">
+                    <span>Height (mm):</span>
+                    <span className="font-mono text-white font-semibold">{heightMm} mm</span>
+                  </div>
+                  <input
+                    id="calc-height-slider"
+                    type="range"
+                    min="300"
+                    max="3500"
+                    step="50"
+                    value={heightMm}
+                    onChange={(e) => setHeightMm(Number(e.target.value))}
+                    className="w-full accent-sky-400 cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] text-slate-400">
+                    <span>300mm</span>
+                    <span>3,500mm</span>
                   </div>
                 </div>
               </div>
 
-              {/* Consultation Scope */}
-              <div className="space-y-2 pt-2 border-t border-[#EFECE6]">
-                <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-bold block">
-                  What to Expect:
-                </span>
-                <ul className="space-y-2.5 text-xs text-[#5E574F]">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#B5905C] flex-shrink-0 mt-0.5" />
-                    <span>In-depth spatial analysis & lifestyle / commercial workflow discovery</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#B5905C] flex-shrink-0 mt-0.5" />
-                    <span>Custom 3D space planning, cabinetry sketches & hardware specification</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#B5905C] flex-shrink-0 mt-0.5" />
-                    <span>Tactile material, wood veneer, stone & textile sample reviews</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#B5905C] flex-shrink-0 mt-0.5" />
-                    <span>Transparent project scope, itemized estimation & personalized timeline</span>
-                  </li>
-                </ul>
-              </div>
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-white/10">
+                <div className="flex items-center space-x-2">
+                  <label className="text-xs text-slate-300">Quantity:</label>
+                  <input
+                    id="calc-qty-input"
+                    type="number"
+                    min="1"
+                    max="100"
+                    value={quantity}
+                    onChange={(e) => setQuantity(Math.max(1, Number(e.target.value)))}
+                    className="w-16 px-2 py-1 bg-slate-900 border border-white/20 rounded text-center text-xs text-white"
+                  />
+                </div>
 
-              <div className="p-4 bg-white border border-[#E7E2D8] text-xs text-[#7D7569]">
-                <span className="font-semibold text-[#1C1917] block mb-1">Serving Lagos Clients:</span>
-                Abraham Adesanya, Ajah, Lekki Peninsula, Victoria Island, Ikoyi, and surrounding areas.
+                <label className="flex items-center space-x-2 cursor-pointer text-xs text-slate-300">
+                  <input
+                    id="calc-install-checkbox"
+                    type="checkbox"
+                    checked={needInstallation}
+                    onChange={(e) => setNeedInstallation(e.target.checked)}
+                    className="w-4 h-4 accent-sky-500 rounded cursor-pointer"
+                  />
+                  <span>Include On-Site Installation in Lagos</span>
+                </label>
               </div>
+            </div>
+
+            {/* Direct WhatsApp Instant Action */}
+            <div className="pt-2">
+              <a
+                id="calc-direct-whatsapp-btn"
+                href={`https://wa.me/?text=${getWhatsAppMessage()}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wide flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/25 transition-all"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Send These Exact Measurements to WhatsApp</span>
+              </a>
             </div>
           </div>
 
-          {/* Right Column: Interactive Consultation Booking Form */}
-          <div className="lg:col-span-7 bg-[#FAF8F5] p-8 sm:p-10 border border-[#E7E2D8] shadow-xs text-left">
+          {/* Right Column: Customer Contact Submission & Summary Box */}
+          <div className="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-2xl border border-white/15 space-y-6">
+            <h3 className="font-heading text-xl font-bold text-white flex items-center space-x-2">
+              <Send className="w-5 h-5 text-sky-400" />
+              <span>Request Formal Written Quotation</span>
+            </h3>
+
             {isSubmitted ? (
-              <div className="py-12 text-center space-y-5 animate-in fade-in duration-300">
-                <div className="w-16 h-16 bg-[#1C1917] text-[#B5905C] rounded-full flex items-center justify-center mx-auto border border-[#B5905C]/40">
-                  <CheckCircle2 className="w-8 h-8" />
+              <div className="p-6 bg-emerald-500/10 rounded-xl border border-emerald-500/30 text-center space-y-3 animate-in fade-in">
+                <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+                  <Check className="w-6 h-6" />
                 </div>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
-                  Consultation Request Received
-                </h3>
-                <p className="text-sm text-[#5E574F] max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong>{formData.fullName || "valued client"}</strong>. Our design team at Spacebound Interiors in Abraham Adesanya, Ajah, has recorded your inquiry for <strong>{formData.serviceNeeded}</strong>.
+                <h4 className="text-white font-heading font-bold text-lg">Quote Request Received!</h4>
+                <p className="text-slate-300 text-xs leading-relaxed">
+                  Thank you, <strong className="text-white">{fullName || "valued client"}</strong>. Our Mushin team will review your {productType} specifications ({areaSqM} m²) and contact you promptly via phone or WhatsApp.
                 </p>
-
-                <div className="bg-white p-5 border border-[#E7E2D8] text-left max-w-md mx-auto space-y-2 text-xs">
-                  <div>
-                    <span className="text-[#7D7569] font-mono uppercase text-[10px] block">Service Scope</span>
-                    <span className="font-semibold text-[#1C1917]">{formData.serviceNeeded}</span>
-                  </div>
-                  <div>
-                    <span className="text-[#7D7569] font-mono uppercase text-[10px] block">Location in Lagos</span>
-                    <span className="font-semibold text-[#1C1917]">{formData.locationInLagos}</span>
-                  </div>
-                  <div>
-                    <span className="text-[#7D7569] font-mono uppercase text-[10px] block">Consultation Preference</span>
-                    <span className="font-semibold text-[#1C1917]">{formData.consultationPreference}</span>
-                  </div>
-                  <div>
-                    <span className="text-[#7D7569] font-mono uppercase text-[10px] block">Project Timeline</span>
-                    <span className="font-semibold text-[#1C1917]">{formData.timeline}</span>
-                  </div>
-                </div>
-
-                <div className="pt-4">
-                  <button
-                    onClick={() => setIsSubmitted(false)}
-                    className="bg-[#1C1917] text-[#FAF8F5] px-6 py-3 text-xs font-semibold tracking-wider uppercase cursor-pointer"
+                <div className="pt-2">
+                  <a
+                    id="quote-followup-whatsapp"
+                    href={`https://wa.me/?text=${getWhatsAppMessage()}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center space-x-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-semibold"
                   >
-                    Submit Another Inquiry
-                  </button>
+                    <span>Need immediate response? Tap here to WhatsApp us directly.</span>
+                  </a>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="border-b border-[#EFECE6] pb-4 mb-2">
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1C1917]">
-                    Tell Us About Your Space
-                  </h3>
-                  <p className="text-xs text-[#7D7569] mt-1">
-                    Provide a few details and our interior design team will prepare your personalized consultation.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-1.5">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Adebayo Adeleke"
-                      value={formData.fullName}
-                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full bg-white border border-[#E7E2D8] px-3.5 py-2.5 text-xs text-[#1C1917] focus:outline-none focus:border-[#B5905C]"
-                    />
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                {/* Summary Pill */}
+                <div className="p-3.5 bg-slate-900/90 rounded-xl border border-white/10 text-xs space-y-1">
+                  <div className="text-slate-400">Current Selection:</div>
+                  <div className="text-white font-semibold flex items-center justify-between">
+                    <span>{productType}</span>
+                    <span className="text-sky-400 font-mono">{areaSqM} m²</span>
                   </div>
-
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-1.5">
-                      Your Location in Lagos *
-                    </label>
-                    <select
-                      value={formData.locationInLagos}
-                      onChange={(e) => setFormData({ ...formData, locationInLagos: e.target.value })}
-                      className="w-full bg-white border border-[#E7E2D8] px-3.5 py-2.5 text-xs text-[#1C1917] focus:outline-none focus:border-[#B5905C]"
-                    >
-                      <option value="Abraham Adesanya / Ajah Axis">Abraham Adesanya / Ajah Axis</option>
-                      <option value="Lekki Phase 1 & Peninsula">Lekki Phase 1 & Peninsula</option>
-                      <option value="Ikoyi / Banana Island">Ikoyi / Banana Island</option>
-                      <option value="Victoria Island">Victoria Island</option>
-                      <option value="Sangotedo & Epe Corridor">Sangotedo & Epe Corridor</option>
-                      <option value="Other Lagos Location">Other Lagos Location</option>
-                    </select>
+                  <div className="text-slate-400 text-[11px]">
+                    {widthMm}mm × {heightMm}mm • {glassThickness} • {locationInLagos}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-1.5">
-                      Service Required *
-                    </label>
-                    <select
-                      value={formData.serviceNeeded}
-                      onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
-                      className="w-full bg-white border border-[#E7E2D8] px-3.5 py-2.5 text-xs text-[#1C1917] focus:outline-none focus:border-[#B5905C]"
-                    >
-                      {SPACEBOUND_SERVICES.map((s) => (
-                        <option key={s.id} value={s.title}>
-                          {s.title}
-                        </option>
-                      ))}
-                      <option value="Full Turnkey Residential / Commercial Interior">
-                        Full Turnkey Residential / Commercial Interior
-                      </option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-1.5">
-                      Property Category *
-                    </label>
-                    <select
-                      value={formData.propertyType}
-                      onChange={(e) => setFormData({ ...formData, propertyType: e.target.value as any })}
-                      className="w-full bg-white border border-[#E7E2D8] px-3.5 py-2.5 text-xs text-[#1C1917] focus:outline-none focus:border-[#B5905C]"
-                    >
-                      <option value="Residential Apartment/Villa">Residential Apartment/Villa</option>
-                      <option value="Commercial Office">Commercial Office</option>
-                      <option value="Hotel/Shortlet">Hotel / Shortlet Suite</option>
-                      <option value="New Construction">New Construction</option>
-                      <option value="Renovation">Full Renovation</option>
-                    </select>
-                  </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-300">Your Full Name *</label>
+                  <input
+                    id="quote-name-input"
+                    type="text"
+                    required
+                    placeholder="e.g. Tunde Adeyemi"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none"
+                  />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-1.5">
-                      Scope / Number of Rooms
-                    </label>
-                    <select
-                      value={formData.estimatedRooms}
-                      onChange={(e) => setFormData({ ...formData, estimatedRooms: e.target.value })}
-                      className="w-full bg-white border border-[#E7E2D8] px-3.5 py-2.5 text-xs text-[#1C1917] focus:outline-none focus:border-[#B5905C]"
-                    >
-                      <option value="Single Room / Focused Area">Single Room / Focused Area</option>
-                      <option value="2 - 3 Rooms">2 - 3 Rooms</option>
-                      <option value="3 - 5 Rooms / Spaces">3 - 5 Rooms / Spaces</option>
-                      <option value="Whole Duplex / Villa">Whole Duplex / Villa</option>
-                      <option value="Complete Commercial Suite">Complete Commercial Suite</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-1.5">
-                      Consultation Format
-                    </label>
-                    <select
-                      value={formData.consultationPreference}
-                      onChange={(e) => setFormData({ ...formData, consultationPreference: e.target.value as any })}
-                      className="w-full bg-white border border-[#E7E2D8] px-3.5 py-2.5 text-xs text-[#1C1917] focus:outline-none focus:border-[#B5905C]"
-                    >
-                      <option value="Studio Visit in Abraham Adesanya, Ajah">Studio Visit in Abraham Adesanya, Ajah</option>
-                      <option value="On-Site Space Assessment">On-Site Space Assessment in Lagos</option>
-                      <option value="Digital Concept Review">Digital Concept Review</option>
-                    </select>
-                  </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-300">Phone Number (Call / WhatsApp) *</label>
+                  <input
+                    id="quote-phone-input"
+                    type="tel"
+                    required
+                    placeholder="e.g. 08012345678"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none"
+                  />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-[#7D7569] mb-1.5">
-                    Project Notes or Specific Aspirations
-                  </label>
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-300">Email Address (Optional)</label>
+                  <input
+                    id="quote-email-input"
+                    type="email"
+                    placeholder="e.g. tunde@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-300">Special Notes / Site Details</label>
                   <textarea
-                    rows={3}
-                    placeholder="Describe your design aspirations, preferred wood finishes, hardware style, or architectural specifications..."
-                    value={formData.notes}
-                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    className="w-full bg-white border border-[#E7E2D8] p-3 text-xs text-[#1C1917] focus:outline-none focus:border-[#B5905C]"
+                    id="quote-notes-input"
+                    rows={2}
+                    placeholder="e.g., Need hole cutouts for shower mixer or power sockets..."
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none resize-none"
                   ></textarea>
                 </div>
 
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    className="w-full bg-[#1C1917] hover:bg-[#2B2723] text-[#FAF8F5] py-4 px-6 text-xs font-semibold tracking-[0.16em] uppercase border border-[#1C1917] hover:border-[#B5905C] transition-all duration-200 shadow-sm flex items-center justify-center space-x-2 cursor-pointer"
-                  >
-                    <Send className="w-4 h-4 text-[#B5905C]" />
-                    <span>Submit Consultation Request</span>
-                  </button>
-                </div>
+                <button
+                  id="submit-quote-request-btn"
+                  type="submit"
+                  className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-semibold text-xs tracking-wide shadow-lg shadow-sky-500/20 transition-all cursor-pointer"
+                >
+                  Submit Quote Request
+                </button>
               </form>
             )}
-          </div>
 
+            {/* Workshop Quick Info */}
+            <div className="pt-2 border-t border-white/10 text-xs text-slate-400 space-y-1.5">
+              <div className="flex items-center space-x-2 text-slate-300">
+                <MapPin className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
+                <span>52 Bauri Street, Mushin, Lagos 100253</span>
+              </div>
+              <div className="flex items-center space-x-2 text-emerald-400 font-medium">
+                <Clock className="w-3.5 h-3.5 flex-shrink-0" />
+                <span>Open 24 Hours • Ready for urgent orders</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,78 +1,70 @@
-export interface SpaceboundBusinessInfo {
+export interface BusinessInfo {
   name: string;
   tagline: string;
-  motto: string;
+  shortDescription: string;
   type: string;
   address: string;
-  landmark: string;
+  street: string;
+  area: string;
+  postalCode: string;
   city: string;
   state: string;
   country: string;
-  postalCode: string;
-  rating: number;
-  reviewCount: number;
+  serviceArea: string;
   openingHours: string;
+  googleMapsUrl: string;
+  whatsappUrl: string;
+  phoneLink: string;
+  displayPhone: string;
 }
 
-export interface SpaceboundService {
+export interface GlassService {
   id: string;
   title: string;
-  category: "bedroom" | "cabinetry" | "commercial" | "dining";
+  category: "mirrors" | "showers" | "doors" | "partitions" | "balustrades" | "tempered" | "windows" | "repairs" | "shopfront" | "tabletop" | "fabrication";
   categoryLabel: string;
   shortDescription: string;
   fullDescription: string;
   image: string;
   iconName: string;
   features: string[];
-  materialsOrOptions: string[];
+  specs: string[];
   idealFor: string;
 }
 
-export type EstieBusinessInfo = SpaceboundBusinessInfo;
-export type EstieService = SpaceboundService;
-
-export interface PortfolioProject {
+export interface GlassProject {
   id: string;
   title: string;
   category: string;
   location: string;
-  year: string;
   description: string;
   image: string;
-  clientType: "Residential" | "Commercial" | "Hospitality";
-  servicesIncluded: string[];
-  highlights: string[];
+  type: "Residential" | "Commercial" | "Architectural" | "Hospitality";
+  materialsUsed: string[];
+  keyHighlights: string[];
 }
 
-export interface GalleryItem {
+export interface GalleryShowcaseItem {
   id: string;
   title: string;
-  category: "all" | "bedroom" | "cabinetry" | "commercial" | "dining" | "living";
+  category: "all" | "mirrors" | "showers" | "partitions" | "doors" | "balustrades" | "fabrication" | "shopfront" | "tabletop";
   categoryLabel: string;
   image: string;
   caption: string;
+  details: string;
 }
 
-export interface ClientReview {
-  id: string;
-  clientName: string;
-  clientTitle: string;
-  location: string;
-  rating: number;
-  projectType: string;
-  date: string;
-  reviewText: string;
-}
-
-export interface ConsultationRequest {
+export interface QuoteCalculationInput {
   fullName: string;
-  phone: string;
+  phoneNumber: string;
   email: string;
   locationInLagos: string;
-  serviceNeeded: string;
-  propertyType: "Residential Apartment/Villa" | "Commercial Office" | "Hotel/Shortlet" | "New Construction" | "Renovation";
-  estimatedRooms: string;
-  timeline: string;
-  consultationPreference: "Studio Visit in Abraham Adesanya, Ajah" | "On-Site Space Assessment" | "Digital Concept Review";
+  productType: string;
+  glassThickness: string;
+  glassFinish: string;
+  widthMm: number;
+  heightMm: number;
+  quantity: number;
+  needInstallation: boolean;
   notes: string;
 }

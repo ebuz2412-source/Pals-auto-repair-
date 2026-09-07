@@ -3,19 +3,22 @@ import {
   Menu, 
   X, 
   MapPin, 
-  Calendar, 
-  Star,
-  Sparkles,
-  Compass
+  Clock, 
+  Phone, 
+  MessageSquare, 
+  Compass,
+  ArrowRight,
+  ShieldCheck,
+  Calculator
 } from "lucide-react";
-import { SPACEBOUND_BUSINESS_INFO } from "../data";
+import { BUSINESS_INFO } from "../data";
 
 interface NavbarProps {
   onSectionScroll: (sectionId: string) => void;
-  onBookConsultation: () => void;
+  onRequestQuote: () => void;
 }
 
-export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarProps) {
+export default function Navbar({ onSectionScroll, onRequestQuote }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -31,9 +34,10 @@ export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarPr
     { label: "Home", id: "hero" },
     { label: "About", id: "about" },
     { label: "Services", id: "services" },
-    { label: "Portfolio", id: "portfolio" },
-    { label: "Gallery", id: "gallery" },
-    { label: "Contact", id: "contact" },
+    { label: "Projects", id: "projects" },
+    { label: "Why Us", id: "why-us" },
+    { label: "Glass Calculator", id: "calculator" },
+    { label: "Contact & Location", id: "contact" },
   ];
 
   const handleNavClick = (id: string) => {
@@ -43,94 +47,142 @@ export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarPr
 
   return (
     <header
+      id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#FAF8F5]/95 backdrop-blur-md shadow-sm border-b border-[#E7E2D8] py-3.5"
-          : "bg-[#FAF8F5]/80 backdrop-blur-sm border-b border-[#EFECE6] py-5"
+          ? "bg-[#0B0F17]/95 backdrop-blur-md shadow-lg border-b border-white/10 py-3"
+          : "bg-[#0B0F17]/85 backdrop-blur-sm border-b border-white/5 py-4"
       }`}
     >
-      {/* Top Location & Rating Strip */}
-      <div className="hidden lg:block border-b border-[#EFECE6] pb-2 mb-2">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-[11px] text-[#7D7569]">
-          <div className="flex items-center space-x-4">
-            <span className="flex items-center space-x-1">
-              <MapPin className="w-3.5 h-3.5 text-[#B5905C]" />
-              <span>Estate, Abraham Adesanya, Ajah, Lagos 106104, Nigeria</span>
+      {/* Top Bar for Desktop */}
+      <div className="hidden lg:block border-b border-white/5 pb-2 mb-2 text-xs text-slate-400">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          <div className="flex items-center space-x-6">
+            <span className="flex items-center space-x-1.5 text-slate-300">
+              <MapPin className="w-3.5 h-3.5 text-sky-400" />
+              <span>52 Bauri Street, Mushin, Lagos 100253, Nigeria</span>
             </span>
-            <span className="inline-block w-1 h-1 rounded-full bg-[#D6CABE]"></span>
-            <span className="flex items-center space-x-1 text-[#1C1917] font-medium">
-              <Star className="w-3.5 h-3.5 fill-[#B5905C] text-[#B5905C]" />
-              <span>5.0 Star Rating (1 Review)</span>
+            <span className="flex items-center space-x-1.5 text-emerald-400 font-medium">
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Open 24 Hours</span>
             </span>
           </div>
 
           <div className="flex items-center space-x-4">
-            <span className="text-[#8C8275] tracking-wider uppercase font-mono text-[10px]">
-              Interior Designer • Bespoke Spaces
-            </span>
-            <span className="text-[#D6CABE]">|</span>
-            <button
-              onClick={() => handleNavClick("contact")}
-              className="hover:text-[#B5905C] transition-colors flex items-center space-x-1 cursor-pointer text-[#1C1917] font-medium"
+            <a
+              id="topbar-maps-link"
+              href={BUSINESS_INFO.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors flex items-center space-x-1"
             >
-              <Compass className="w-3 h-3 text-[#B5905C]" />
-              <span>Studio Location & Hours</span>
-            </button>
+              <Compass className="w-3.5 h-3.5 text-slate-400" />
+              <span>Get Directions</span>
+            </a>
+            <span className="text-white/20">|</span>
+            <a
+              id="topbar-whatsapp-link"
+              href={BUSINESS_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 font-medium flex items-center space-x-1"
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>WhatsApp Us</span>
+            </a>
+            <span className="text-white/20">|</span>
+            <a
+              id="topbar-call-link"
+              href={BUSINESS_INFO.phoneLink}
+              className="text-sky-400 hover:text-sky-300 font-medium flex items-center space-x-1"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              <span>Call Now</span>
+            </a>
           </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo & Brand Identity */}
-          <div 
+          {/* Logo / Brand Name */}
+          <button
+            id="nav-logo-btn"
             onClick={() => handleNavClick("hero")}
-            className="cursor-pointer group flex items-center space-x-3 text-left"
+            className="flex items-center space-x-3 text-left group cursor-pointer focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-xs bg-[#1C1917] text-[#FAF8F5] flex items-center justify-center font-serif text-lg tracking-widest border border-[#B5905C]/40 shadow-sm group-hover:border-[#B5905C] transition-colors">
-              S
+            {/* Elegant Glass Cube / Diamond Icon */}
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-slate-700 via-slate-800 to-slate-950 border border-white/20 flex items-center justify-center shadow-inner relative overflow-hidden group-hover:border-sky-400/60 transition-colors">
+              <div className="absolute inset-0 bg-sky-400/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="w-5 h-5 border border-sky-300 rotate-45 flex items-center justify-center">
+                <div className="w-2.5 h-2.5 bg-white/70"></div>
+              </div>
             </div>
             <div>
-              <span className="block font-serif text-xl sm:text-2xl font-bold tracking-[0.16em] text-[#1C1917] leading-none uppercase">
-                SPACEBOUND INTERIORS
+              <span className="block font-heading text-lg sm:text-xl font-bold tracking-tight text-white group-hover:text-sky-200 transition-colors">
+                Glass and Mirror Vendor
               </span>
-              <span className="block text-[9px] font-sans tracking-[0.25em] text-[#B5905C] uppercase font-semibold mt-1">
-                Interior Designer • Abraham Adesanya, Ajah
+              <span className="block text-[10px] tracking-[0.2em] uppercase text-slate-400 font-medium">
+                Glass & Mirror Shop • Mushin, Lagos
               </span>
             </div>
-          </div>
+          </button>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-8 text-[13px] tracking-wide font-medium text-[#4A453E]">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
             {navItems.map((item) => (
               <button
                 key={item.id}
+                id={`nav-link-${item.id}`}
                 onClick={() => handleNavClick(item.id)}
-                className="hover:text-[#B5905C] transition-colors uppercase tracking-[0.12em] py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#B5905C] hover:after:w-full after:transition-all cursor-pointer"
+                className="px-3 py-1.5 text-xs lg:text-sm font-medium text-slate-300 hover:text-white rounded-md hover:bg-white/5 transition-colors cursor-pointer"
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          {/* Action CTA: Request a Consultation */}
-          <div className="hidden sm:flex items-center space-x-3">
-            <button
-              id="nav-book-consultation-btn"
-              onClick={onBookConsultation}
-              className="bg-[#1C1917] hover:bg-[#2B2723] text-[#FAF8F5] border border-[#1C1917] hover:border-[#B5905C] px-5 py-2.5 rounded-none text-xs tracking-[0.14em] font-semibold uppercase transition-all duration-200 shadow-sm cursor-pointer flex items-center space-x-2"
+          {/* Action Buttons */}
+          <div className="hidden sm:flex items-center space-x-2">
+            <a
+              id="nav-whatsapp-btn"
+              href={BUSINESS_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#B5905C]" />
-              <span>Request Consultation</span>
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>WhatsApp</span>
+            </a>
+
+            <button
+              id="nav-quote-btn"
+              onClick={onRequestQuote}
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white px-4 py-2 rounded-lg text-xs font-semibold tracking-wide shadow-md shadow-sky-500/20 transition-all cursor-pointer"
+            >
+              <Calculator className="w-3.5 h-3.5" />
+              <span>Get Quote</span>
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center space-x-2">
+            <a
+              id="mobile-nav-whatsapp"
+              href={BUSINESS_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-emerald-400 bg-emerald-500/10 rounded-lg border border-emerald-500/20"
+              aria-label="WhatsApp"
+            >
+              <MessageSquare className="w-4 h-4" />
+            </a>
+
             <button
+              id="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#1C1917] hover:text-[#B5905C] focus:outline-none cursor-pointer"
-              aria-label="Toggle menu"
+              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 focus:outline-none cursor-pointer"
+              aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -138,45 +190,66 @@ export default function Navbar({ onSectionScroll, onBookConsultation }: NavbarPr
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAF8F5] border-b border-[#E7E2D8] px-4 pt-4 pb-6 space-y-4 shadow-lg animate-in slide-in-from-top-4 duration-200">
-          <div className="space-y-1 pb-3 border-b border-[#EFECE6]">
+        <div id="mobile-menu-drawer" className="md:hidden bg-[#0F172A] border-b border-white/10 px-4 pt-3 pb-6 mt-3 shadow-2xl space-y-3 animate-in fade-in slide-in-from-top-3">
+          <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-xs space-y-1.5 mb-2">
+            <div className="flex items-center text-slate-300 space-x-2">
+              <MapPin className="w-4 h-4 text-sky-400 flex-shrink-0" />
+              <span>52 Bauri Street, Mushin, Lagos 100253</span>
+            </div>
+            <div className="flex items-center text-emerald-400 space-x-2">
+              <Clock className="w-4 h-4 flex-shrink-0" />
+              <span>Open 24 Hours • Serving All Lagos</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
+                id={`mobile-link-${item.id}`}
                 onClick={() => handleNavClick(item.id)}
-                className="block w-full text-left py-2.5 text-sm font-medium uppercase tracking-[0.12em] text-[#1C1917] hover:text-[#B5905C]"
+                className="w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/10 hover:text-white transition-colors"
               >
                 {item.label}
               </button>
             ))}
           </div>
 
-          <div className="space-y-2.5 pt-2">
-            <button
-              onClick={() => {
-                onBookConsultation();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full bg-[#1C1917] text-[#FAF8F5] py-3 text-xs tracking-[0.14em] font-semibold uppercase text-center flex items-center justify-center space-x-2 cursor-pointer"
+          <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-2">
+            <a
+              id="mobile-drawer-directions"
+              href={BUSINESS_INFO.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-lg text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/20 border border-white/10"
             >
-              <Calendar className="w-4 h-4 text-[#B5905C]" />
-              <span>Request Consultation</span>
-            </button>
+              <Compass className="w-4 h-4 text-sky-400" />
+              <span>Get Directions</span>
+            </a>
 
-            <button
-              onClick={() => handleNavClick("contact")}
-              className="w-full bg-white text-[#1C1917] border border-[#D6CABE] py-3 text-xs tracking-[0.14em] font-semibold uppercase text-center flex items-center justify-center space-x-2 cursor-pointer"
+            <a
+              id="mobile-drawer-call"
+              href={BUSINESS_INFO.phoneLink}
+              className="flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-lg text-xs font-semibold bg-white/10 text-slate-200 hover:bg-white/20 border border-white/10"
             >
-              <MapPin className="w-4 h-4 text-[#B5905C]" />
-              <span>View Location in Ajah</span>
-            </button>
+              <Phone className="w-4 h-4 text-emerald-400" />
+              <span>Call Us</span>
+            </a>
           </div>
 
-          <div className="text-[11px] text-[#7D7569] pt-2 text-center">
-            Estate, Abraham Adesanya, Ajah, Lagos 106104, Nigeria
-          </div>
+          <button
+            id="mobile-drawer-quote-btn"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onRequestQuote();
+            }}
+            className="w-full py-3 px-4 rounded-lg text-sm font-semibold bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg flex items-center justify-center space-x-2"
+          >
+            <Calculator className="w-4 h-4" />
+            <span>Request Quote / Glass Calculator</span>
+          </button>
         </div>
       )}
     </header>

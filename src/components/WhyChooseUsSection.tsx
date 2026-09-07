@@ -1,154 +1,128 @@
 import React from "react";
 import { 
-  Award, 
-  MapPin, 
-  ShieldCheck, 
-  Sparkles, 
   Clock, 
-  Star, 
-  Maximize2
+  MapPin, 
+  Sparkles, 
+  ShieldCheck, 
+  Ruler, 
+  CheckCircle2,
+  Phone,
+  MessageSquare,
+  Compass,
+  ArrowRight
 } from "lucide-react";
-import { WHY_SPACEBOUND_PILLARS, SPACEBOUND_REVIEWS, SPACEBOUND_BUSINESS_INFO } from "../data";
+import { WHY_CHOOSE_US_POINTS, BUSINESS_INFO } from "../data";
 
-export default function WhyChooseUsSection() {
-  const getPillarIcon = (iconName: string) => {
+interface WhyChooseUsSectionProps {
+  onRequestQuote: () => void;
+}
+
+export default function WhyChooseUsSection({ onRequestQuote }: WhyChooseUsSectionProps) {
+  const getIcon = (iconName: string) => {
     switch (iconName) {
-      case "Award":
-        return <Award className="w-5 h-5 text-[#B5905C]" />;
-      case "MapPin":
-        return <MapPin className="w-5 h-5 text-[#B5905C]" />;
-      case "ShieldCheck":
-        return <ShieldCheck className="w-5 h-5 text-[#B5905C]" />;
-      case "Sparkles":
-        return <Sparkles className="w-5 h-5 text-[#B5905C]" />;
-      case "Maximize2":
-        return <Maximize2 className="w-5 h-5 text-[#B5905C]" />;
-      case "Clock":
-        return <Clock className="w-5 h-5 text-[#B5905C]" />;
-      default:
-        return <Sparkles className="w-5 h-5 text-[#B5905C]" />;
+      case "Clock": return <Clock className="w-6 h-6 text-emerald-400" />;
+      case "MapPin": return <MapPin className="w-6 h-6 text-sky-400" />;
+      case "Sparkles": return <Sparkles className="w-6 h-6 text-sky-400" />;
+      case "ShieldCheck": return <ShieldCheck className="w-6 h-6 text-sky-400" />;
+      case "Ruler": return <Ruler className="w-6 h-6 text-sky-400" />;
+      case "CheckCircle2": return <CheckCircle2 className="w-6 h-6 text-sky-400" />;
+      default: return <ShieldCheck className="w-6 h-6 text-sky-400" />;
     }
   };
 
   return (
-    <section className="py-24 bg-[#FAF8F5] text-[#1C1917] border-b border-[#E7E2D8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="why-us" className="py-20 lg:py-28 bg-[#0E131F] border-b border-white/10 relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center space-x-2 bg-white border border-[#E7E2D8] px-3.5 py-1.5 rounded-full text-xs font-mono font-medium text-[#B5905C] uppercase tracking-wider">
-            <Award className="w-3.5 h-3.5 text-[#B5905C]" />
-            <span>Why Spacebound Interiors</span>
+        <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-sky-400">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>THE GLASS & MIRROR VENDOR PROMISE</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#1C1917] tracking-tight leading-tight">
-            Artisanal Standards & <br />
-            <span className="italic text-[#B5905C] font-light">Enduring Lagos Craftsmanship</span>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            Why Work With Us
           </h2>
 
-          <p className="text-sm sm:text-base text-[#5E574F] font-sans font-light leading-relaxed">
-            Our 5.0-star rating is founded on personalized spatial discovery, millimeter-precision cabinetry, honest material selection, and dedicated execution in Abraham Adesanya, Ajah, and across Lagos.
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Delivering exact millimeter cuts, certified safety glass, clean edge polishing, and around-the-clock reliability for projects across Lagos.
           </p>
         </div>
 
-        {/* 6 Core Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
-          {WHY_SPACEBOUND_PILLARS.map((pillar, idx) => (
+        {/* 6 Key Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {WHY_CHOOSE_US_POINTS.map((point, index) => (
             <div
-              key={idx}
-              className="bg-white p-7 border border-[#E7E2D8] hover:border-[#B5905C] transition-all duration-300 shadow-2xs hover:shadow-md text-left space-y-3"
+              key={index}
+              id={`why-choose-card-${index}`}
+              className="glass-panel p-6 sm:p-7 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300 space-y-4 group"
             >
-              <div className="w-10 h-10 rounded-xs bg-[#FAF8F5] border border-[#E7E2D8] flex items-center justify-center">
-                {getPillarIcon(pillar.icon)}
+              <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-sky-400/40 transition-colors">
+                {getIcon(point.icon)}
               </div>
 
-              <h3 className="font-serif text-lg font-bold text-[#1C1917]">
-                {pillar.title}
+              <h3 className="font-heading text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
+                {point.title}
               </h3>
 
-              <p className="text-xs sm:text-sm text-[#5E574F] font-sans leading-relaxed">
-                {pillar.description}
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                {point.description}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Client Reviews Header & Banner */}
-        <div className="bg-white border border-[#E7E2D8] p-8 sm:p-12 mb-12 shadow-sm text-left">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-8 border-b border-[#EFECE6]">
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono tracking-widest uppercase text-[#B5905C] font-semibold">
-                Client Testimonial
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917]">
-                Rated 5.0 Stars by Discerning Clients
-              </h3>
-              <p className="text-xs sm:text-sm text-[#7D7569]">
-                Verified feedback celebrating our custom spaces, bespoke cabinetry, and modern interior execution in Lagos.
-              </p>
+        {/* Operational Highlights Banner */}
+        <div className="mt-14 glass-panel p-6 sm:p-8 rounded-2xl border border-white/15 bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-slate-950 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center lg:text-left">
+            <div className="inline-flex items-center space-x-2 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>Available 24 Hours • 7 Days a Week</span>
             </div>
-
-            {/* Rating Stat Box */}
-            <div className="flex items-center space-x-4 bg-[#FAF8F5] p-4 border border-[#E7E2D8]">
-              <div className="font-serif text-4xl font-bold text-[#1C1917]">
-                5.0
-              </div>
-              <div>
-                <div className="flex items-center text-[#B5905C]">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#B5905C]" />
-                  ))}
-                </div>
-                <div className="text-[11px] font-mono text-[#7D7569] uppercase tracking-wider mt-0.5">
-                  5.0 Stars (1 Review)
-                </div>
-              </div>
-            </div>
+            <h3 className="font-heading text-xl sm:text-2xl font-bold text-white">
+              Ready to Discuss Your Glass or Mirror Project?
+            </h3>
+            <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
+              Visit our workshop at 52 Bauri Street, Mushin, or contact us online for instant consultation and sizing estimates.
+            </p>
           </div>
 
-          {/* 1 Verified Review Showcase */}
-          <div className="pt-8">
-            {SPACEBOUND_REVIEWS.map((rev) => (
-              <div
-                key={rev.id}
-                className="bg-[#FAF8F5] p-6 sm:p-8 border border-[#E7E2D8] flex flex-col justify-between space-y-5"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-[#B5905C]">
-                      {[...Array(rev.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#B5905C]" />
-                      ))}
-                    </div>
-                    <span className="text-[11px] font-mono text-[#7D7569]">
-                      {rev.date}
-                    </span>
-                  </div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              id="why-us-whatsapp-btn"
+              href={BUSINESS_INFO.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold inline-flex items-center space-x-2 shadow-lg shadow-emerald-600/20 transition-all"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>WhatsApp Now</span>
+            </a>
 
-                  <p className="text-sm sm:text-base text-[#4A453E] font-sans italic leading-relaxed">
-                    "{rev.reviewText}"
-                  </p>
-                </div>
+            <a
+              id="why-us-directions-btn"
+              href={BUSINESS_INFO.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold inline-flex items-center space-x-2 border border-white/15 transition-all"
+            >
+              <Compass className="w-4 h-4 text-sky-400" />
+              <span>Get Directions</span>
+            </a>
 
-                <div className="pt-4 border-t border-[#E7E2D8] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-left">
-                  <div>
-                    <h4 className="text-sm font-bold uppercase tracking-wider text-[#1C1917]">
-                      {rev.clientName}
-                    </h4>
-                    <span className="text-xs text-[#7D7569] block">
-                      {rev.clientTitle} • {rev.location}
-                    </span>
-                  </div>
-
-                  <span className="text-[11px] font-mono bg-white border border-[#E7E2D8] px-3 py-1 text-[#B5905C] self-start sm:self-auto">
-                    {rev.projectType}
-                  </span>
-                </div>
-              </div>
-            ))}
+            <button
+              id="why-us-quote-btn"
+              onClick={onRequestQuote}
+              className="px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-semibold inline-flex items-center space-x-2 shadow-lg shadow-sky-500/20 transition-all cursor-pointer"
+            >
+              <span>Glass Calculator</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </div>
-
       </div>
     </section>
   );
