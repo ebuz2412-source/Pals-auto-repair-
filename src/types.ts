@@ -2,11 +2,13 @@ export interface BusinessInfo {
   name: string;
   tagline: string;
   shortDescription: string;
+  brandMessage: string;
+  additionalMessage: string;
   type: string;
   address: string;
   street: string;
   area: string;
-  postalCode: string;
+  postalCode?: string;
   city: string;
   state: string;
   country: string;
@@ -14,8 +16,18 @@ export interface BusinessInfo {
   openingHours: string;
   googleMapsUrl: string;
   whatsappUrl: string;
+  whatsappUrl2: string;
+  whatsappNumbers: string[];
   phoneLink: string;
+  phoneLink2: string;
+  phoneNumbers: string[];
   displayPhone: string;
+  displayPhone2: string;
+  tiktok: string;
+  tiktokUrl: string;
+  instagram: string;
+  instagramUrl: string;
+  highlights: string[];
 }
 
 export interface GlassService {

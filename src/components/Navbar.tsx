@@ -60,11 +60,11 @@ export default function Navbar({ onSectionScroll, onRequestQuote }: NavbarProps)
           <div className="flex items-center space-x-6">
             <span className="flex items-center space-x-1.5 text-slate-300">
               <MapPin className="w-3.5 h-3.5 text-sky-400" />
-              <span>52 Bauri Street, Mushin, Lagos 100253, Nigeria</span>
+              <span>{BUSINESS_INFO.address}</span>
             </span>
             <span className="flex items-center space-x-1.5 text-emerald-400 font-medium">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Open 24 Hours</span>
+              <span>Open 24 Hours • Expert In All Kinds Of Glass Works</span>
             </span>
           </div>
 
@@ -88,7 +88,7 @@ export default function Navbar({ onSectionScroll, onRequestQuote }: NavbarProps)
               className="text-emerald-400 hover:text-emerald-300 font-medium flex items-center space-x-1"
             >
               <MessageSquare className="w-3.5 h-3.5" />
-              <span>WhatsApp Us</span>
+              <span>WhatsApp: 09014120207</span>
             </a>
             <span className="text-white/20">|</span>
             <a
@@ -97,7 +97,7 @@ export default function Navbar({ onSectionScroll, onRequestQuote }: NavbarProps)
               className="text-sky-400 hover:text-sky-300 font-medium flex items-center space-x-1"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>Call Now</span>
+              <span>Call: 08138511873</span>
             </a>
           </div>
         </div>
@@ -120,10 +120,10 @@ export default function Navbar({ onSectionScroll, onRequestQuote }: NavbarProps)
             </div>
             <div>
               <span className="block font-heading text-lg sm:text-xl font-bold tracking-tight text-white group-hover:text-sky-200 transition-colors">
-                Glass and Mirror Vendor
+                {BUSINESS_INFO.name}
               </span>
-              <span className="block text-[10px] tracking-[0.2em] uppercase text-slate-400 font-medium">
-                Glass & Mirror Shop • Mushin, Lagos
+              <span className="block text-[10px] tracking-[0.15em] uppercase text-sky-400 font-semibold">
+                {BUSINESS_INFO.tagline}
               </span>
             </div>
           </button>
@@ -196,11 +196,11 @@ export default function Navbar({ onSectionScroll, onRequestQuote }: NavbarProps)
           <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-xs space-y-1.5 mb-2">
             <div className="flex items-center text-slate-300 space-x-2">
               <MapPin className="w-4 h-4 text-sky-400 flex-shrink-0" />
-              <span>52 Bauri Street, Mushin, Lagos 100253</span>
+              <span>{BUSINESS_INFO.address}</span>
             </div>
             <div className="flex items-center text-emerald-400 space-x-2">
               <Clock className="w-4 h-4 flex-shrink-0" />
-              <span>Open 24 Hours • Serving All Lagos</span>
+              <span>Open 24 Hours • Clear Vision, Quality Finish</span>
             </div>
           </div>
 

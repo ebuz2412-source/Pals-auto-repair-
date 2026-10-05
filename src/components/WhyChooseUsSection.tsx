@@ -40,15 +40,15 @@ export default function WhyChooseUsSection({ onRequestQuote }: WhyChooseUsSectio
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-sky-400">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>THE GLASS & MIRROR VENDOR PROMISE</span>
+            <span>{BUSINESS_INFO.name} • {BUSINESS_INFO.tagline}</span>
           </div>
 
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Why Work With Us
+            {BUSINESS_INFO.brandMessage}
           </h2>
 
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Delivering exact millimeter cuts, certified safety glass, clean edge polishing, and around-the-clock reliability for projects across Lagos.
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed italic font-medium">
+            {BUSINESS_INFO.additionalMessage}
           </p>
         </div>
 
@@ -83,10 +83,10 @@ export default function WhyChooseUsSection({ onRequestQuote }: WhyChooseUsSectio
               <span>Available 24 Hours • 7 Days a Week</span>
             </div>
             <h3 className="font-heading text-xl sm:text-2xl font-bold text-white">
-              Ready to Discuss Your Glass or Mirror Project?
+              Ready to Discuss Your Glass or Glazing Project?
             </h3>
             <p className="text-slate-300 text-xs sm:text-sm max-w-xl">
-              Visit our workshop at 52 Bauri Street, Mushin, or contact us online for instant consultation and sizing estimates.
+              Visit our workshop at {BUSINESS_INFO.address}, or call / WhatsApp us for site inspection, measurement, and custom quotes.
             </p>
           </div>
 

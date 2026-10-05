@@ -27,15 +27,16 @@ export default function ServicesSection({ onSelectServiceForQuote }: ServicesSec
   const [activeModalService, setActiveModalService] = useState<GlassService | null>(null);
 
   const categories = [
-    { id: "all", label: "All Glass & Mirrors" },
-    { id: "mirrors", label: "Custom Mirrors" },
+    { id: "all", label: "All Services" },
+    { id: "windows", label: "Windows" },
+    { id: "doors", label: "Doors & Storefronts" },
     { id: "showers", label: "Shower Enclosures" },
-    { id: "doors", label: "Doors & Shopfronts" },
-    { id: "partitions", label: "Office Partitions" },
-    { id: "balustrades", label: "Glass Railings" },
-    { id: "tempered", label: "Tempered & Tabletop" },
-    { id: "windows", label: "Window Glazing" },
-    { id: "repairs", label: "24/7 Repairs" },
+    { id: "partitions", label: "Partitions & Dividers" },
+    { id: "mirrors", label: "Wall & Vanity Mirrors" },
+    { id: "tabletop", label: "Table Tops & Shelves" },
+    { id: "tempered", label: "Toughened Glass" },
+    { id: "repairs", label: "Broken Glass Replacement" },
+    { id: "fabrication", label: "Tinted, Frosted & Reflective" },
   ];
 
   const filteredServices = selectedCategory === "all"
@@ -63,15 +64,15 @@ export default function ServicesSection({ onSelectServiceForQuote }: ServicesSec
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-12">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-sky-400">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>FABRICATION & INSTALLATION SERVICES</span>
+            <span>{BUSINESS_INFO.tagline}</span>
           </div>
 
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Custom Glass & Mirror Solutions
+            Our Glass & Glazing Services
           </h2>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            From millimeter-precision mirror beveling and frameless glass shower enclosures to acoustic office partitions and structural balustrades, we fabricate and install to the highest standards across Lagos.
+            {BUSINESS_INFO.shortDescription} — From custom aluminium windows and shower cubicles to office partitions, mirrors, storefronts, and 24/7 broken glass replacement across Lagos.
           </p>
         </div>
 
@@ -157,7 +158,7 @@ export default function ServicesSection({ onSelectServiceForQuote }: ServicesSec
                   <div className="flex items-center space-x-1.5">
                     <a
                       id={`service-whatsapp-${service.id}`}
-                      href={`https://wa.me/?text=Hello%20Glass%20and%20Mirror%20Vendor%2C%20I%20am%20interested%20in%20your%20service%3A%20${encodeURIComponent(service.title)}`}
+                      href={`https://wa.me/2349014120207?text=Hello%20OLANREWAJU%20GLAZIER%2C%20I%20am%20interested%20in%20your%20service%3A%20${encodeURIComponent(service.title)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-xs transition-colors"
@@ -192,10 +193,10 @@ export default function ServicesSection({ onSelectServiceForQuote }: ServicesSec
                 <span>Immediate Assistance</span>
               </div>
               <h3 className="font-heading text-lg sm:text-xl font-bold text-white">
-                Need Urgent Glass Replacement or Repair in Lagos?
+                Need Broken Glass Replacement or Glazing in Lagos?
               </h3>
               <p className="text-slate-300 text-xs sm:text-sm mt-1">
-                Our shop is open 24 hours. We handle emergency shattered door glass, storefront damage, and broken shower glass with rapid response across Lagos.
+                {BUSINESS_INFO.name} is open 24 hours at {BUSINESS_INFO.address}. Fast emergency response for broken windows, shattered doors, storefronts, and damaged shower cubicles.
               </p>
             </div>
           </div>
@@ -203,13 +204,13 @@ export default function ServicesSection({ onSelectServiceForQuote }: ServicesSec
           <div className="flex flex-wrap items-center gap-3 flex-shrink-0 w-full md:w-auto">
             <a
               id="emergency-glazing-whatsapp"
-              href="https://wa.me/?text=URGENT%3A%20I%20need%20emergency%20glass%20repair%20or%20replacement%20in%20Lagos."
+              href="https://wa.me/2349014120207?text=URGENT%3A%20Hello%20OLANREWAJU%20GLAZIER%2C%20I%20need%20emergency%20broken%20glass%20repair%20or%20replacement%20in%20Lagos."
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 md:flex-initial text-center inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-all shadow-lg"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Emergency WhatsApp</span>
+              <span>WhatsApp: 09014120207</span>
             </a>
 
             <a
@@ -218,7 +219,7 @@ export default function ServicesSection({ onSelectServiceForQuote }: ServicesSec
               className="flex-1 md:flex-initial text-center inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-white/20 text-xs font-semibold transition-all"
             >
               <Clock className="w-4 h-4 text-emerald-400" />
-              <span>Call 24/7</span>
+              <span>Call: 08138511873</span>
             </a>
           </div>
         </div>
@@ -284,7 +285,7 @@ export default function ServicesSection({ onSelectServiceForQuote }: ServicesSec
             <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
               <a
                 id="modal-whatsapp-inquiry"
-                href={`https://wa.me/?text=Hello%20Glass%20and%20Mirror%20Vendor%2C%20I%20would%20like%20to%20order%20or%20inquire%20about%3A%20${encodeURIComponent(activeModalService.title)}`}
+                href={`https://wa.me/2349014120207?text=Hello%20OLANREWAJU%20GLAZIER%2C%20I%20would%20like%20to%20order%20or%20inquire%20about%3A%20${encodeURIComponent(activeModalService.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold inline-flex items-center space-x-2"

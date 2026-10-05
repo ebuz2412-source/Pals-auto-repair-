@@ -104,7 +104,7 @@ export default function App() {
           target="_blank"
           rel="noopener noreferrer"
           className="hidden sm:flex items-center space-x-2 bg-slate-900/90 hover:bg-slate-800 text-slate-200 px-3.5 py-2.5 rounded-full shadow-xl border border-white/20 backdrop-blur-md transition-transform hover:scale-105"
-          aria-label="Directions to 52 Bauri St, Mushin"
+          aria-label="Directions to 24 Buhari St, Mushin"
         >
           <Compass className="w-4 h-4 text-sky-400" />
           <span className="text-xs font-semibold">Directions</span>
@@ -115,7 +115,7 @@ export default function App() {
           id="floating-call-btn"
           href={BUSINESS_INFO.phoneLink}
           className="flex items-center space-x-2 bg-slate-900/95 hover:bg-slate-800 text-white px-3.5 py-2.5 rounded-full shadow-xl border border-white/20 backdrop-blur-md transition-transform hover:scale-105"
-          aria-label="Call Glass and Mirror Vendor"
+          aria-label="Call OLANREWAJU GLAZIER"
         >
           <Phone className="w-4 h-4 text-sky-400" />
           <span className="hidden sm:inline text-xs font-semibold">Call 24/7</span>
@@ -128,7 +128,7 @@ export default function App() {
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-500 text-white p-3 sm:px-4 sm:py-2.5 rounded-full shadow-2xl shadow-emerald-600/40 border border-emerald-400/40 transition-transform hover:scale-105 cursor-pointer"
-          aria-label="Chat on WhatsApp with Glass and Mirror Vendor"
+          aria-label="Chat on WhatsApp with OLANREWAJU GLAZIER"
         >
           <MessageSquare className="w-5 h-5 text-white" />
           <span className="text-xs font-semibold uppercase tracking-wider hidden sm:inline">

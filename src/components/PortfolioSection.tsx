@@ -136,7 +136,7 @@ export default function PortfolioSection({ onRequestQuote }: PortfolioSectionPro
                 <div className="pt-3 border-t border-white/10 flex items-center justify-between">
                   <a
                     id={`project-whatsapp-btn-${project.id}`}
-                    href={`https://wa.me/?text=Hello%20Glass%20and%20Mirror%20Vendor%2C%20I%20saw%20your%20project%20%22${encodeURIComponent(project.title)}%22%20in%20${encodeURIComponent(project.location)}%20and%20want%20something%20similar.`}
+                    href={`https://wa.me/2349014120207?text=Hello%20OLANREWAJU%20GLAZIER%2C%20I%20saw%20your%20project%20%22${encodeURIComponent(project.title)}%22%20in%20${encodeURIComponent(project.location)}%20and%20want%20something%20similar.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center space-x-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"

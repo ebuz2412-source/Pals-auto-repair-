@@ -37,7 +37,7 @@ export default function GallerySection() {
           </h2>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Take a closer look at the precision cuts, bevelled edges, polished borders, and hardware alignments crafted at our Mushin workshop.
+            Take a closer look at the precision cuts, bevelled edges, polished borders, and hardware alignments crafted by OLANREWAJU GLAZIER at our Mushin workshop (24, Buhari Street).
           </p>
         </div>
 

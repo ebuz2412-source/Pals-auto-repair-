@@ -42,11 +42,11 @@ export default function ContactSection() {
                 <MapPin className="w-6 h-6" />
               </div>
               <h3 className="font-heading text-lg font-bold text-white">Workshop & Shop Address</h3>
-              <p className="text-slate-200 text-sm font-medium">
-                52 Bauri Street, Mushin, Lagos 100253, Lagos, Nigeria
+              <p className="text-slate-200 text-sm font-semibold">
+                {BUSINESS_INFO.address}
               </p>
               <p className="text-slate-400 text-xs leading-relaxed">
-                Central Mushin location with easy road connectivity to Surulere, Ikeja, Oshodi, and Island expressways.
+                Central Mushin location with direct access to Surulere, Ikeja, Oshodi, and Island expressways.
               </p>
             </div>
 
@@ -65,51 +65,112 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Operating Hours Card */}
+          {/* Operating Hours & Phone Numbers Card */}
           <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-emerald-500/30 space-y-4 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-bl-full pointer-events-none"></div>
             
             <div className="space-y-3 relative z-10">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                <Clock className="w-6 h-6" />
+                <Phone className="w-6 h-6" />
               </div>
               <div className="flex items-center space-x-2">
-                <h3 className="font-heading text-lg font-bold text-white">Operating Hours</h3>
+                <h3 className="font-heading text-lg font-bold text-white">Direct Phone Lines</h3>
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
               </div>
-              <div className="text-emerald-400 font-semibold text-base">
+              <div className="text-emerald-400 font-semibold text-xs uppercase tracking-wider">
                 Open 24 Hours Daily
               </div>
-              <p className="text-slate-300 text-xs leading-relaxed">
-                Operating 24/7 across Monday through Sunday. Available for overnight fabrication, early morning deliveries, and round-the-clock emergency glass repair.
+              <div className="space-y-1.5 pt-1">
+                <a
+                  href="tel:08138511873"
+                  className="block text-white hover:text-sky-300 font-mono text-sm font-semibold transition-colors"
+                >
+                  📞 08138511873
+                </a>
+                <a
+                  href="tel:09014120207"
+                  className="block text-white hover:text-sky-300 font-mono text-sm font-semibold transition-colors"
+                >
+                  📞 09014120207
+                </a>
+              </div>
+              <p className="text-slate-400 text-xs">
+                Available 24/7 for inquiries, site bookings, and urgent glass repairs.
               </p>
             </div>
 
-            <div className="pt-4 border-t border-white/10 relative z-10">
+            <div className="pt-4 border-t border-white/10 relative z-10 grid grid-cols-2 gap-2">
               <a
-                id="contact-call-btn"
-                href={BUSINESS_INFO.phoneLink}
-                className="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold inline-flex items-center justify-center space-x-2 border border-white/20 transition-all"
+                id="contact-call-btn-1"
+                href="tel:08138511873"
+                className="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold text-center border border-white/20 transition-all"
               >
-                <Phone className="w-4 h-4 text-emerald-400" />
-                <span>Call Business (24 Hours)</span>
+                Call Line 1
+              </a>
+              <a
+                id="contact-call-btn-2"
+                href="tel:09014120207"
+                className="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold text-center border border-white/20 transition-all"
+              >
+                Call Line 2
               </a>
             </div>
           </div>
 
-          {/* Service Area & Direct Chat */}
+          {/* WhatsApp & Social Media Card */}
           <div className="glass-panel p-6 sm:p-7 rounded-2xl border border-white/15 space-y-4 flex flex-col justify-between">
             <div className="space-y-3">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
                 <MessageSquare className="w-6 h-6" />
               </div>
-              <h3 className="font-heading text-lg font-bold text-white">Direct WhatsApp Inquiry</h3>
-              <p className="text-slate-200 text-sm font-medium">
-                Service Area: All Lagos State, Nigeria
-              </p>
-              <p className="text-slate-400 text-xs leading-relaxed">
-                Chat with our glass specialists for instant product availability, pricing inquiries, custom dimension questions, or site assessments.
-              </p>
+              <h3 className="font-heading text-lg font-bold text-white">WhatsApp & Social Media</h3>
+              <div className="space-y-1.5">
+                <div className="text-xs text-slate-300">
+                  <span className="text-slate-400 block">WhatsApp Numbers:</span>
+                  <div className="flex flex-wrap gap-2 mt-1">
+                    <a
+                      href="https://wa.me/2349014120207"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs hover:bg-emerald-500/20"
+                    >
+                      💬 09014120207
+                    </a>
+                    <a
+                      href="https://wa.me/2349046187593"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-mono text-xs hover:bg-emerald-500/20"
+                    >
+                      💬 09046187593
+                    </a>
+                  </div>
+                </div>
+
+                <div className="pt-2 text-xs text-slate-300">
+                  <span className="text-slate-400 block mb-1">Follow Our Works:</span>
+                  <div className="flex flex-wrap gap-2">
+                    <a
+                      href={BUSINESS_INFO.tiktokUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2.5 py-1 rounded bg-white/10 hover:bg-white/15 text-slate-200 text-xs border border-white/10 inline-flex items-center space-x-1"
+                    >
+                      <span>TikTok:</span>
+                      <strong className="text-white">@{BUSINESS_INFO.tiktok}</strong>
+                    </a>
+                    <a
+                      href={BUSINESS_INFO.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2.5 py-1 rounded bg-white/10 hover:bg-white/15 text-pink-300 text-xs border border-white/10 inline-flex items-center space-x-1"
+                    >
+                      <span>IG:</span>
+                      <strong className="text-white">@{BUSINESS_INFO.instagram}</strong>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="pt-4 border-t border-white/10">
@@ -121,7 +182,7 @@ export default function ContactSection() {
                 className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold inline-flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/20 transition-all"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Start WhatsApp Chat</span>
+                <span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>
@@ -134,8 +195,8 @@ export default function ContactSection() {
             <div className="lg:col-span-7 bg-slate-950 relative min-h-[360px] flex items-center justify-center">
               {/* Google Maps iFrame */}
               <iframe
-                title="Glass and Mirror Vendor Location Map"
-                src="https://maps.google.com/maps?q=52+Bauri+Street,+Mushin,+Lagos,+Nigeria&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                title="OLANREWAJU GLAZIER Location Map"
+                src="https://maps.google.com/maps?q=24+Buhari+Street,+Mushin,+Lagos,+Nigeria&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 className="w-full h-full min-h-[360px] border-0 filter contrast-125 opacity-90 hover:opacity-100 transition-opacity"
                 loading="lazy"
               ></iframe>
@@ -144,7 +205,7 @@ export default function ContactSection() {
               <div className="absolute top-4 left-4 glass-panel px-3 py-2 rounded-xl border border-white/20 shadow-xl pointer-events-none">
                 <div className="text-white font-heading font-bold text-xs flex items-center space-x-1.5">
                   <MapPin className="w-3.5 h-3.5 text-sky-400" />
-                  <span>52 Bauri St, Mushin</span>
+                  <span>24 Buhari St, Mushin</span>
                 </div>
                 <span className="text-[10px] text-emerald-400 font-medium">Open 24 Hours</span>
               </div>
@@ -163,7 +224,7 @@ export default function ContactSection() {
                 </h3>
 
                 <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                  Located in the heart of Lagos Mainland, our 52 Bauri Street workshop provides rapid access to both Mainland commercial hubs and Island residential estates:
+                  Located in the heart of Lagos Mainland, our 24, Buhari Street workshop provides rapid access to both Mainland commercial hubs and Island residential estates:
                 </p>
 
                 <div className="space-y-2.5 text-xs text-slate-300">

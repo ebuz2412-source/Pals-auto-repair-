@@ -51,7 +51,7 @@ export default function ConsultationSection({ preselectedService }: Consultation
 
   // Build prefilled WhatsApp message with the exact glass specifications
   const getWhatsAppMessage = () => {
-    const text = `Hello Glass and Mirror Vendor,
+    const text = `Hello OLANREWAJU GLAZIER,
 I would like an inquiry/quote for:
 • Product: ${productType}
 • Dimensions: ${widthMm}mm (W) x ${heightMm}mm (H)
@@ -102,14 +102,16 @@ ${notes ? `• Notes: ${notes}` : ""}`;
                   onChange={(e) => setProductType(e.target.value)}
                   className="w-full px-3 py-2.5 rounded-xl bg-slate-900 border border-white/15 text-white text-xs focus:border-sky-400 focus:outline-none"
                 >
-                  <option value="Custom Mirrors">Custom Mirrors (LED / Bevelled)</option>
-                  <option value="Frameless Glass Shower Cubicle">Frameless Glass Shower Cubicle</option>
-                  <option value="Frameless Glass Door">Frameless Glass Door (Pivot / Sliding)</option>
-                  <option value="Office Glass Partition">Office Glass Partition (Acoustic)</option>
-                  <option value="Glass Balustrade & Handrail">Glass Balustrade & Handrail</option>
-                  <option value="Tempered Safety Glass Sheet">Tempered Safety Glass Sheet</option>
-                  <option value="Window Glass & Glazing">Window Glass & Glazing</option>
-                  <option value="Emergency Glass Replacement">Emergency Glass Replacement</option>
+                  <option value="Aluminium & Glass Windows">Aluminium & Glass Windows</option>
+                  <option value="Glass Doors (Sliding & Swing)">Glass Doors (Sliding & Swing)</option>
+                  <option value="Shower Enclosures">Shower Enclosures</option>
+                  <option value="Glass Partitions & Office Dividers">Glass Partitions & Office Dividers</option>
+                  <option value="Shopfronts & Storefronts">Shopfronts & Storefronts</option>
+                  <option value="Mirrors (Wall Mirrors, Vanity Mirrors)">Mirrors (Wall Mirrors, Vanity Mirrors)</option>
+                  <option value="Table Tops & Glass Shelves">Table Tops & Glass Shelves</option>
+                  <option value="Toughened & Tempered Glass">Toughened & Tempered Glass</option>
+                  <option value="Broken Glass Replacement">Broken Glass Replacement</option>
+                  <option value="Tinted, Frosted & Reflective Glass">Tinted, Frosted & Reflective Glass</option>
                 </select>
               </div>
 
@@ -257,13 +259,13 @@ ${notes ? `• Notes: ${notes}` : ""}`;
             <div className="pt-2">
               <a
                 id="calc-direct-whatsapp-btn"
-                href={`https://wa.me/?text=${getWhatsAppMessage()}`}
+                href={`https://wa.me/2349014120207?text=${getWhatsAppMessage()}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wide flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/25 transition-all"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Send These Exact Measurements to WhatsApp</span>
+                <span>Send Measurements to WhatsApp (09014120207)</span>
               </a>
             </div>
           </div>
@@ -282,17 +284,17 @@ ${notes ? `• Notes: ${notes}` : ""}`;
                 </div>
                 <h4 className="text-white font-heading font-bold text-lg">Quote Request Received!</h4>
                 <p className="text-slate-300 text-xs leading-relaxed">
-                  Thank you, <strong className="text-white">{fullName || "valued client"}</strong>. Our Mushin team will review your {productType} specifications ({areaSqM} m²) and contact you promptly via phone or WhatsApp.
+                  Thank you, <strong className="text-white">{fullName || "valued client"}</strong>. The {BUSINESS_INFO.name} team will review your {productType} specifications ({areaSqM} m²) and contact you promptly via phone or WhatsApp.
                 </p>
                 <div className="pt-2">
                   <a
                     id="quote-followup-whatsapp"
-                    href={`https://wa.me/?text=${getWhatsAppMessage()}`}
+                    href={`https://wa.me/2349014120207?text=${getWhatsAppMessage()}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center space-x-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-semibold"
                   >
-                    <span>Need immediate response? Tap here to WhatsApp us directly.</span>
+                    <span>Need immediate response? Tap here to WhatsApp 09014120207 directly.</span>
                   </a>
                 </div>
               </div>
@@ -374,7 +376,7 @@ ${notes ? `• Notes: ${notes}` : ""}`;
             <div className="pt-2 border-t border-white/10 text-xs text-slate-400 space-y-1.5">
               <div className="flex items-center space-x-2 text-slate-300">
                 <MapPin className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
-                <span>52 Bauri Street, Mushin, Lagos 100253</span>
+                <span>{BUSINESS_INFO.address}</span>
               </div>
               <div className="flex items-center space-x-2 text-emerald-400 font-medium">
                 <Clock className="w-3.5 h-3.5 flex-shrink-0" />

@@ -34,7 +34,7 @@ export default function AboutSection({ onRequestQuote, onExploreServices }: Abou
               <div className="rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-slate-900 aspect-[4/3] relative">
                 <img
                   src={GLASS_IMAGES.customMirrors}
-                  alt="Glass and Mirror Vendor - Custom mirrors and glass fabrication in Mushin Lagos"
+                  alt="OLANREWAJU GLAZIER - Custom mirrors and glass fabrication in Mushin Lagos"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -44,10 +44,10 @@ export default function AboutSection({ onRequestQuote, onExploreServices }: Abou
                 <div className="absolute bottom-4 left-4 right-4 glass-panel p-3.5 rounded-xl border border-white/20">
                   <div className="flex items-center space-x-2 text-sky-400 font-semibold text-xs mb-1">
                     <MapPin className="w-3.5 h-3.5" />
-                    <span>52 Bauri Street, Mushin, Lagos</span>
+                    <span>{BUSINESS_INFO.address}</span>
                   </div>
                   <p className="text-white text-xs font-medium">
-                    Central fabrication workshop supplying glass & mirror installations across all of Lagos.
+                    {BUSINESS_INFO.brandMessage} — Central fabrication workshop supplying glass & mirror installations across all of Lagos.
                   </p>
                 </div>
               </div>
@@ -78,7 +78,7 @@ export default function AboutSection({ onRequestQuote, onExploreServices }: Abou
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-white">Open 24 Hours Daily</h4>
-                    <p className="text-xs text-slate-400">Available day and night for production & installations</p>
+                    <p className="text-xs text-slate-400">08138511873 • 09014120207</p>
                   </div>
                 </div>
 
@@ -97,60 +97,65 @@ export default function AboutSection({ onRequestQuote, onExploreServices }: Abou
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-sky-400">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>ABOUT OUR SHOP & WORKSHOP</span>
+              <span>ABOUT {BUSINESS_INFO.name}</span>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
-              Lagos’s Specialist in Custom Glass Cutting, Mirrors & Architectural Glazing
+              {BUSINESS_INFO.shortDescription}
             </h2>
 
+            <div className="p-3.5 rounded-xl bg-sky-500/10 border border-sky-400/20 text-sky-200 text-xs font-medium">
+              <strong className="text-white uppercase font-bold block mb-0.5">{BUSINESS_INFO.brandMessage}</strong>
+              {BUSINESS_INFO.additionalMessage}
+            </div>
+
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Based at <strong className="text-white font-medium">52 Bauri Street, Mushin</strong>, <span className="text-white font-semibold">Glass and Mirror Vendor</span> is a dedicated glass and mirror shop providing comprehensive glass cutting, bespoke mirror fabrication, and professional architectural installation throughout Lagos, Nigeria.
+              Based at <strong className="text-white font-medium">{BUSINESS_INFO.address}</strong>, <span className="text-white font-semibold">{BUSINESS_INFO.name}</span> is your dependable glass expert providing master craftsmanship across residential, commercial, and architectural projects throughout Lagos, Nigeria.
             </p>
 
             <p className="text-slate-400 text-sm leading-relaxed">
-              Whether you are an architect detailing frameless office partitions, a homeowner remodeling a bathroom with custom frameless shower cubicles, or an interior decorator sourcing LED backlit vanity mirrors, our shop delivers precision-cut glass with clean bevelled or polished edges and certified structural durability.
+              We specialize in Aluminium & Glass Windows, Sliding & Swing Glass Doors, Shower Enclosures, Glass Partitions & Office Dividers, Shopfronts & Storefronts, Custom Wall & Vanity Mirrors, Table Tops & Glass Shelves, Toughened & Tempered Glass, Broken Glass Replacement, and Tinted, Frosted & Reflective Glass.
             </p>
 
-            {/* Core Pillars */}
+            {/* Core Pillars / Business Highlights */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="glass-panel p-3.5 rounded-xl border border-white/10">
                 <div className="flex items-center space-x-2.5 text-white font-semibold text-sm mb-1">
-                  <Ruler className="w-4 h-4 text-sky-400" />
-                  <span>Precision Custom Sizing</span>
+                  <ShieldCheck className="w-4 h-4 text-sky-400" />
+                  <span>Quality Materials</span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Cut-to-size glass and mirrors tailored to exact room dimensions and angles.
+                  Certified safety glass, high-clarity mirrors, and durable aluminium hardware.
                 </p>
               </div>
 
               <div className="glass-panel p-3.5 rounded-xl border border-white/10">
                 <div className="flex items-center space-x-2.5 text-white font-semibold text-sm mb-1">
-                  <ShieldCheck className="w-4 h-4 text-sky-400" />
-                  <span>Tempered Safety Glass</span>
+                  <Ruler className="w-4 h-4 text-sky-400" />
+                  <span>Expert Workmanship</span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Toughened monolithic and laminated glass engineered for high safety.
+                  Precision cutting, edge polishing, beveling, and seamless mounting.
                 </p>
               </div>
 
               <div className="glass-panel p-3.5 rounded-xl border border-white/10">
                 <div className="flex items-center space-x-2.5 text-white font-semibold text-sm mb-1">
                   <Clock className="w-4 h-4 text-emerald-400" />
-                  <span>24 Hours Operation</span>
+                  <span>On Time Delivery</span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Continuous workshop operation for fast turnaround and emergency jobs.
+                  Punctual project schedules and fast turnaround across Lagos.
                 </p>
               </div>
 
               <div className="glass-panel p-3.5 rounded-xl border border-white/10">
                 <div className="flex items-center space-x-2.5 text-white font-semibold text-sm mb-1">
-                  <Truck className="w-4 h-4 text-sky-400" />
-                  <span>Lagos-Wide Delivery</span>
+                  <CheckCircle2 className="w-4 h-4 text-sky-400" />
+                  <span>100% Customer Satisfaction</span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Safe glass transit and professional on-site mounting anywhere in Lagos.
+                  Building lasting trust with every single installation and repair.
                 </p>
               </div>
             </div>
